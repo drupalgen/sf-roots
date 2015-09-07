@@ -1,0 +1,128 @@
+{
+  "minimum-stability": "dev",
+  "name": "drupalgen/drupalgen",
+  "type": "project",
+  "authors": [
+    {
+      "name": "Lisa Ridley",
+      "email": "lisa@prometsource.com"
+    }
+  ],
+  "repositories": [
+    {
+      "type":"package",
+      "package": {
+        "name":"drupal\/coder",
+        "description":"Coder is a library and a module to review Drupal code.",
+        "keywords":[
+          "standards",
+          "phpcs",
+          "code review"
+        ],
+        "homepage":"https:\/\/drupal.org\/project\/coder",
+        "version":"7.2.4",
+        "version_normalized":"7.2.4.0",
+        "license":[
+          "GPL-2.0+"
+        ],
+        "authors":[],
+        "source":{
+          "type":"git",
+          "url":"http:\/\/git.drupal.org\/project\/coder.git",
+          "reference":"5d36c5d737114e0812653401d245dd69d586fc0a"
+        },
+        "dist":{
+          "type":"zip",
+          "url":"http:\/\/ftp.drupal.org\/files\/projects\/coder-7.x-2.4.zip",
+          "reference":null,
+          "shasum":null
+        },
+        "type":"drupal-module",
+        "time":"2015-01-14T23:19:28+00:00",
+        "extra":{
+          "branch-alias":{
+            "dev-7.x-2.x":"7.2.x-dev"
+          }
+        },
+        "require":{
+          "php":">=5.2.0",
+          "squizlabs\/php_codesniffer":">=1.4.6,<2.0.0",
+          "drupal\/drupal":"7.*"
+        },
+        "suggest":{
+          "drupal\/gplib":"Required by drupal\/coder_upgrade"
+        },
+        "replace":{
+          "drupal\/coder_review":"self.version",
+          "drupal\/drupalcs":"self.version",
+          "drupal\/bad":"self.version",
+          "drupal\/bad2":"self.version",
+          "drupal\/coder_upgrade":"self.version"
+        }
+      }
+    },
+    {
+      "type": "composer",
+      "url": "http://packagist.drupal-composer.org"
+    },
+    {
+      "type": "vcs",
+      "url": "git@github.com:promet/installers"
+    }
+  ],
+  "require": {
+    "ckeditor/ckeditor": "dev-full/stable",
+    "composer/composer": "~1.0@alpha",
+    "promet/installers": "~dev-master",
+    "drupal/drupal": "7.*",
+    "drupal/admin_menu": "7.*",
+    "drupal/ckeditor": "7.*",
+    "drupal/context": "7.*",
+    "drupal/ctools": "7.*",
+    "drupal/date": "7.*",
+    "drupal/diff": "7.*",
+    "drupal/entity": "7.*",
+    "drupal/entityform": "7.*",
+    "drupal/features": "7.2.*",
+    "drupal/job_scheduler": "7.*",
+    "drupal/module_filter": "7.*",
+    "drupal/panels": "7.*",
+    "drupal/registry_rebuild": "7.*",
+    "drupal/rules": "7.*",
+    "drupal/strongarm": "7.*",
+    "drupal/views": "7.*",
+    "drupal/bootstrap": "7.*",
+    "drush/drush": "6.*",
+    "promet/settings_compile": "~2.1.2"
+  },
+  "require-dev": {
+    "behat/behat": "*",
+    "behat/mink": "*",
+    "behat/mink-selenium2-driver": "*",
+    "drupal/backup_migrate": "7.3.*",
+    "drupal/devel": "7.*",
+    "drupal/devel_themer": "7.1.x-dev",
+    "drupal/diff": "~7.3.2",
+    "drupal/drupal-extension": "1.*",
+    "drupal/stage_file_proxy": "7.1.6",
+    "phpunit/phpunit": "4.3.5",
+    "drupal/coder": "7.2.4"
+  },
+  "extra": {
+    "installer-paths": {
+      "www/": ["type:drupal-core"],
+      "www/sites/all/modules/contrib/{$name}/": ["type:drupal-contrib-module"],
+      "www/sites/all/modules/custom/{$name}/": ["type:drupal-custom-module"],
+      "www/sites/all/themes/contrib/{$name}/": ["type:drupal-contrib-theme"],
+      "www/sites/all/themes/custom/{$name}/": ["type:drupal-custom-theme"],
+      "www/sites/all/libraries/{$name}/": ["type:drupal-library"]
+    }
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "bin/wrapper"
+    ],
+    "post-update-cmd": [
+    ]
+  }
+}
