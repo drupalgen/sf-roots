@@ -1,5 +1,5 @@
 {
-  "minimum-stability": "dev",
+  "minimum-stability": "alpha",
   "name": "drupalgen/drupalgen",
   "type": "project",
   "authors": [
@@ -73,7 +73,8 @@
   "require": {
     "ckeditor/ckeditor": "dev-full/stable",
     "composer/composer": "~1.0@alpha",
-    "promet/installers": "~dev-master",
+    "promet/installers": "1.1.1",
+    "davidbarratt/custom-installer": "dev-master",
     "drupal/drupal": "7.*",
     "drupal/admin_menu": "7.*",
     "drupal/ckeditor": "7.*",
@@ -116,7 +117,15 @@
       "www/sites/all/themes/contrib/{$name}/": ["type:drupal-contrib-theme"],
       "www/sites/all/themes/custom/{$name}/": ["type:drupal-custom-theme"],
       "www/sites/all/libraries/{$name}/": ["type:drupal-library"]
-    }
+    },
+    "preserve-paths": [
+      "docroot/sites/all/modules/contrib",
+      "docroot/sites/all/modules/custom",
+      "docroot/sites/all/themes/contrib",
+      "docroot/sites/all/themes/custom",
+      "docroot/sites/all/libraries",
+      "docroot/sits/default/settings.php"
+    ]
   },
   "scripts": {
     "post-install-cmd": [
