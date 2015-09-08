@@ -1,6 +1,6 @@
-name = "Default D7"
+name = "SFR Default D7 Project module"
 description = "Top module for sf-roots.dev d7 project"
-package = "Default D7"
+package = "SFR"
 core = "7.x"
 
 dependencies[] = admin_menu
@@ -8,8 +8,13 @@ dependencies[] = block
 dependencies[] = ctools
 dependencies[] = date
 dependencies[] = features
+dependencies[] = jquery_update
+dependencies[] = jquery_update_configuration
 dependencies[] = module_filter
+dependencies[] = panels
 dependencies[] = rules
 dependencies[] = strongarm
 dependencies[] = views
-dependencies[] = sfr
+dependencies[] = sfr_date_configuration_settings
+;dependencies[] = sfr_theme_configuration
+
