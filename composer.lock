@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b5621a806c0331d2d9357e1e85d5f3cb",
+    "hash": "0492f6692f41955f5f0bd6dced8d2eb2",
     "packages": [
         {
             "name": "ckeditor/ckeditor",
@@ -114,6 +114,101 @@
                 "package"
             ],
             "time": "2015-04-14 21:18:51"
+        },
+        {
+            "name": "composer/installers",
+            "version": "v1.0.21",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/composer/installers.git",
+                "reference": "d64e23fce42a4063d63262b19b8e7c0f3b5e4c45"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/composer/installers/zipball/d64e23fce42a4063d63262b19b8e7c0f3b5e4c45",
+                "reference": "d64e23fce42a4063d63262b19b8e7c0f3b5e4c45",
+                "shasum": ""
+            },
+            "replace": {
+                "roundcube/plugin-installer": "*",
+                "shama/baton": "*"
+            },
+            "require-dev": {
+                "composer/composer": "1.0.*@dev",
+                "phpunit/phpunit": "4.1.*"
+            },
+            "type": "composer-installer",
+            "extra": {
+                "class": "Composer\\Installers\\Installer",
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Composer\\Installers\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kyle Robinson Young",
+                    "email": "kyle@dontkry.com",
+                    "homepage": "https://github.com/shama"
+                }
+            ],
+            "description": "A multi-framework Composer library installer",
+            "homepage": "http://composer.github.com/installers/",
+            "keywords": [
+                "Craft",
+                "Dolibarr",
+                "Hurad",
+                "MODX Evo",
+                "OXID",
+                "SMF",
+                "Thelia",
+                "WolfCMS",
+                "agl",
+                "aimeos",
+                "annotatecms",
+                "bitrix",
+                "cakephp",
+                "chef",
+                "codeigniter",
+                "concrete5",
+                "croogo",
+                "dokuwiki",
+                "drupal",
+                "elgg",
+                "fuelphp",
+                "grav",
+                "installer",
+                "joomla",
+                "kohana",
+                "laravel",
+                "lithium",
+                "magento",
+                "mako",
+                "mediawiki",
+                "modulework",
+                "moodle",
+                "phpbb",
+                "piwik",
+                "ppi",
+                "puppet",
+                "roundcube",
+                "shopware",
+                "silverstripe",
+                "symfony",
+                "typo3",
+                "wordpress",
+                "zend",
+                "zikula"
+            ],
+            "time": "2015-02-18 17:17:01"
         },
         {
             "name": "davidbarratt/custom-installer",
@@ -932,107 +1027,6 @@
                 "schema"
             ],
             "time": "2015-07-14 16:29:50"
-        },
-        {
-            "name": "promet/installers",
-            "version": "v1.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/promet/installers.git",
-                "reference": "2bb76198f6fccf6601f21bd59aedfc4d4120babf"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/promet/installers/zipball/2bb76198f6fccf6601f21bd59aedfc4d4120babf",
-                "reference": "2bb76198f6fccf6601f21bd59aedfc4d4120babf",
-                "shasum": ""
-            },
-            "replace": {
-                "roundcube/plugin-installer": "*",
-                "shama/baton": "*"
-            },
-            "require-dev": {
-                "composer/composer": "1.0.*@dev",
-                "phpunit/phpunit": "4.1.*"
-            },
-            "type": "composer-installer",
-            "extra": {
-                "class": "Composer\\Installers\\Installer",
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Composer\\Installers\\": "src/"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Kyle Robinson Young",
-                    "email": "kyle@dontkry.com",
-                    "homepage": "https://github.com/shama"
-                },
-                {
-                    "name": "Lisa Ridley, Promet Source",
-                    "email": "lisa@prometsource.com"
-                }
-            ],
-            "description": "A multi-framework Composer library installer",
-            "homepage": "https://.github.com/promet/installers",
-            "keywords": [
-                "AGL",
-                "Aimeos",
-                "AnnotateCms",
-                "Bitrix",
-                "CakePHP",
-                "Chef",
-                "CodeIgniter",
-                "Craft",
-                "Croogo",
-                "DokuWiki",
-                "Dolibarr",
-                "Drupal",
-                "Elgg",
-                "FuelPHP",
-                "Grav",
-                "Hurad",
-                "Joomla",
-                "Kohana",
-                "Laravel",
-                "Lithium",
-                "MODULEWork",
-                "MODX Evo",
-                "Magento",
-                "Mako",
-                "MediaWiki",
-                "Moodle",
-                "OXID",
-                "PPI",
-                "Piwik",
-                "Puppet",
-                "Roundcube",
-                "SMF",
-                "SilverStripe",
-                "TYPO3",
-                "Thelia",
-                "WolfCMS",
-                "WordPress",
-                "Zend",
-                "Zikula",
-                "concrete5",
-                "installer",
-                "phpBB",
-                "shopware",
-                "symfony"
-            ],
-            "support": {
-                "source": "https://github.com/promet/installers/tree/v1.1.1"
-            },
-            "time": "2015-09-07 10:49:59"
         },
         {
             "name": "promet/settings_compile",

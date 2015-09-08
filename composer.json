@@ -73,8 +73,9 @@
   "require": {
     "ckeditor/ckeditor": "dev-full/stable",
     "composer/composer": "~1.0@alpha",
-    "promet/installers": "1.1.1",
+    "composer/installers": "1.*",
     "davidbarratt/custom-installer": "dev-master",
+    "netresearch/composer-patches-plugin": "1.*",
     "drupal/drupal": "7.*",
     "drupal/admin_menu": "7.*",
     "drupal/ckeditor": "7.*",
@@ -83,7 +84,6 @@
     "drupal/date": "7.*",
     "drupal/diff": "7.*",
     "drupal/entity": "7.*",
-    "drupal/entityform": "7.*",
     "drupal/features": "7.2.*",
     "drupal/job_scheduler": "7.*",
     "drupal/module_filter": "7.*",
@@ -93,6 +93,7 @@
     "drupal/strongarm": "7.*",
     "drupal/views": "7.*",
     "drupal/bootstrap": "7.*",
+    "drupal/sfr": "7.*",
     "drush/drush": "6.*",
     "promet/settings_compile": "~2.1.2"
   },
@@ -112,10 +113,8 @@
   "extra": {
     "installer-paths": {
       "www/": ["type:drupal-core"],
-      "www/sites/all/modules/contrib/{$name}/": ["type:drupal-contrib-module"],
-      "www/sites/all/modules/custom/{$name}/": ["type:drupal-custom-module"],
-      "www/sites/all/themes/contrib/{$name}/": ["type:drupal-contrib-theme"],
-      "www/sites/all/themes/custom/{$name}/": ["type:drupal-custom-theme"],
+      "www/sites/all/modules/contrib/{$name}/": ["type:drupal-module"],
+      "www/sites/all/themes/contrib/{$name}/": ["type:drupal-theme"],
       "www/sites/all/libraries/{$name}/": ["type:drupal-library"]
     },
     "preserve-paths": [
@@ -124,14 +123,16 @@
       "docroot/sites/all/themes/contrib",
       "docroot/sites/all/themes/custom",
       "docroot/sites/all/libraries",
-      "docroot/sits/default/settings.php"
+      "docroot/sites/default/settings.php"
     ]
   },
   "scripts": {
     "post-install-cmd": [
-      "bin/wrapper"
+      "bin/wrapper",
+      "build/drupal-dirs.sh"
     ],
     "post-update-cmd": [
+      "build/drupal-dirs.sh"
     ]
   }
 }
