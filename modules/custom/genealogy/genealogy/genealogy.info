@@ -1,0 +1,10 @@
+name = Genealogy
+description = General Genealogy module containing functionality shared among modules.
+package = Genealogy
+core = 7.x
+php = 5.x
+
+version = 7.x-1.0
+
+dependencies[] = gen_person_content_type
+dependencies[] = taxonomy

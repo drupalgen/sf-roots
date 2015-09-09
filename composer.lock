@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5a28195b98a811e6d4091e3b812e753d",
+    "hash": "a4966192a56585ac86b1646150edd685",
     "packages": [
         {
             "name": "ckeditor/ckeditor",
@@ -282,6 +282,33 @@
             "notification-url": "http://packagist.drupal-composer.org/downloads/",
             "description": "Provides a dropdown menu to most administrative tasks and other common destinations (to users with the proper permissions).",
             "homepage": "https://www.drupal.org/project/admin_menu"
+        },
+        {
+            "name": "drupal/auto_entitylabel",
+            "version": "7.1.3",
+            "source": {
+                "type": "git",
+                "url": "http://git.drupal.org/project/auto_entitylabel",
+                "reference": "7a7d9953b05a3cadf88cdb30da0cb5a136ff3a88"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://ftp.drupal.org/files/projects/auto_entitylabel-7.x-1.3.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "drupal/drupal": "7.*",
+                "drupal/entity": "7.*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-7.x-1.x": "7.1.x-dev"
+                }
+            },
+            "notification-url": "http://packagist.drupal-composer.org/downloads/",
+            "description": "Allows hiding of entity label fields and automatic label creation."
         },
         {
             "name": "drupal/bootstrap",
@@ -618,6 +645,37 @@
             },
             "notification-url": "http://packagist.drupal-composer.org/downloads/",
             "description": "Enables modules to work with any entity type and to provide entities."
+        },
+        {
+            "name": "drupal/entityinfo",
+            "version": "7.1.1",
+            "source": {
+                "type": "git",
+                "url": "http://git.drupal.org/project/entityinfo.git",
+                "reference": "e834724d4810d6094ce777616ae2ab5eb590013d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://ftp.drupal.org/files/projects/entityinfo-7.x-1.1.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "drupal/comment": "7.*",
+                "drupal/drupal": "7.*",
+                "drupal/file": "7.*",
+                "drupal/node": "7.*",
+                "drupal/taxonomy": "7.*",
+                "drupal/user": "7.*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-7.x-1.x": "7.1.x-dev"
+                }
+            },
+            "notification-url": "http://packagist.drupal-composer.org/downloads/",
+            "description": "Provides technical and developer information for Entities in your Drupal Project"
         },
         {
             "name": "drupal/entityreference",
@@ -967,6 +1025,32 @@
             },
             "notification-url": "http://packagist.drupal-composer.org/downloads/",
             "description": "Enforces variable values defined by modules that need settings set to operate properly."
+        },
+        {
+            "name": "drupal/token",
+            "version": "7.1.6",
+            "source": {
+                "type": "git",
+                "url": "http://git.drupal.org/project/token",
+                "reference": "6019b9e657cfe6a919e8e717c52e4e07bd94dab0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://ftp.drupal.org/files/projects/token-7.x-1.6.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "drupal/drupal": "7.*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-7.x-1.x": "7.1.x-dev"
+                }
+            },
+            "notification-url": "http://packagist.drupal-composer.org/downloads/",
+            "description": "Provides a user interface for the Token API and some missing core tokens."
         },
         {
             "name": "drupal/views",

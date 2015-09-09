@@ -1,0 +1,27 @@
+<?php
+/**
+ * @file
+ * Genealogy module file
+ */
+
+/**
+ * Private helper function to load taxonomy terms into vocabularies.
+ */
+function _genealogy_add_terms_to_vocabulary($terms, $vocabulary) {
+  $vocabularies = array_keys(taxonomy_vocabulary_get_names());
+  if(!in_array($vocabulary->name, $vocabularies)) {
+    taxonomy_vocabulary_save($vocabulary);
+  } else {
+    $vocab = $taxonomy_vocabulary_machine_name_load($vocabulary->name);
+    $vocabulary = $vocab;
+  }
+  foreach ($terms as $term) {
+    $term_weight = 0;
+    $term_obj = new stdClass();
+    $term_obj->vid = $vocabulary->vid;
+    $term_obj->name = $term;
+    $term_obj->weight = $term_weight;
+    taxonomy_term_save($term_obj);
+    $term_weight = $term_weight + 5;
+  }
+}

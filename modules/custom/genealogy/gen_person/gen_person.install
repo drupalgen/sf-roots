@@ -1,0 +1,64 @@
+<?php
+/**
+ * @file
+ * Custom modifications to the "Person" content type
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function gen_person_schema() {
+  
+  $schema['gen_person_idx'] = array(
+    'description' => 'Index lookup for person names',
+    'fields' => array(
+      'id' => array(
+        'description' => 'Primary identifier',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'idx' => array(
+        'description' => 'Name Index',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'surname' => array(
+        'description' => 'Surname',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'given' => array(
+        'description' => 'Given name(s)',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',        
+      ),
+      'created' => array(
+        'description' => 'timestamp of insert date/time',
+        'type' => 'int',
+        'not null' => TRUE,
+      ),
+    ),
+    'primary key' => array('id'),
+  );
+  return $schema;
+}
+
+/**
+ * Implements hook_install().
+ */
+function gen_person_install() {
+  
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function gen_person_uninstall() {
+  
+}

@@ -1,0 +1,19 @@
+/**
+ * @file
+ * gen_person.css
+ */
+
+i.fa {
+  padding-left: 0.3em;
+}
+i.fa-venus {
+  color: magenta;
+}
+
+i.fa-mars {
+  color: blue;
+}
+
+i.fa-circle-thin {
+  color: black;
+}

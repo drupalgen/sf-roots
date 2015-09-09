@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Genealogy Person Content Type feature.
+ */
+
+include_once 'gen_person_content_type.features.inc';

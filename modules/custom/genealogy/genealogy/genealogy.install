@@ -1,0 +1,78 @@
+<?php
+/**
+ * @file
+ * Genealogy install file
+ */
+
+/**
+ * Implements hook_install().
+ */
+function genealogy_install() {
+  _genealogy_gender_terms();
+  _genealogy_name_prefix_terms();
+  _genealogy_name_suffix_terms();
+}
+
+/**
+ * Add terms to vocabularies
+ */
+function genealogy_update_7001() {
+  _genealogy_gender_terms();
+  _genealogy_name_prefix_terms();
+  _genealogy_name_suffix_terms();
+}
+
+/**
+ * Private helper function to install gender vocabulary terms
+ */
+function _genealogy_gender_terms() {
+  $terms = array(
+    'Male',
+    'Female',
+    'Unknown',
+  );
+  $vocabulary = (object) array(
+    'name' => t('Gender'),
+    'machine_name' => 'gender',
+    'description' => t('Gender of a person'),
+  );
+  _genealogy_add_terms_to_vocabulary($terms, $vocabulary);
+}
+
+/**
+ * Private helper function to install name_prefix vocabulary terms
+ */
+function _genealogy_name_prefix_terms() {
+  $vocabulary = (object) array(
+    'name' => t('Name Prefix'),
+    'machine_name' => 'name_prefix',
+    'description' => t('Name Prefixes'),
+  );
+  $terms = array(
+    'Mr',
+    'Ms',
+    'Dr',
+    'Rev',
+  );
+  _genealogy_add_terms_to_vocabulary($terms, $vocabulary);
+}
+
+/**
+ * Private helper function to install name_suffix vocabulary terms
+ */
+function _genealogy_name_suffix_terms() {
+  $vocabulary = (object) array(
+    'name' => t('Name Suffix'),
+    'machine_name' => 'name_suffix',
+    'description' => t('Name Suffixes and/or Titles'),
+  );
+  $terms = array(
+    'PhD',
+    'MD',
+    'Jr',
+    'Sr',
+    'II',
+    'III',
+  );
+  _genealogy_add_terms_to_vocabulary($terms, $vocabulary);
+}
