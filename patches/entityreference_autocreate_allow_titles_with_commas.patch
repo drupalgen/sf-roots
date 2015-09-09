@@ -1,0 +1,20 @@
+diff --git a/entityreference_autocreate.module b/entityreference_autocreate.module
+index 4043825..8ab949b 100644
+--- a/entityreference_autocreate.module
++++ b/entityreference_autocreate.module
+@@ -226,12 +226,12 @@ function entityreference_autocreate_validate_tags($element, &$form_state, $form)
+  */
+ function entityreference_autocreate_get_entity_by_title($field_info, $title) {
+ 
+-  if (strstr($title, ',')) {
++  //if (strstr($title, ',')) {
+     // Problem?
+     // dpm("Title '$title has commas - this may be a problem'");
+     // dpm(debug_backtrace());
+-    return NULL;
+-  }
++    //return NULL;
++  //}
+ 
+   $title = trim($title);
+   if (empty($title)) {

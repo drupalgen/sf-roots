@@ -62,6 +62,21 @@
       }
     },
     {
+      "type": "package",
+      "package": {
+        "name": "cmog/patches",
+        "version": "1.0.37",
+        "type": "metapackage",
+        "require": {
+          "netresearch/composer-patches-plugin": "1.*"
+        },
+        "extra": {
+          "patches": {
+          }
+        }
+      }
+    },
+    {
       "type": "composer",
       "url": "http://packagist.drupal-composer.org"
     }
@@ -75,20 +90,25 @@
     "drupal/auto_entitylabel": "7.*",
     "drupal/drupal": "7.*",
     "drupal/admin_menu": "7.*",
+    "drupal/biblio": "7.*",
     "drupal/ckeditor": "7.*",
     "drupal/context": "7.*",
     "drupal/ctools": "7.*",
     "drupal/date": "7.*",
     "drupal/diff": "7.*",
+    "drupal/email": "7.*",
     "drupal/entity": "7.*",
     "drupal/entityinfo": "7.*",
     "drupal/entityreference_hidden": "7.*",
     "drupal/features": "7.2.*",
+    "drupal/file_entity": "7.*",
     "drupal/jquery_update": "7.*",
     "drupal/job_scheduler": "7.*",
     "drupal/module_filter": "7.*",
+    "drupal/node_save_redirect": "7.*",
     "drupal/panels": "7.*",
     "drupal/panels_bootstrap_layouts": "7.*",
+    "drupal/pathauto": "7.*",
     "drupal/registry_rebuild": "7.*",
     "drupal/rules": "7.*",
     "drupal/strongarm": "7.*",
