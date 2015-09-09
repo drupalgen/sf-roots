@@ -10,7 +10,7 @@ theme_enable($enable);
 foreach ($enable as $var => $theme) {
   if (!is_numeric($var)) {
     variable_set($var, $theme);
-    if ($theme == 'sfr') {
+    if ($theme == $enable['theme_default'] || $theme == $enable['admin_theme']) {
       $settings =  variable_get('theme_'. $theme .'_settings');
 
       // Configure settings for conceptual theme.

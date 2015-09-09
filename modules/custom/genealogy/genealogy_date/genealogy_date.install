@@ -1,0 +1,94 @@
+<?php
+/**
+ * @file
+ * The install file for genealogy date field
+ */
+
+/**
+ * Implements hook_field_schema().
+ */
+function genealogy_date_field_schema($field) {
+  $columns = array(
+    'orig_text' => array('type' => 'varchar', 'length' => 60, 'not null' => FALSE),
+    'index_text' => array('type' => 'varchar', 'length' => 60, 'not null' => FALSE),
+    );
+  $indexes = array(
+    'index_text' => array('index_text'),
+  );
+  return array(
+    'columns' => $columns,
+    'indexes' => $indexes,
+  );
+}
+
+/**
+ * Implements hook_install().
+ */
+function genealogy_date_install() {
+  $months = array("JAN" => 1,
+                  "FEB" => 2,
+                  "MAR" => 3,
+                  "APR" => 4,
+                  "MAY" => 5,
+                  "JUN" => 6,
+                  "JUL" => 7,
+                  "AUG" => 8,
+                  "SEP" => 9,
+                  "OCT" => 10,
+                  "NOV" => 11,
+                  "DEC" => 12);
+
+  variable_set('genealogy_date_julian_months', $months);
+
+  $hebrewmonths = array("TIS" => 1,
+                        "CHE" => 2,
+                        "HES" => 2,
+                        "KIS" => 3,
+                        "TEV" => 4,
+                        "TEB" => 4,
+                        "SHV" => 5,
+                        "SHE" => 5,
+                        "ADA" => 6,
+                        "VEA" => 7,
+                        "NIS" => 8,
+                        "IYA" => 9,
+                        "SIV" => 10,
+                        "TAM" => 11,
+                        "AB" => 12,
+                        "AV" => 12,
+                        "ELU" => 13);
+  variable_set('genealogy_date_hebrew_months', $hebrewmonths);
+
+  $before = array("BEF");
+  variable_set('genealogy_date_before_acronyms', $before);
+
+  $after = array("AFT");
+  variable_set('genealogy_date_after_acronyms', $after);
+
+  $lastday = array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
+  variable_set('genealogy_date_month_lastdays', $lastday);
+
+  $preferred_separator = "-";  // this character separates the components in a numeric date, as in "MM/DD/YYYY"
+  variable_set('genealogy_date_preferred_separator', $preferred_separator);
+
+  $numeric_date_order = 0;  // 0 = MM/DD/YYYY; 1 = DD/MM/YYYY.
+  variable_set('genealogy_date_date_order', $numeric_date_order);
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function genealogy_date_uninstall() {
+  $variables = array(
+    'genealogy_date_julian_months',
+    'genealogy_date_hebrew_months',
+    'genealogy_date_before_acronyms',
+    'genealogy_date_after_acronyms',
+    'genealogy_date_month_lastdays',
+    'genealogy_date_preferred_separator',
+    'genealogy_date_date_order',
+  );
+  foreach ($variables as $variable) {
+    variable_del($variable);
+  }
+}

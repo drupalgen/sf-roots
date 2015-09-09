@@ -7,3 +7,4 @@ dependencies[] = backup_migrate
 dependencies[] = devel
 dependencies[] = diff
 dependencies[] = views_ui
+dependencies[] = field_ui

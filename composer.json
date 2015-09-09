@@ -64,10 +64,6 @@
     {
       "type": "composer",
       "url": "http://packagist.drupal-composer.org"
-    },
-    {
-      "type": "vcs",
-      "url": "git@github.com:promet/installers"
     }
   ],
   "require": {
@@ -84,11 +80,13 @@
     "drupal/date": "7.*",
     "drupal/diff": "7.*",
     "drupal/entity": "7.*",
+    "drupal/entityreference_hidden": "7.*",
     "drupal/features": "7.2.*",
     "drupal/jquery_update": "7.*",
     "drupal/job_scheduler": "7.*",
     "drupal/module_filter": "7.*",
     "drupal/panels": "7.*",
+    "drupal/panels_bootstrap_layouts": "7.*",
     "drupal/registry_rebuild": "7.*",
     "drupal/rules": "7.*",
     "drupal/strongarm": "7.*",

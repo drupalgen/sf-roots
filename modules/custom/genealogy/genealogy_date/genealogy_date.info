@@ -1,0 +1,10 @@
+name = Genealogical Date
+description = Genealogical Date field, capable of storing partial dates and the indicators "Abt", "Bef" and "Aft"
+package = Fields
+core = 7.x
+php = 5.x
+
+configure = admin/config/genealogy/date
+
+files[] = genealogy_date.admin.inc
+
