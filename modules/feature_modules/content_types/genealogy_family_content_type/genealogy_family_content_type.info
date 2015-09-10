@@ -1,8 +1,10 @@
 name = Genealogy Family content type
+description = Genealogy Family Group Page
 core = 7.x
 package = Genealogy
-version = 7.x-1.0-alpha3
+version = 7.x-1.0-alpha5
 project = genealogy_family_content_type
+dependencies[] = auto_entitylabel
 dependencies[] = ctools
 dependencies[] = entityreference
 dependencies[] = features

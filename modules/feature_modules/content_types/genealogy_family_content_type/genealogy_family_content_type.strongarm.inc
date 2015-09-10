@@ -14,7 +14,7 @@ function genealogy_family_content_type_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'additional_settings__active_tab_family';
-  $strongarm->value = 'edit-submission';
+  $strongarm->value = 'edit-display';
   $export['additional_settings__active_tab_family'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -136,7 +136,7 @@ function genealogy_family_content_type_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_submitted_family';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['node_submitted_family'] = $strongarm;
 
   $strongarm = new stdClass();
