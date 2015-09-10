@@ -78,15 +78,26 @@ function genealogy_family_content_type_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_husband',
-    'label' => 'Husband',
-    'required' => FALSE,
+    'label' => 'Parter (M)',
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'module' => 'hidden_field',
-      'settings' => array(),
-      'type' => 'hidden_hidden',
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'entityreference_autocreate' => array(
+          'active' => 0,
+          'author' => '',
+          'author_current_user' => 1,
+          'status' => -1,
+        ),
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
       'weight' => 31,
     ),
   );
@@ -116,15 +127,26 @@ function genealogy_family_content_type_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_wife',
-    'label' => 'Wife',
-    'required' => FALSE,
+    'label' => 'Partner (F)',
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'module' => 'hidden_field',
-      'settings' => array(),
-      'type' => 'hidden_hidden',
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'entityreference_autocreate' => array(
+          'active' => 0,
+          'author' => '',
+          'author_current_user' => 1,
+          'status' => -1,
+        ),
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
       'weight' => 32,
     ),
   );
@@ -132,8 +154,8 @@ function genealogy_family_content_type_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Children');
-  t('Husband');
-  t('Wife');
+  t('Parter (M)');
+  t('Partner (F)');
 
   return $field_instances;
 }

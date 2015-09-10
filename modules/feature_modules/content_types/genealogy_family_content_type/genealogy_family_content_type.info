@@ -1,7 +1,7 @@
 name = Genealogy Family content type
 core = 7.x
 package = Genealogy
-version = 7.x-1.0-alpha1
+version = 7.x-1.0-alpha3
 project = genealogy_family_content_type
 dependencies[] = ctools
 dependencies[] = entityreference

@@ -237,10 +237,8 @@ function gen_person_preprocess_node(&$variables) {
  * Implements hook_node_insert().
  */
 function gen_person_node_insert($node) {
-  dd(__FUNCTION__);
   global $user;
   // This is a new person record.
-  dd($node);
   if($node->type == 'person') {
     $values = array(
       'type' => 'family',
@@ -260,7 +258,7 @@ function gen_person_node_insert($node) {
     $person_wrapper = entity_metadata_wrapper('node', $node);
     $gender = $person_wrapper->field_person_gender->value();
     // If a female, set to the "wife" on the new family record...
-    if($gender->name = t('Female')) {
+    if($gender->name == t('Female')) {
       $family_wrapper->field_wife->set(intval($person_wrapper->nid->value()));
     }
     // Else set to the "husband" on the new family record.
