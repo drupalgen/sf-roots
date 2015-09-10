@@ -13,7 +13,9 @@ function gen_location_content_type_user_default_permissions() {
   // Exported permission: 'create genealogy_location content'.
   $permissions['create genealogy_location content'] = array(
     'name' => 'create genealogy_location content',
-    'roles' => array(),
+    'roles' => array(
+      'content editor' => 'content editor',
+    ),
     'module' => 'node',
   );
 
@@ -34,7 +36,9 @@ function gen_location_content_type_user_default_permissions() {
   // Exported permission: 'edit any genealogy_location content'.
   $permissions['edit any genealogy_location content'] = array(
     'name' => 'edit any genealogy_location content',
-    'roles' => array(),
+    'roles' => array(
+      'content editor' => 'content editor',
+    ),
     'module' => 'node',
   );
 

@@ -13,7 +13,9 @@ function gen_person_content_type_user_default_permissions() {
   // Exported permission: 'create person content'.
   $permissions['create person content'] = array(
     'name' => 'create person content',
-    'roles' => array(),
+    'roles' => array(
+      'content editor' => 'content editor',
+    ),
     'module' => 'node',
   );
 
@@ -34,7 +36,9 @@ function gen_person_content_type_user_default_permissions() {
   // Exported permission: 'edit any person content'.
   $permissions['edit any person content'] = array(
     'name' => 'edit any person content',
-    'roles' => array(),
+    'roles' => array(
+      'content editor' => 'content editor',
+    ),
     'module' => 'node',
   );
 

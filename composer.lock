@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e9dd8e5ee3bd8f90ef7a02027cee3d74",
+    "hash": "344c49fdc8572ff493f60bfea331158b",
     "packages": [
         {
             "name": "ckeditor/ckeditor",
@@ -682,6 +682,32 @@
             "description": "Defines an email field type."
         },
         {
+            "name": "drupal/enforce_revlog",
+            "version": "7.1.2",
+            "source": {
+                "type": "git",
+                "url": "http://git.drupal.org/project/enforce_revlog",
+                "reference": "0d99c74220c608d5ea22513f49b7b452355679fb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://ftp.drupal.org/files/projects/enforce_revlog-7.x-1.2.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "drupal/drupal": "7.*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-7.x-1.x": "7.1.x-dev"
+                }
+            },
+            "notification-url": "http://packagist.drupal-composer.org/downloads/",
+            "description": "Enforce log messages for every revision"
+        },
+        {
             "name": "drupal/entity",
             "version": "7.1.6",
             "source": {
@@ -803,15 +829,15 @@
         },
         {
             "name": "drupal/features",
-            "version": "7.2.6",
+            "version": "7.2.3",
             "source": {
                 "type": "git",
                 "url": "http://git.drupal.org/project/features",
-                "reference": "b9f90ccaaf342ee9b454e0f8ee7b4618181ce7bc"
+                "reference": "8e02c9f3c13d0fda0db96ae74488ea895f3f1f52"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://ftp.drupal.org/files/projects/features-7.x-2.6.zip",
+                "url": "http://ftp.drupal.org/files/projects/features-7.x-2.3.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -825,8 +851,35 @@
                 }
             },
             "notification-url": "http://packagist.drupal-composer.org/downloads/",
-            "description": "Provides feature management for Drupal.",
-            "homepage": "https://www.drupal.org/project/features"
+            "description": "Provides feature management for Drupal."
+        },
+        {
+            "name": "drupal/features_roles_permissions",
+            "version": "7.1.2",
+            "source": {
+                "type": "git",
+                "url": "http://git.drupal.org/project/features_roles_permissions",
+                "reference": "9c4f832dff3b34083177318a0fcf7fcf236d96ad"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://ftp.drupal.org/files/projects/features_roles_permissions-7.x-1.2.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "drupal/drupal": "7.*",
+                "drupal/features": "7.*",
+                "drupal/user": "7.*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-7.x-1.x": "7.1.x-dev"
+                }
+            },
+            "notification-url": "http://packagist.drupal-composer.org/downloads/",
+            "description": "Includes all permissions for the exported role."
         },
         {
             "name": "drupal/file_entity",
