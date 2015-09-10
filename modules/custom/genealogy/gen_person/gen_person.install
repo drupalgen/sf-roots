@@ -46,6 +46,7 @@ function gen_person_schema() {
     ),
     'primary key' => array('id'),
   );
+  
   return $schema;
 }
 

@@ -98,7 +98,7 @@ function gen_location_content_type_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'diff_show_preview_changes_node_genealogy_location';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['diff_show_preview_changes_node_genealogy_location'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -107,6 +107,13 @@ function gen_location_content_type_strongarm() {
   $strongarm->name = 'diff_view_mode_preview_node_genealogy_location';
   $strongarm->value = 'full';
   $export['diff_view_mode_preview_node_genealogy_location'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'enforce_revlog_node_type_genealogy_location';
+  $strongarm->value = '0';
+  $export['enforce_revlog_node_type_genealogy_location'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -160,6 +167,20 @@ function gen_location_content_type_strongarm() {
   $strongarm->name = 'node_preview_genealogy_location';
   $strongarm->value = '1';
   $export['node_preview_genealogy_location'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'node_save_redirect_genealogy_location';
+  $strongarm->value = '0';
+  $export['node_save_redirect_genealogy_location'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'node_save_redirect_location_genealogy_location';
+  $strongarm->value = '';
+  $export['node_save_redirect_location_genealogy_location'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

@@ -5,6 +5,15 @@
  */
 
 /**
+ * Implements hook_form_alter().
+ */
+function genealogy_form_alter(&$form, &$form_state, $form_id) {
+  // Remove revision information from vertical tabs.
+  unset($form['revision_information']['#group']);
+  //$form['log'] = $form['revision_information']['log'];
+  //unset($form['revision_information']['log']);
+}
+/**
  * Private helper function to load taxonomy terms into vocabularies.
  */
 function _genealogy_add_terms_to_vocabulary($terms, $vocabulary) {

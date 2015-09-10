@@ -14,7 +14,7 @@ function gen_person_content_type_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'additional_settings__active_tab_person';
-  $strongarm->value = 'edit-comment';
+  $strongarm->value = 'edit-workflow';
   $export['additional_settings__active_tab_person'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -98,7 +98,7 @@ function gen_person_content_type_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'diff_show_preview_changes_node_person';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['diff_show_preview_changes_node_person'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -107,6 +107,13 @@ function gen_person_content_type_strongarm() {
   $strongarm->name = 'diff_view_mode_preview_node_person';
   $strongarm->value = 'full';
   $export['diff_view_mode_preview_node_person'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'enforce_revlog_node_type_person';
+  $strongarm->value = '1';
+  $export['enforce_revlog_node_type_person'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -185,6 +192,20 @@ function gen_person_content_type_strongarm() {
   $strongarm->name = 'node_preview_person';
   $strongarm->value = '1';
   $export['node_preview_person'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'node_save_redirect_location_person';
+  $strongarm->value = '';
+  $export['node_save_redirect_location_person'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'node_save_redirect_person';
+  $strongarm->value = '0';
+  $export['node_save_redirect_person'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

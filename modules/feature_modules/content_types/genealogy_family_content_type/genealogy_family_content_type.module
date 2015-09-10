@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Genealogy Family content type feature.
+ */
+
+include_once 'genealogy_family_content_type.features.inc';

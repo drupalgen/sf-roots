@@ -16,10 +16,10 @@ function gen_person_form_person_node_form_alter(&$form, &$form_state, $form_id) 
 }
 
 /**
- * form validate callback added to person_node_form
+ * Form validate callback added to person_node_form.
  */
 function gen_person_form_person_node_form_validate(&$form, &$form_state) {
-  
+  global $user;
   if (is_null($form_state['values']['nid'])) { //node is new
     $result = db_select('gen_person_idx', 'i')
       ->fields('i', array('surname', 'given', 'idx', 'id', 'created'))
@@ -59,7 +59,7 @@ function gen_person_form_person_node_form_validate(&$form, &$form_state) {
       ->execute();
       $form_state['values']['field_gen_person_idx'][LANGUAGE_NONE][0]['value'] = $id;
       $form_state['values']['field_gen_person_idx2'][LANGUAGE_NONE][0]['value'] = $newIdx->idx;
-    }
+    }    
   }
   else { // node exists       
     $idno = (int) $form_state['values']['field_gen_person_idx'][LANGUAGE_NONE][0]['value'];
@@ -231,4 +231,42 @@ function gen_person_preprocess_node(&$variables) {
     unset($variables['content']['field_person_name_suffix']);
     unset($variables['content']['field_person_gender']);
   }    
+}
+
+/**
+ * Implements hook_node_insert().
+ */
+function gen_person_node_insert($node) {
+  dd(__FUNCTION__);
+  global $user;
+  // This is a new person record.
+  dd($node);
+  if($node->type == 'person') {
+    $values = array(
+      'type' => 'family',
+      'status' => 1,
+      'promoted' => 0,
+      'uid' => $user->uid,
+    );
+    // Add as a spouse to an existing family record.
+    //   @TODO:  Add logic to add as a spouse to an existing family record
+    //   Note:  An existing family record id will be passed in as a query parameter
+    
+    // Add as a new person with no existing family, no existing family record
+    //    was passed in a query parameter.
+    $family = entity_create('node', $values);
+    $family_wrapper = entity_metadata_wrapper('node', $family);
+    
+    $person_wrapper = entity_metadata_wrapper('node', $node);
+    $gender = $person_wrapper->field_person_gender->value();
+    // If a female, set to the "wife" on the new family record...
+    if($gender->name = t('Female')) {
+      $family_wrapper->field_wife->set(intval($person_wrapper->nid->value()));
+    }
+    // Else set to the "husband" on the new family record.
+    else {
+      $family_wrapper->field_husband->set(intval($person_wrapper->nid->value()));
+    }
+    $family_wrapper->save();
+  }
 }
