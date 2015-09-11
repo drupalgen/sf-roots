@@ -108,6 +108,8 @@
     "drupal/inline_entity_form": "7.*",
     "drupal/jquery_update": "7.*",
     "drupal/job_scheduler": "7.*",
+    "drupal/link": "7.*",
+    "drupal/field_hidden": "7.*",
     "drupal/module_filter": "7.*",
     "drupal/node_save_redirect": "7.*",
     "drupal/office_hours": "7.*",
