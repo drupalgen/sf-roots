@@ -21,7 +21,7 @@ function gen_person_content_type_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'auto_entitylabel_node_person';
-  $strongarm->value = '1';
+  $strongarm->value = '2';
   $export['auto_entitylabel_node_person'] = $strongarm;
 
   $strongarm = new stdClass();

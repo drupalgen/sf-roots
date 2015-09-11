@@ -10,61 +10,6 @@
 function gen_person_content_type_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-person-field_biography'
-  $field_instances['node-person-field_biography'] = array(
-    'bundle' => 'person',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 24,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_biography',
-    'label' => 'Biography',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'inline_entity_form',
-      'settings' => array(
-        'fields' => array(),
-        'type_settings' => array(
-          'allow_existing' => FALSE,
-          'allow_new' => 1,
-          'delete_references' => 1,
-          'label_plural' => 'nodes',
-          'label_singular' => 'node',
-          'match_operator' => 'CONTAINS',
-          'override_labels' => 0,
-        ),
-      ),
-      'type' => 'inline_entity_form_single',
-      'weight' => 23,
-    ),
-  );
-
   // Exported field_instance: 'node-person-field_gen_person_idx'
   $field_instances['node-person-field_gen_person_idx'] = array(
     'bundle' => 'person',
@@ -154,61 +99,6 @@ function gen_person_content_type_field_default_field_instances() {
       'settings' => array(),
       'type' => 'field_hidden',
       'weight' => 18,
-    ),
-  );
-
-  // Exported field_instance: 'node-person-field_notes'
-  $field_instances['node-person-field_notes'] = array(
-    'bundle' => 'person',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 22,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_notes',
-    'label' => 'Notes',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'inline_entity_form',
-      'settings' => array(
-        'fields' => array(),
-        'type_settings' => array(
-          'allow_existing' => 0,
-          'allow_new' => 1,
-          'delete_references' => 1,
-          'label_plural' => 'nodes',
-          'label_singular' => 'node',
-          'match_operator' => 'CONTAINS',
-          'override_labels' => 0,
-        ),
-      ),
-      'type' => 'inline_entity_form',
-      'weight' => 20,
     ),
   );
 
@@ -728,66 +618,10 @@ This field will suggest previously saved locations for you to select from in mak
     ),
   );
 
-  // Exported field_instance: 'node-person-field_source_citations'
-  $field_instances['node-person-field_source_citations'] = array(
-    'bundle' => 'person',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 23,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_source_citations',
-    'label' => 'Source citations',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'inline_entity_form',
-      'settings' => array(
-        'fields' => array(),
-        'type_settings' => array(
-          'allow_existing' => 0,
-          'allow_new' => 1,
-          'delete_references' => 1,
-          'label_plural' => 'nodes',
-          'label_singular' => 'node',
-          'match_operator' => 'CONTAINS',
-          'override_labels' => 0,
-        ),
-      ),
-      'type' => 'inline_entity_form',
-      'weight' => 22,
-    ),
-  );
-
   // Translatables
   // Included for use with string extractors like potx.
   t('A pre-nominal designation indicating a title or other prefix that comes before a person\'s given name.');
   t('Aliases');
-  t('Biography');
   t('Birthdate');
   t('Born');
   t('Date of Death');
@@ -801,14 +635,12 @@ This field will suggest previously saved locations for you to select from in mak
 This field will suggest previously saved locations for you to select from in making your choice to keep locations consistent.  If no previously saved location is suggested that meets your needs, please add one by select "Create New Location" and filling in all the information you have available.  The Location description is the only required field.');
   t('Male, Female, or Unknown');
   t('Nicknames, aliases, or other names by which this person may be known');
-  t('Notes');
   t('Place of Birth');
   t('Place of Birth.  List all components that are known, in this order:  City/Town, County/Parish, State/Province, Country.  For Country, use the commonly accepted abbreviation or acronym (USA for United States, GB for Great Britain, etc.  For all other components, please spell out the complete name (for example, for States, use "Tennessee" instead of "TN").
 
 This field will suggest previously saved locations for you to select from in making your choice to keep locations consistent.  If no previously saved location is suggested that meets your needs, please add one by select "Create New Location" and filling in all the information you have available.  The Location description is the only required field.');
   t('Post-nominal letters (for positions, degrees, offices, etc) or Generational ordering (Jr, Sr, III, etc)');
   t('Prefix');
-  t('Source citations');
   t('Suffix');
   t('Surname');
   t('Surname, or Last Name');

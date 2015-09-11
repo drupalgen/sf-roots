@@ -54,9 +54,10 @@ function genealogy_bios_documents_notes_and_photos_field_default_field_instances
     ),
   );
 
-  // Exported field_instance: 'node-biography-field_notes'
-  $field_instances['node-biography-field_notes'] = array(
+  // Exported field_instance: 'node-biography-field_assoc_entity_id'
+  $field_instances['node-biography-field_assoc_entity_id'] = array(
     'bundle' => 'biography',
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -67,7 +68,7 @@ function genealogy_bios_documents_notes_and_photos_field_default_field_instances
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 1,
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -77,29 +78,17 @@ function genealogy_bios_documents_notes_and_photos_field_default_field_instances
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_notes',
-    'label' => 'Notes',
-    'required' => 0,
+    'field_name' => 'field_assoc_entity_id',
+    'label' => 'Entity ID',
+    'required' => FALSE,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'active' => 1,
-      'module' => 'inline_entity_form',
-      'settings' => array(
-        'fields' => array(),
-        'type_settings' => array(
-          'allow_existing' => 0,
-          'allow_new' => 1,
-          'delete_references' => 1,
-          'label_plural' => 'Notes',
-          'label_singular' => 'Notes',
-          'match_operator' => 'CONTAINS',
-          'override_labels' => 1,
-        ),
-      ),
-      'type' => 'inline_entity_form',
-      'weight' => 33,
+      'module' => 'hidden_field',
+      'settings' => array(),
+      'type' => 'hidden_hidden',
+      'weight' => 37,
     ),
   );
 
@@ -285,55 +274,6 @@ function genealogy_bios_documents_notes_and_photos_field_default_field_instances
     ),
   );
 
-  // Exported field_instance: 'node-documents_files-field_notes'
-  $field_instances['node-documents_files-field_notes'] = array(
-    'bundle' => 'documents_files',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 1,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_notes',
-    'label' => 'Notes',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'inline_entity_form',
-      'settings' => array(
-        'fields' => array(),
-        'type_settings' => array(
-          'allow_existing' => FALSE,
-          'allow_new' => 1,
-          'delete_references' => 1,
-          'label_plural' => 'nodes',
-          'label_singular' => 'node',
-          'match_operator' => 'CONTAINS',
-          'override_labels' => 0,
-        ),
-      ),
-      'type' => 'inline_entity_form',
-      'weight' => 4,
-    ),
-  );
-
   // Exported field_instance: 'node-documents_files-field_people'
   $field_instances['node-documents_files-field_people'] = array(
     'bundle' => 'documents_files',
@@ -429,6 +369,44 @@ function genealogy_bios_documents_notes_and_photos_field_default_field_instances
       ),
       'type' => 'inline_entity_form',
       'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance: 'node-notes-field_assoc_entity_id'
+  $field_instances['node-notes-field_assoc_entity_id'] = array(
+    'bundle' => 'notes',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 1,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_assoc_entity_id',
+    'label' => 'Entity ID',
+    'required' => FALSE,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'hidden_field',
+      'settings' => array(),
+      'type' => 'hidden_hidden',
+      'weight' => 33,
     ),
   );
 
@@ -601,55 +579,6 @@ function genealogy_bios_documents_notes_and_photos_field_default_field_instances
     ),
   );
 
-  // Exported field_instance: 'node-photos-field_notes'
-  $field_instances['node-photos-field_notes'] = array(
-    'bundle' => 'photos',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 6,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_notes',
-    'label' => 'Notes',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'inline_entity_form',
-      'settings' => array(
-        'fields' => array(),
-        'type_settings' => array(
-          'allow_existing' => 0,
-          'allow_new' => 1,
-          'delete_references' => 1,
-          'label_plural' => 'nodes',
-          'label_singular' => 'node',
-          'match_operator' => 'CONTAINS',
-          'override_labels' => 0,
-        ),
-      ),
-      'type' => 'inline_entity_form',
-      'weight' => 39,
-    ),
-  );
-
   // Exported field_instance: 'node-photos-field_people'
   $field_instances['node-photos-field_people'] = array(
     'bundle' => 'photos',
@@ -804,8 +733,8 @@ function genealogy_bios_documents_notes_and_photos_field_default_field_instances
   t('Caption');
   t('Description');
   t('Document');
+  t('Entity ID');
   t('Family');
-  t('Notes');
   t('People');
   t('Photo / Image');
   t('Source citations');

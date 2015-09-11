@@ -17,6 +17,7 @@ function gen_person_form_person_node_form_alter(&$form, &$form_state, $form_id) 
   // Remove revision information from vertical tabs.
   unset($form['revision_information']['#group']);
   // If you are adding a person, remove some fields from the form.
+
   if (is_null($form['nid']['#value'])) {
     unset($form['field_person_nicknames_aliases']);
     unset($form['field_notes']);
@@ -30,6 +31,9 @@ function gen_person_form_person_node_form_alter(&$form, &$form_state, $form_id) 
  */
 function gen_person_form_person_node_form_validate(&$form, &$form_state) {
   global $user;
+  //dsm($form);
+  //dsm($form_state);
+
   if (is_null($form_state['values']['nid'])) { //node is new
     $result = db_select('gen_person_idx', 'i')
       ->fields('i', array('surname', 'given', 'idx', 'id', 'created'))

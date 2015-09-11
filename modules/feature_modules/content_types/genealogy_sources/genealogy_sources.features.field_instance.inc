@@ -602,6 +602,44 @@ function genealogy_sources_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-source_citation-field_assoc_entity_id'
+  $field_instances['node-source_citation-field_assoc_entity_id'] = array(
+    'bundle' => 'source_citation',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 5,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_assoc_entity_id',
+    'label' => 'Entity ID',
+    'required' => FALSE,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'hidden_field',
+      'settings' => array(),
+      'type' => 'hidden_hidden',
+      'weight' => 9,
+    ),
+  );
+
   // Exported field_instance: 'node-source_citation-field_citation_quality'
   $field_instances['node-source_citation-field_citation_quality'] = array(
     'bundle' => 'source_citation',
@@ -819,6 +857,7 @@ function genealogy_sources_field_default_field_instances() {
   t('Date');
   t('Date Issued');
   t('Description');
+  t('Entity ID');
   t('Number of Volumes');
   t('Periodical / Series Name');
   t('Phone');

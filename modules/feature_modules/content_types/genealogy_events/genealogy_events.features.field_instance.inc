@@ -212,55 +212,6 @@ function genealogy_events_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-event-field_notes'
-  $field_instances['node-event-field_notes'] = array(
-    'bundle' => 'event',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 6,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_notes',
-    'label' => 'Notes',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'inline_entity_form',
-      'settings' => array(
-        'fields' => array(),
-        'type_settings' => array(
-          'allow_existing' => 0,
-          'allow_new' => 1,
-          'delete_references' => 1,
-          'label_plural' => 'nodes',
-          'label_singular' => 'node',
-          'match_operator' => 'CONTAINS',
-          'override_labels' => 0,
-        ),
-      ),
-      'type' => 'inline_entity_form',
-      'weight' => 9,
-    ),
-  );
-
   // Exported field_instance: 'node-event-field_person_id'
   $field_instances['node-event-field_person_id'] = array(
     'bundle' => 'event',
@@ -593,55 +544,6 @@ function genealogy_events_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-family_event-field_notes'
-  $field_instances['node-family_event-field_notes'] = array(
-    'bundle' => 'family_event',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 6,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_notes',
-    'label' => 'Notes',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'inline_entity_form',
-      'settings' => array(
-        'fields' => array(),
-        'type_settings' => array(
-          'allow_existing' => 0,
-          'allow_new' => 1,
-          'delete_references' => 1,
-          'label_plural' => 'nodes',
-          'label_singular' => 'node',
-          'match_operator' => 'CONTAINS',
-          'override_labels' => 0,
-        ),
-      ),
-      'type' => 'inline_entity_form',
-      'weight' => 9,
-    ),
-  );
-
   // Exported field_instance: 'node-family_event-field_source_citations'
   $field_instances['node-family_event-field_source_citations'] = array(
     'bundle' => 'family_event',
@@ -701,7 +603,6 @@ function genealogy_events_field_default_field_instances() {
   t('Event Type');
   t('Family ID');
   t('Location');
-  t('Notes');
   t('Person ID');
   t('Source citations');
 

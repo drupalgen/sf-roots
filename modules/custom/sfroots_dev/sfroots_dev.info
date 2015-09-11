@@ -5,7 +5,6 @@ core = "7.x"
 
 dependencies[] = backup_migrate
 dependencies[] = devel
-dependencies[] = entityinfo
 dependencies[] = diff
 dependencies[] = views_ui
 dependencies[] = field_ui

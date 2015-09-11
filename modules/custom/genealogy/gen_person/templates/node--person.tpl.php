@@ -83,9 +83,9 @@ $edit_person_button = t('<a class="edit-person-link" href="@url"><div class="lin
 //end edit user button
 //person references button
 $destination = drupal_get_destination();
-$url = url("person/ref_cite/" . $node->nid . "/" . $node->nid . "/view", array('query' => $destination));
-$person_references_button = t('<a class="person-references-link" 
-   href="@url"><div class="link-button-wrapper"><div class="person-references-button">References</div></div></a>', array('@url' => $url));
+//$url = url("person/ref_cite/" . $node->nid . "/" . $node->nid . "/view", array('query' => $destination));
+//$person_references_button = t('<a class="person-references-link"
+//   href="@url"><div class="link-button-wrapper"><div class="person-references-button">References</div></div></a>', array('@url' => $url));
 
 ?>
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
@@ -117,7 +117,7 @@ $person_references_button = t('<a class="person-references-link"
       if (user_access('Person: Edit any content') || user_access('Person: Edit own content')) {
         print $edit_person_button;
       }
-      print $person_references_button;
+      //print $person_references_button;
     ?>
     </div>
 
