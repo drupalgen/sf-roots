@@ -190,7 +190,49 @@ function genealogy_bios_documents_notes_and_photos_field_default_field_instances
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 31,
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'node-documents_files-field_document'
+  $field_instances['node-documents_files-field_document'] = array(
+    'bundle' => 'documents_files',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'file',
+        'settings' => array(),
+        'type' => 'file_default',
+        'weight' => 5,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_document',
+    'label' => 'Document',
+    'required' => 0,
+    'settings' => array(
+      'description_field' => 0,
+      'file_directory' => '',
+      'file_extensions' => 'txt pdf doc docx rdf odf',
+      'max_filesize' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'file',
+      'settings' => array(
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'file_generic',
+      'weight' => 2,
     ),
   );
 
@@ -239,7 +281,7 @@ function genealogy_bios_documents_notes_and_photos_field_default_field_instances
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 38,
+      'weight' => 7,
     ),
   );
 
@@ -288,7 +330,7 @@ function genealogy_bios_documents_notes_and_photos_field_default_field_instances
         ),
       ),
       'type' => 'inline_entity_form',
-      'weight' => 32,
+      'weight' => 4,
     ),
   );
 
@@ -337,7 +379,7 @@ function genealogy_bios_documents_notes_and_photos_field_default_field_instances
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 36,
+      'weight' => 6,
     ),
   );
 
@@ -386,7 +428,7 @@ function genealogy_bios_documents_notes_and_photos_field_default_field_instances
         ),
       ),
       'type' => 'inline_entity_form',
-      'weight' => 34,
+      'weight' => 5,
     ),
   );
 
@@ -712,6 +754,7 @@ function genealogy_bios_documents_notes_and_photos_field_default_field_instances
   t('Body');
   t('Caption');
   t('Description');
+  t('Document');
   t('Family');
   t('Notes');
   t('People');
