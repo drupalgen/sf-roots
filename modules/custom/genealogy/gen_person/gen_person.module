@@ -4,6 +4,9 @@
  */
 // @TODO:  Remove when debugging is done
 function gen_person_form_alter(&$form, &$form_state, $form_id) {
+  //dsm($form);
+  //dsm($form_state);
+  //dsm($form_id);
 }
 /**
  * Implements hook_form_FORM_ID_alter().
@@ -13,6 +16,13 @@ function gen_person_form_person_node_form_alter(&$form, &$form_state, $form_id) 
   array_unshift($form['#validate'], 'gen_person_form_person_node_form_validate');
   // Remove revision information from vertical tabs.
   unset($form['revision_information']['#group']);
+  // If you are adding a person, remove some fields from the form.
+  if (is_null($form['nid']['#value'])) {
+    unset($form['field_person_nicknames_aliases']);
+    unset($form['field_notes']);
+    unset($form['field_source_citations']);
+    unset($form['field_biography']);
+  }
 }
 
 /**
@@ -59,9 +69,9 @@ function gen_person_form_person_node_form_validate(&$form, &$form_state) {
       ->execute();
       $form_state['values']['field_gen_person_idx'][LANGUAGE_NONE][0]['value'] = $id;
       $form_state['values']['field_gen_person_idx2'][LANGUAGE_NONE][0]['value'] = $newIdx->idx;
-    }    
+    }
   }
-  else { // node exists       
+  else { // node exists
     $idno = (int) $form_state['values']['field_gen_person_idx'][LANGUAGE_NONE][0]['value'];
     $result = db_select('gen_person_idx', 'i')
       ->fields('i', array('surname', 'given', 'idx', 'id', 'created'))
@@ -137,7 +147,7 @@ function gen_person_theme($existing, $type, $theme, $path) {
  * Implements hook_preprocess_node().
  */
 function gen_person_preprocess_node(&$variables) {
-    
+
   global $user;
   if ($variables['type'] == 'person') {
     $nameoutput = null;
@@ -172,7 +182,7 @@ function gen_person_preprocess_node(&$variables) {
     else {
       $nameoutput .= " " . $namesuffixoutput . ", ";
     }
-    
+
     $nameprefixoutput = null;
     if($nameprefixes) {
       foreach($nameprefixes as $key => $nameprefix) {
@@ -187,14 +197,14 @@ function gen_person_preprocess_node(&$variables) {
         $nameoutput .= $nameprefixoutput . " ";
       }
     }
-    
+
     $givennameoutput = field_view_value('node', $variables['node'], 'field_person_given_name', $givenname[0]);
-    
+
     if ($givennameoutput) {
       $nameoutput .= $givennameoutput['#markup'];
     }
-    
-    $genderoutput = null;        
+
+    $genderoutput = null;
     $genderinfo = field_get_items('node', $variables['node'], 'field_person_gender');
     $genderoutputraw = field_view_value('node', $variables['node'], 'field_person_gender', $genderinfo[0]);
 
@@ -217,20 +227,20 @@ function gen_person_preprocess_node(&$variables) {
         '</div></div> ' .
         $genderoutput . '</div>',
       '#raw' => $nameoutput,
-    );        
+    );
 
     unset($variables['field_person_surname']);
     unset($variables['field_person_given_name']);
     unset($variables['field_person_name_prefix']);
     unset($variables['field_person_name_suffix']);
     unset($variables['field_person_gender']);
-    
+
     unset($variables['content']['field_person_surname']);
     unset($variables['content']['field_person_given_name']);
     unset($variables['content']['field_person_name_prefix']);
     unset($variables['content']['field_person_name_suffix']);
     unset($variables['content']['field_person_gender']);
-  }    
+  }
 }
 
 /**
@@ -249,12 +259,12 @@ function gen_person_node_insert($node) {
     // Add as a spouse to an existing family record.
     //   @TODO:  Add logic to add as a spouse to an existing family record
     //   Note:  An existing family record id will be passed in as a query parameter
-    
+
     // Add as a new person with no existing family, no existing family record
     //    was passed in a query parameter.
     $family = entity_create('node', $values);
     $family_wrapper = entity_metadata_wrapper('node', $family);
-    
+
     $person_wrapper = entity_metadata_wrapper('node', $node);
     $gender = $person_wrapper->field_person_gender->value();
     // If a female, set to the "wife" on the new family record...
