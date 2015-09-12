@@ -31,10 +31,22 @@ function gen_person_form_person_node_form_alter(&$form, &$form_state, $form_id) 
  */
 function gen_person_form_person_node_form_validate(&$form, &$form_state) {
   global $user;
-  //dsm($form);
-  //dsm($form_state);
+  dsm($form);
+  dsm($form_state);
 
-  if (is_null($form_state['values']['nid'])) { //node is new
+  //If not new, check to see if name has changed.
+  $name_changed = FALSE;
+  if(!is_null($form_state['values']['nid'])) {
+    $old_node = entity_load_unchanged('node', $form_state['values']['nid']);
+    $on_wrapper = entity_metadata_wrapper('node', $old_node);
+    if ($form_state['values']['field_person_surname'][LANGUAGE_NONE][0]['value'] != $on_wrapper->field_person_surname->value() ||
+        $form_state['values']['field_person_given_name'][LANGUAGE_NONE][0]['value'] != $on_wrapper->field_person_given_name->value() ) {
+      $name_changed = TRUE;
+    }
+  }
+
+  if (is_null($form_state['values']['nid']) || $name_changed) { //node is new, or name has changed
+    dsm($name_changed ? "TRUE" : "FALSE");
     $result = db_select('gen_person_idx', 'i')
       ->fields('i', array('surname', 'given', 'idx', 'id', 'created'))
       ->condition('surname', $form_state['values']['field_person_surname'][LANGUAGE_NONE][0]['value'], '=')
