@@ -393,9 +393,11 @@ function gen_person_block_view($delta = NULL) {
   switch ($delta) {
     case 'add_person_link':
       if (user_access('create person content')) {
+        $modal_button = _gen_person_add_person_modal_link();
+        $button = _gen_person_add_person_link();
         $return = array(
           'subject' => NULL,
-          'content' => _gen_person_add_person_modal_link(),
+          'content' => $modal_button . $button,
         );
       }
       else {
@@ -411,7 +413,7 @@ function gen_person_block_view($delta = NULL) {
 }
 
 /**
- * Block view callback for add_person_link.
+ * Block view callback for add_person_modal_link.
  */
 function _gen_person_add_person_modal_link() {
   // Include the CTools tools ajax and modal tools.
@@ -427,4 +429,16 @@ function _gen_person_add_person_modal_link() {
     t("Show the 'Add a Person' form"),
     'btn btn-default'
   );
+}
+
+/**
+ * Block view callback for add_person_link.
+ */
+function _gen_person_add_person_link() {
+  // return a regular text button.
+  return '<div>' . l(
+    t('Add a Person'),
+    'node/add/person',
+    array('attributes' => array('class' => array('btn', 'btn-default')))
+  ) . '</div>';
 }
