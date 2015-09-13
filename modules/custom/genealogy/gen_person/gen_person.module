@@ -427,7 +427,7 @@ function _gen_person_add_person_modal_link() {
     t('Add a Person'),
     url('node/add/person/nojs'),
     t("Show the 'Add a Person' form"),
-    'btn btn-default'
+    'btn btn-default modal-buttons'
   );
 }
 
@@ -439,6 +439,6 @@ function _gen_person_add_person_link() {
   return '<div>' . l(
     t('Add a Person'),
     'node/add/person',
-    array('attributes' => array('class' => array('btn', 'btn-default')))
+    array('attributes' => array('class' => array('btn', 'btn-default', 'nonmodal-buttons')))
   ) . '</div>';
 }

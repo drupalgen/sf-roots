@@ -22,6 +22,10 @@ i.fa-circle-thin {
   background:  rgb(0,0,0) !important;
 }
 
-@media only screen and (max-width: 960px) {
-  
+.no-touch .nonmodal-buttons {
+  display: none;
+}
+
+.touch .modal-buttons {
+  display: none;
 }
