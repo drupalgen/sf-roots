@@ -110,7 +110,7 @@ function gen_person_content_type_field_default_field_instances() {
     'deleted' => 0,
     'description' => 'Place of Birth.  List all components that are known, in this order:  City/Town, County/Parish, State/Province, Country.  For Country, use the commonly accepted abbreviation or acronym (USA for United States, GB for Great Britain, etc.  For all other components, please spell out the complete name (for example, for States, use "Tennessee" instead of "TN").
 
-This field will suggest previously saved locations for you to select from in making your choice to keep locations consistent.  If no previously saved location is suggested that meets your needs, please add one by select "Create New Location" and filling in all the information you have available.  The Location description is the only required field.',
+This field will suggest previously saved locations for you to select from in making your choice to keep locations consistent.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -221,7 +221,7 @@ This field will suggest previously saved locations for you to select from in mak
     'deleted' => 0,
     'description' => 'Location of Death.  List all components that are known, in this order:  City/Town, County/Parish, State/Province, Country.  For Country, use the commonly accepted abbreviation or acronym (USA for United States, GB for Great Britain, etc.  For all other components, please spell out the complete name (for example, for States, use "Tennessee" instead of "TN").
 
-This field will suggest previously saved locations for you to select from in making your choice to keep locations consistent.  If no previously saved location is suggested that meets your needs, please add one by select "Create New Location" and filling in all the information you have available.  The Location description is the only required field.',
+This field will suggest previously saved locations for you to select from in making your choice to keep locations consistent.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -632,13 +632,13 @@ This field will suggest previously saved locations for you to select from in mak
   t('Location of Death');
   t('Location of Death.  List all components that are known, in this order:  City/Town, County/Parish, State/Province, Country.  For Country, use the commonly accepted abbreviation or acronym (USA for United States, GB for Great Britain, etc.  For all other components, please spell out the complete name (for example, for States, use "Tennessee" instead of "TN").
 
-This field will suggest previously saved locations for you to select from in making your choice to keep locations consistent.  If no previously saved location is suggested that meets your needs, please add one by select "Create New Location" and filling in all the information you have available.  The Location description is the only required field.');
+This field will suggest previously saved locations for you to select from in making your choice to keep locations consistent.');
   t('Male, Female, or Unknown');
   t('Nicknames, aliases, or other names by which this person may be known');
   t('Place of Birth');
   t('Place of Birth.  List all components that are known, in this order:  City/Town, County/Parish, State/Province, Country.  For Country, use the commonly accepted abbreviation or acronym (USA for United States, GB for Great Britain, etc.  For all other components, please spell out the complete name (for example, for States, use "Tennessee" instead of "TN").
 
-This field will suggest previously saved locations for you to select from in making your choice to keep locations consistent.  If no previously saved location is suggested that meets your needs, please add one by select "Create New Location" and filling in all the information you have available.  The Location description is the only required field.');
+This field will suggest previously saved locations for you to select from in making your choice to keep locations consistent.');
   t('Post-nominal letters (for positions, degrees, offices, etc) or Generational ordering (Jr, Sr, III, etc)');
   t('Prefix');
   t('Suffix');

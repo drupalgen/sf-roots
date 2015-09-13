@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "15cea55bb337f39a2acf8ef8c58d685f",
+    "hash": "7ee656cf661f2cec4c0e038f4f1f7593",
     "packages": [
         {
             "name": "ckeditor/ckeditor",
@@ -834,6 +834,34 @@
             "description": "Provides a field that can reference other entities."
         },
         {
+            "name": "drupal/entityreference_autocreate",
+            "version": "dev-7.x-1.x",
+            "source": {
+                "type": "git",
+                "url": "http://git.drupal.org/project/entityreference_autocreate",
+                "reference": "e1cab9d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://ftp.drupal.org/files/projects/entityreference_autocreate-7.x-1.x-dev.zip",
+                "reference": "e1cab9d",
+                "shasum": null
+            },
+            "require": {
+                "drupal/drupal": "7.*",
+                "drupal/entityreference": "7.*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-7.x-1.x": "7.1.x-dev"
+                }
+            },
+            "notification-url": "http://packagist.drupal-composer.org/downloads/",
+            "description": "Allows entityreference fields to refer to target that don't yet exist.",
+            "time": "2015-03-02 05:25:48"
+        },
+        {
             "name": "drupal/entityreference_hidden",
             "version": "7.1.0-beta2",
             "source": {
@@ -980,6 +1008,33 @@
             "homepage": "https://www.drupal.org/project/file_entity"
         },
         {
+            "name": "drupal/fontawesome",
+            "version": "7.2.1",
+            "source": {
+                "type": "git",
+                "url": "http://git.drupal.org/project/fontawesome",
+                "reference": "65385805106fc9ba9475fcaddd79fad72b4afca8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://ftp.drupal.org/files/projects/fontawesome-7.x-2.1.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "drupal/drupal": "7.*",
+                "drupal/libraries": ">=7.2.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-7.x-2.x": "7.2.x-dev"
+                }
+            },
+            "notification-url": "http://packagist.drupal-composer.org/downloads/",
+            "description": "Iconic font designed for use with Twitter Bootstrap."
+        },
+        {
             "name": "drupal/hidden_field",
             "version": "7.1.0-beta1",
             "source": {
@@ -1089,6 +1144,33 @@
             "notification-url": "http://packagist.drupal-composer.org/downloads/",
             "description": "Update jQuery and jQuery UI to a more recent version.",
             "homepage": "https://www.drupal.org/project/jquery_update"
+        },
+        {
+            "name": "drupal/libraries",
+            "version": "7.2.2",
+            "source": {
+                "type": "git",
+                "url": "http://git.drupal.org/project/libraries",
+                "reference": "744cd04d1c78a08d10b511f67904f0839baf94ec"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://ftp.drupal.org/files/projects/libraries-7.x-2.2.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "drupal/drupal": "7.*",
+                "drupal/system": ">=7.11.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-7.x-2.x": "7.2.x-dev"
+                }
+            },
+            "notification-url": "http://packagist.drupal-composer.org/downloads/",
+            "description": "Allows version-dependent and shared usage of external libraries."
         },
         {
             "name": "drupal/link",
@@ -1502,6 +1584,22 @@
             "time": "2015-03-26 02:02:45"
         },
         {
+            "name": "fortawesome/font-awesome",
+            "version": "4.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FortAwesome/Font-Awesome.git",
+                "reference": "e554555d73a44e0a7d11b0361ad7a5325a5f551c"
+            },
+            "require": {
+                "composer/installers": "1.*"
+            },
+            "type": "drupal-library",
+            "extra": {
+                "installer-name": "fontawesome"
+            }
+        },
+        {
             "name": "justinrainbow/json-schema",
             "version": "1.5.0",
             "source": {
@@ -1569,16 +1667,16 @@
         },
         {
             "name": "netresearch/composer-patches-plugin",
-            "version": "1.1.1",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/netresearch/composer-patches-plugin.git",
-                "reference": "3bf0c9e2d2ebb83b491f933d0b4f5300b8746292"
+                "reference": "2076b23ddb7bc34c747a6acc4a6309181b9381db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/netresearch/composer-patches-plugin/zipball/3bf0c9e2d2ebb83b491f933d0b4f5300b8746292",
-                "reference": "3bf0c9e2d2ebb83b491f933d0b4f5300b8746292",
+                "url": "https://api.github.com/repos/netresearch/composer-patches-plugin/zipball/2076b23ddb7bc34c747a6acc4a6309181b9381db",
+                "reference": "2076b23ddb7bc34c747a6acc4a6309181b9381db",
                 "shasum": ""
             },
             "require": {
@@ -1615,7 +1713,7 @@
                 "patches",
                 "plugin"
             ],
-            "time": "2015-07-15 11:14:36"
+            "time": "2015-09-11 12:50:17"
         },
         {
             "name": "promet/settings_compile",
@@ -1710,6 +1808,24 @@
                 "validator"
             ],
             "time": "2015-01-04 21:18:15"
+        },
+        {
+            "name": "sf-roots/patches",
+            "version": "1.0.0",
+            "require": {
+                "netresearch/composer-patches-plugin": "1.*"
+            },
+            "type": "metapackage",
+            "extra": {
+                "patches": {
+                    "drupal/entityreference_autocreate": {
+                        "dev-7.x-1.x#e1cab9d": {
+                            "title": "Allows autocreated entities with titles with commas in them",
+                            "url": "patches/entityreference_autocreate_allow_titles_with_commas.patch"
+                        }
+                    }
+                }
+            }
         },
         {
             "name": "symfony/config",
@@ -4450,6 +4566,7 @@
         "ckeditor/ckeditor": 20,
         "composer/composer": 15,
         "davidbarratt/custom-installer": 20,
+        "drupal/entityreference_autocreate": 20,
         "drupal/devel_themer": 20
     },
     "prefer-stable": false,

@@ -79,6 +79,7 @@
  *
  * @ingroup themeable
  */
+dsm($variables);
 $edit_person_button = t('<a class="edit-person-link" href="@url"><div class="link-button-wrapper"><div class="edit-person-button">Edit Person</div></div></a>', array('@url' => url('node/' . $node->nid . '/edit')));
 //end edit user button
 //person references button

@@ -62,16 +62,41 @@
       }
     },
     {
+      "type":"package",
+      "package": {
+        "name": "fortawesome/font-awesome",
+        "version": "4.4.0",
+        "type": "drupal-library",
+        "require": {
+          "composer/installers": "1.*"
+        },
+        "source":{
+          "type":"git",
+          "url":"https:\/\/github.com\/FortAwesome\/Font-Awesome.git",
+          "reference":"e554555d73a44e0a7d11b0361ad7a5325a5f551c"
+        },
+        "extra": {
+          "installer-name": "fontawesome"
+        }
+      }
+    },
+    {
       "type": "package",
       "package": {
-        "name": "cmog/patches",
-        "version": "1.0.37",
+        "name": "sf-roots/patches",
+        "version": "1.0.0",
         "type": "metapackage",
         "require": {
           "netresearch/composer-patches-plugin": "1.*"
         },
         "extra": {
           "patches": {
+            "drupal/entityreference_autocreate": {
+              "dev-7.x-1.x#e1cab9d": {
+                "title":"Allows autocreated entities with titles with commas in them",
+                "url":"patches/entityreference_autocreate_allow_titles_with_commas.patch"
+              }
+            }
           }
         }
       }
@@ -83,6 +108,7 @@
   ],
   "require": {
     "ckeditor/ckeditor": "dev-full/stable",
+    "fortawesome/font-awesome": "4.4.0",
     "composer/composer": "~1.0@alpha",
     "composer/installers": "1.*",
     "davidbarratt/custom-installer": "dev-master",
@@ -102,8 +128,10 @@
     "drupal/entity": "7.*",
     "drupal/entityinfo": "7.*",
     "drupal/entityreference_hidden": "7.*",
+    "drupal/entityreference_autocreate": "dev-7.x-1.x#e1cab9d",
     "drupal/features": "7.2.3",
     "drupal/features_roles_permissions": "7.*",
+    "drupal/fontawesome": "7.*",
     "drupal/file_entity": "7.*",
     "drupal/inline_entity_form": "7.*",
     "drupal/jquery_update": "7.*",
@@ -123,6 +151,7 @@
     "drupal/views": "7.*",
     "drupal/bootstrap": "7.*",
     "drush/drush": "6.*",
+    "sf-roots/patches": "~1.0",
     "promet/settings_compile": "~2.1.2"
   },
   "require-dev": {

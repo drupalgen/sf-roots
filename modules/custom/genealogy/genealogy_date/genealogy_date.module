@@ -295,7 +295,7 @@ function _genealogy_date_get_year_component($loop_counter, $exploded_date) {
     $len = -1 * drupal_strlen($exploded_date[$loop_counter]);
     if ($len < -4) $len = -4;
     $tempyear = trim(drupal_substr($exploded_date[$loop_counter], $len));
-    $dash = drupal_strpos($tempyear, "-");
+    $dash = strpos($tempyear, "-");
     if ($dash !== FALSE)
       $tempyear = drupal_substr($tempyear, $dash+1);
   }

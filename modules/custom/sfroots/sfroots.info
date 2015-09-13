@@ -16,6 +16,7 @@ dependencies[] = features
 dependencies[] = features_roles_permissions
 ;dependencies[] = fieldable_panels_panes
 dependencies[] = file
+dependencies[] = fontawesome
 dependencies[] = gen_person
 dependencies[] = genealogy
 dependencies[] = genealogy_date
