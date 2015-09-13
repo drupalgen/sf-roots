@@ -29,3 +29,7 @@ i.fa-circle-thin {
 .touch .modal-buttons {
   display: none;
 }
+
+.gender-nickname {
+  clear: both;
+}

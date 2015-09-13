@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d634b627f1db902fdd64ad8d14858eef",
+    "hash": "6e9271c50a95f66c09d2c9f7207f918f",
     "packages": [
         {
             "name": "ckeditor/ckeditor",
@@ -1377,6 +1377,72 @@
             "description": "Defines a 'weekly office hours' field type, allowing you to specify when an Entity is open or closed."
         },
         {
+            "name": "drupal/panels",
+            "version": "7.3.5",
+            "source": {
+                "type": "git",
+                "url": "http://git.drupal.org/project/panels",
+                "reference": "26c478e62e0177245aeab8d49448400d2eb688cd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://ftp.drupal.org/files/projects/panels-7.x-3.5.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "drupal/ctools": ">7.1.5",
+                "drupal/drupal": "7.*"
+            },
+            "replace": {
+                "drupal/i18n_panels": "self.version",
+                "drupal/panels_ipe": "self.version",
+                "drupal/panels_mini": "self.version",
+                "drupal/panels_node": "self.version"
+            },
+            "suggest": {
+                "drupal/i18n": "Required by drupal/i18n_panels",
+                "drupal/i18n_string": "Required by drupal/i18n_panels",
+                "drupal/i18n_translation": "Required by drupal/i18n_panels"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-7.x-3.x": "7.3.x-dev"
+                }
+            },
+            "notification-url": "http://packagist.drupal-composer.org/downloads/",
+            "description": "Core Panels display functions; provides no external UI, at least one other Panels module should be enabled.",
+            "homepage": "https://www.drupal.org/project/panels"
+        },
+        {
+            "name": "drupal/panels_bootstrap_layouts",
+            "version": "7.3.0",
+            "source": {
+                "type": "git",
+                "url": "http://git.drupal.org/project/panels_bootstrap_layouts",
+                "reference": "28fc05be9127267f0fdee93129a60d24ba846965"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://ftp.drupal.org/files/projects/panels_bootstrap_layouts-7.x-3.0.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "drupal/drupal": "7.*",
+                "drupal/panels": "7.*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-7.x-3.x": "7.3.x-dev"
+                }
+            },
+            "notification-url": "http://packagist.drupal-composer.org/downloads/",
+            "description": "Panel's layouts using twitter bootstrap layout system as base."
+        },
+        {
             "name": "drupal/pathauto",
             "version": "7.1.2",
             "source": {
@@ -1981,12 +2047,12 @@
             "version": "v2.7.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/Console.git",
+                "url": "git@github.com:symfony/Console.git",
                 "reference": "9ff9032151186bd66ecee727d728f1319f52d1d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Console/zipball/9ff9032151186bd66ecee727d728f1319f52d1d8",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/f1f7376766394f409b9b33a57a5675a52f8aad93",
                 "reference": "9ff9032151186bd66ecee727d728f1319f52d1d8",
                 "shasum": ""
             },

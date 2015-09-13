@@ -232,19 +232,21 @@ function gen_person_theme($existing, $type, $theme, $path) {
     )
   );
 }
+
 /**
  * Implements hook_preprocess_node().
  */
-/**
 function gen_person_preprocess_node(&$variables) {
 
   global $user;
   if ($variables['type'] == 'person') {
-    $nameoutput = null;
-    $surname = field_get_items('node', $variables['node'], 'field_person_surname');
-    $namesuffixes = field_get_items('node', $variables['node'], 'field_person_name_suffix');
     $nameprefixes = field_get_items('node', $variables['node'], 'field_person_name_prefix');
     $givenname = field_get_items('node', $variables['node'], 'field_person_given_name');
+    $surname = field_get_items('node', $variables['node'], 'field_person_surname');
+    $namesuffixes = field_get_items('node', $variables['node'], 'field_person_name_suffix');
+
+    $nameoutput = null;
+
     $born = field_get_items('node', $variables['node'], 'field_person_born');
     $birthplace = field_get_items('node', $variables['node'], 'field_person_birthplace');
     $died = field_get_items('node', $variables['node'], 'field_person_died');
@@ -294,45 +296,44 @@ function gen_person_preprocess_node(&$variables) {
       $nameoutput .= $givennameoutput['#markup'];
     }
 
-    $genderoutput = null;
-    $genderinfo = field_get_items('node', $variables['node'], 'field_person_gender');
-    $genderoutputraw = field_view_value('node', $variables['node'], 'field_person_gender', $genderinfo[0]);
-
-    if ($genderoutputraw['#title'] == 'Female') {
-      $genderoutput = '<i class="fa fa-venus" title="' . t("Female") . '"></i>';
-    }
-    elseif ($genderoutputraw['#title'] == 'Male') {
-      $genderoutput = '<i class="fa fa-mars" title="' . t("Male") . '"></i>';
-    }
-    else {
-      $genderoutput = '<i class="fa fa-circle-thin" title="' . t("Unknown Gender") . '"></i>';
-    }
-
     $variables['name'] = array(
       '#markup' => '<div class="field field-name-field-person-name field-type-text field-label-inline clearfix">' .
       '<div class="field-label">' .
       t('Name') . ":&nbsp;" .
       '</div><div class="field-items"><div class="field-item even">' .
         $nameoutput .
-        '</div></div> ' .
-        $genderoutput . '</div>',
-      '#raw' => $nameoutput,
+        '</div></div></div>',
     );
 
     unset($variables['field_person_surname']);
     unset($variables['field_person_given_name']);
     unset($variables['field_person_name_prefix']);
     unset($variables['field_person_name_suffix']);
-    unset($variables['field_person_gender']);
 
     unset($variables['content']['field_person_surname']);
     unset($variables['content']['field_person_given_name']);
     unset($variables['content']['field_person_name_prefix']);
     unset($variables['content']['field_person_name_suffix']);
-    unset($variables['content']['field_person_gender']);
   }
 }
-**/
+
+function gen_person_preprocess(&$variables, $hook) {
+  //dsm($variables);
+  //dsm($hook);
+}
+
+/**
+ * Implements hook_preprocess_field().
+ */
+function gen_person_preprocess_field(&$variables, $hook) {
+  if ($variables['element']['#field_name'] == 'field_person_born') {
+    $variables['label'] = t('Born');
+  }
+  if($variables['element']['#field_name'] == 'field_person_died') {
+    $variables['label'] = t('Died');
+  }
+}
+
 /**
  * Implements hook_node_insert().
  */

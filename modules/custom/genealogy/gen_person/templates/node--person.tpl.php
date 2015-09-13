@@ -100,8 +100,17 @@
     hide($content['comments']);
     hide($content['links']);
     hide($content['field_tags']);
-    print render($content);
+    print render($name);
   ?>
+  <div class="gender-nickname">
+    <div class="person-gender">
+      <?php print render($content['field_person_gender']); ?>
+    </div>
+    <div class="person-nickname">
+      <?php print render($content['field_person_nicknames_aliases']); ?>
+    </div>
+  </div>
+  <?php print render($content); ?>
   <?php if (!empty($content['field_tags']) || !empty($content['links'])): ?>
   <footer>
     <?php print render($content['field_tags']); ?>
