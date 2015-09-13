@@ -13,6 +13,37 @@ function gen_person_content_type_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_person_alias_col|node|person|form';
+  $field_group->group_name = 'group_person_alias_col';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'person';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_person_nicknames';
+  $field_group->data = array(
+    'label' => '',
+    'weight' => '21',
+    'children' => array(
+      0 => 'field_person_nicknames_aliases',
+    ),
+    'format_type' => 'bootstrap_grid_col',
+    'format_settings' => array(
+      'label' => '',
+      'instance_settings' => array(
+        'panelize' => '0',
+        'bootstrap_grid_col_xs' => '12',
+        'bootstrap_grid_col_sm' => '12',
+        'bootstrap_grid_col_md' => '12',
+        'bootstrap_grid_col_lg' => '12',
+        'required_fields' => 1,
+        'classes' => 'group-person-alias-col field-group-bootstrap_grid_col',
+      ),
+    ),
+  );
+  $export['group_person_alias_col|node|person|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_person_birth_date|node|person|form';
   $field_group->group_name = 'group_person_birth_date';
   $field_group->entity_type = 'node';
@@ -21,7 +52,7 @@ function gen_person_content_type_field_group_info() {
   $field_group->parent_name = 'group_person_birth';
   $field_group->data = array(
     'label' => '',
-    'weight' => '8',
+    'weight' => '21',
     'children' => array(
       0 => 'field_person_born',
     ),
@@ -52,7 +83,7 @@ function gen_person_content_type_field_group_info() {
   $field_group->parent_name = 'group_person_birth';
   $field_group->data = array(
     'label' => '',
-    'weight' => '10',
+    'weight' => '22',
     'children' => array(
       0 => 'field_person_birthplace',
     ),
@@ -83,7 +114,7 @@ function gen_person_content_type_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Born',
-    'weight' => '2',
+    'weight' => '3',
     'children' => array(
       0 => 'group_person_birth_date',
       1 => 'group_person_birth_place',
@@ -120,7 +151,7 @@ function gen_person_content_type_field_group_info() {
   $field_group->parent_name = 'group_person_death';
   $field_group->data = array(
     'label' => '',
-    'weight' => '19',
+    'weight' => '21',
     'children' => array(
       0 => 'field_person_died',
     ),
@@ -151,7 +182,7 @@ function gen_person_content_type_field_group_info() {
   $field_group->parent_name = 'group_person_death';
   $field_group->data = array(
     'label' => '',
-    'weight' => '21',
+    'weight' => '22',
     'children' => array(
       0 => 'field_person_deathplace',
     ),
@@ -182,7 +213,7 @@ function gen_person_content_type_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Died',
-    'weight' => '3',
+    'weight' => '4',
     'children' => array(
       0 => 'group_person_death_date',
       1 => 'group_person_death_place',
@@ -207,6 +238,37 @@ function gen_person_content_type_field_group_info() {
     ),
   );
   $export['group_person_death|node|person|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_person_gender_col|node|person|form';
+  $field_group->group_name = 'group_person_gender_col';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'person';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_person_nicknames';
+  $field_group->data = array(
+    'label' => '',
+    'weight' => '20',
+    'children' => array(
+      0 => 'field_person_gender',
+    ),
+    'format_type' => 'bootstrap_grid_col',
+    'format_settings' => array(
+      'label' => '',
+      'instance_settings' => array(
+        'panelize' => '0',
+        'bootstrap_grid_col_xs' => '12',
+        'bootstrap_grid_col_sm' => '12',
+        'bootstrap_grid_col_md' => '12',
+        'bootstrap_grid_col_lg' => '12',
+        'required_fields' => 1,
+        'classes' => 'group-person-gender-col field-group-bootstrap_grid_col',
+      ),
+    ),
+  );
+  $export['group_person_gender_col|node|person|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -281,7 +343,7 @@ function gen_person_content_type_field_group_info() {
   $field_group->parent_name = 'group_person_name';
   $field_group->data = array(
     'label' => '',
-    'weight' => '9',
+    'weight' => '8',
     'children' => array(
       0 => 'field_person_name_suffix',
     ),
@@ -370,6 +432,44 @@ function gen_person_content_type_field_group_info() {
     ),
   );
   $export['group_person_name|node|person|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_person_nicknames|node|person|form';
+  $field_group->group_name = 'group_person_nicknames';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'person';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => '',
+    'weight' => '1',
+    'children' => array(
+      0 => 'group_person_gender_col',
+      1 => 'group_person_alias_col',
+    ),
+    'format_type' => 'bootstrap_grid_row',
+    'format_settings' => array(
+      'label' => '',
+      'instance_settings' => array(
+        'show_heading' => '0',
+        'heading_position' => '0',
+        'label_element' => 'h3',
+        'description_element' => 'p',
+        'panelize' => '0',
+        'bootstrap_grid_col_xs' => '12',
+        'bootstrap_grid_col_sm' => '12',
+        'bootstrap_grid_col_md' => '12',
+        'bootstrap_grid_col_lg' => '12',
+        'required_fields' => 1,
+        'classes' => '',
+        'description' => '',
+      ),
+      'formatter' => '',
+    ),
+  );
+  $export['group_person_nicknames|node|person|form'] = $field_group;
 
   return $export;
 }
