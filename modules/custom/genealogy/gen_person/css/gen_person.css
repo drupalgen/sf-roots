@@ -18,6 +18,10 @@ i.fa-circle-thin {
   color: black;
 }
 
-.modal-dialog {
-  width: 95% !important;
+#modalBackdrop {
+  background:  rgb(0,0,0) !important;
+}
+
+@media only screen and (max-width: 960px) {
+  
 }

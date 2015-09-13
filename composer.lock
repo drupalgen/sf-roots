@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7ee656cf661f2cec4c0e038f4f1f7593",
+    "hash": "28064e30329488f0ee3d2af1e6e32412",
     "packages": [
         {
             "name": "ckeditor/ckeditor",
@@ -409,6 +409,35 @@
             "notification-url": "http://packagist.drupal-composer.org/downloads/",
             "description": "Built to use Bootstrap, a sleek, intuitive, and powerful front-end framework for faster and easier web development.",
             "homepage": "https://www.drupal.org/project/bootstrap"
+        },
+        {
+            "name": "drupal/bootstrap_fieldgroup",
+            "version": "7.1.2",
+            "source": {
+                "type": "git",
+                "url": "http://git.drupal.org/project/bootstrap_fieldgroup",
+                "reference": "fc97e5307880c82f7fcec42fb16cd0276e61d773"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://ftp.drupal.org/files/projects/bootstrap_fieldgroup-7.x-1.2.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "drupal/ctools": "7.*",
+                "drupal/drupal": "7.*",
+                "drupal/field": "7.*",
+                "drupal/field_group": "7.*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-7.x-1.x": "7.1.x-dev"
+                }
+            },
+            "notification-url": "http://packagist.drupal-composer.org/downloads/",
+            "description": "Adds new fieldgroup formatters for Bootstrap nav markup, best used with a Bootstrap-based theme."
         },
         {
             "name": "drupal/ckeditor",
@@ -943,6 +972,34 @@
             },
             "notification-url": "http://packagist.drupal-composer.org/downloads/",
             "description": "Includes all permissions for the exported role."
+        },
+        {
+            "name": "drupal/field_group",
+            "version": "7.1.4",
+            "source": {
+                "type": "git",
+                "url": "http://git.drupal.org/project/field_group",
+                "reference": "1c4f45993d4651f0362a276ec5da949e13ec2c3a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://ftp.drupal.org/files/projects/field_group-7.x-1.4.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "drupal/ctools": "7.*",
+                "drupal/drupal": "7.*",
+                "drupal/field": "7.*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-7.x-1.x": "7.1.x-dev"
+                }
+            },
+            "notification-url": "http://packagist.drupal-composer.org/downloads/",
+            "description": "Provides the ability to group your fields on both form and display."
         },
         {
             "name": "drupal/field_hidden",

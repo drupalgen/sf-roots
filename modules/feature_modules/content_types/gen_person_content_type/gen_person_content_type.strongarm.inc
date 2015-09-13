@@ -149,10 +149,10 @@ function gen_person_content_type_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'title' => array(
-          'weight' => '0',
+          'weight' => '4',
         ),
         'path' => array(
-          'weight' => '1',
+          'weight' => '5',
         ),
       ),
       'display' => array(),

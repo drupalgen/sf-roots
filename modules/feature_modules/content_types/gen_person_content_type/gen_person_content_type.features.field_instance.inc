@@ -27,7 +27,7 @@ function gen_person_content_type_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 10,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -52,7 +52,7 @@ function gen_person_content_type_field_default_field_instances() {
       'module' => 'field_hidden',
       'settings' => array(),
       'type' => 'field_hidden',
-      'weight' => 17,
+      'weight' => 7,
     ),
   );
 
@@ -73,7 +73,7 @@ function gen_person_content_type_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 12,
+        'weight' => 11,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -98,7 +98,7 @@ function gen_person_content_type_field_default_field_instances() {
       'module' => 'field_hidden',
       'settings' => array(),
       'type' => 'field_hidden',
-      'weight' => 18,
+      'weight' => 8,
     ),
   );
 
@@ -108,9 +108,7 @@ function gen_person_content_type_field_default_field_instances() {
     'default_value' => NULL,
     'default_value_function' => '',
     'deleted' => 0,
-    'description' => 'Place of Birth.  List all components that are known, in this order:  City/Town, County/Parish, State/Province, Country.  For Country, use the commonly accepted abbreviation or acronym (USA for United States, GB for Great Britain, etc.  For all other components, please spell out the complete name (for example, for States, use "Tennessee" instead of "TN").
-
-This field will suggest previously saved locations for you to select from in making your choice to keep locations consistent.',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -139,7 +137,7 @@ This field will suggest previously saved locations for you to select from in mak
     ),
     'entity_type' => 'node',
     'field_name' => 'field_person_birthplace',
-    'label' => 'Place of Birth',
+    'label' => 'Place',
     'required' => 0,
     'settings' => array(
       'behaviors' => array(
@@ -164,7 +162,7 @@ This field will suggest previously saved locations for you to select from in mak
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 10,
+      'weight' => 8,
     ),
   );
 
@@ -199,7 +197,7 @@ This field will suggest previously saved locations for you to select from in mak
     ),
     'entity_type' => 'node',
     'field_name' => 'field_person_born',
-    'label' => 'Born',
+    'label' => 'Date',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -219,9 +217,7 @@ This field will suggest previously saved locations for you to select from in mak
     'default_value' => NULL,
     'default_value_function' => '',
     'deleted' => 0,
-    'description' => 'Location of Death.  List all components that are known, in this order:  City/Town, County/Parish, State/Province, Country.  For Country, use the commonly accepted abbreviation or acronym (USA for United States, GB for Great Britain, etc.  For all other components, please spell out the complete name (for example, for States, use "Tennessee" instead of "TN").
-
-This field will suggest previously saved locations for you to select from in making your choice to keep locations consistent.',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -250,7 +246,7 @@ This field will suggest previously saved locations for you to select from in mak
     ),
     'entity_type' => 'node',
     'field_name' => 'field_person_deathplace',
-    'label' => 'Location of Death',
+    'label' => 'Place',
     'required' => 0,
     'settings' => array(
       'behaviors' => array(
@@ -275,7 +271,7 @@ This field will suggest previously saved locations for you to select from in mak
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 13,
+      'weight' => 20,
     ),
   );
 
@@ -310,7 +306,7 @@ This field will suggest previously saved locations for you to select from in mak
     ),
     'entity_type' => 'node',
     'field_name' => 'field_person_died',
-    'label' => 'Died',
+    'label' => 'Date',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -320,7 +316,7 @@ This field will suggest previously saved locations for you to select from in mak
       'module' => 'genealogy_date',
       'settings' => array(),
       'type' => 'genealogy_date_text',
-      'weight' => 12,
+      'weight' => 20,
     ),
   );
 
@@ -369,7 +365,7 @@ This field will suggest previously saved locations for you to select from in mak
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 6,
+      'weight' => 1,
     ),
   );
 
@@ -396,7 +392,7 @@ This field will suggest previously saved locations for you to select from in mak
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_plain',
-        'weight' => 3,
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -421,7 +417,7 @@ This field will suggest previously saved locations for you to select from in mak
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 3,
+      'weight' => 7,
     ),
   );
 
@@ -444,7 +440,7 @@ This field will suggest previously saved locations for you to select from in mak
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_plain',
-        'weight' => 2,
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -468,7 +464,7 @@ This field will suggest previously saved locations for you to select from in mak
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 2,
+      'weight' => 6,
     ),
   );
 
@@ -491,7 +487,7 @@ This field will suggest previously saved locations for you to select from in mak
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_plain',
-        'weight' => 1,
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -515,7 +511,7 @@ This field will suggest previously saved locations for you to select from in mak
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 5,
+      'weight' => 9,
     ),
   );
 
@@ -562,7 +558,7 @@ This field will suggest previously saved locations for you to select from in mak
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 7,
+      'weight' => 6,
     ),
   );
 
@@ -589,7 +585,7 @@ This field will suggest previously saved locations for you to select from in mak
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_plain',
-        'weight' => 0,
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -614,7 +610,7 @@ This field will suggest previously saved locations for you to select from in mak
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 4,
+      'weight' => 8,
     ),
   );
 
@@ -623,22 +619,14 @@ This field will suggest previously saved locations for you to select from in mak
   t('A pre-nominal designation indicating a title or other prefix that comes before a person\'s given name.');
   t('Aliases');
   t('Birthdate');
-  t('Born');
+  t('Date');
   t('Date of Death');
-  t('Died');
   t('Gender');
   t('Given Name');
   t('Given name, including any middle name(s)');
-  t('Location of Death');
-  t('Location of Death.  List all components that are known, in this order:  City/Town, County/Parish, State/Province, Country.  For Country, use the commonly accepted abbreviation or acronym (USA for United States, GB for Great Britain, etc.  For all other components, please spell out the complete name (for example, for States, use "Tennessee" instead of "TN").
-
-This field will suggest previously saved locations for you to select from in making your choice to keep locations consistent.');
   t('Male, Female, or Unknown');
   t('Nicknames, aliases, or other names by which this person may be known');
-  t('Place of Birth');
-  t('Place of Birth.  List all components that are known, in this order:  City/Town, County/Parish, State/Province, Country.  For Country, use the commonly accepted abbreviation or acronym (USA for United States, GB for Great Britain, etc.  For all other components, please spell out the complete name (for example, for States, use "Tennessee" instead of "TN").
-
-This field will suggest previously saved locations for you to select from in making your choice to keep locations consistent.');
+  t('Place');
   t('Post-nominal letters (for positions, degrees, offices, etc) or Generational ordering (Jr, Sr, III, etc)');
   t('Prefix');
   t('Suffix');

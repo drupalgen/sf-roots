@@ -77,7 +77,7 @@ function gen_person_add_person_modal_page($js = FALSE) {
   }
 
   // add CSS class to Modal-Frame
-  $commands[] = ajax_command_invoke('#modalContent', 'addClass', array('gen-person-node', 'add-a-person'));
+  $commands[] = ajax_command_invoke('#modalContent', 'addClass', array('gen-person-node add-a-person'));
 
   print ajax_render($commands);
   drupal_exit();
@@ -402,7 +402,7 @@ function gen_person_block_view($delta = NULL) {
         $return = array(
           'subject' => NULL,
           'content' => NULL,
-        );        
+        );
       }
       break;
     default:

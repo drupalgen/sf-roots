@@ -8,6 +8,7 @@ dependencies[] = admin_menu
 dependencies[] = auto_entitylabel
 dependencies[] = biblio
 dependencies[] = block
+dependencies[] = bootstrap_fieldgroup
 dependencies[] = date
 dependencies[] = enforce_revlog
 dependencies[] = entityreference_autocreate
