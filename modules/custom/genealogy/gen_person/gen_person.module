@@ -15,18 +15,18 @@ function gen_person_form_alter(&$form, &$form_state, $form_id) {
 function gen_person_menu() {
   $items = array();
 
-  $items['node/add/person/%ctools_js'] = array(
+  $items['node/add/%/%ctools_js'] = array(
     'title' => t('Add a Person'),
-    'page arguments' => array(3),
-    'page callback' => 'gen_person_add_person_modal_page',
+    'page arguments' => array(2, 3),
+    'page callback' => 'gen_person_add_node_modal_page',
     'access arguments' => array('create person content'),
     'type' => MENU_NORMAL_ITEM,
   );
 
   $items['node/%node/edit/%ctools_js'] = array(
-    'title' => t('Edit a Person'),
+    'title' => t('Edit'),
     'page arguments' => array(1, 3),
-    'page callback' => 'gen_person_edit_person_modal_page',
+    'page callback' => 'gen_person_edit_node_modal_page',
     'access arguments' => array('create person content'),
     'type' => MENU_NORMAL_ITEM,
   );
@@ -35,12 +35,12 @@ function gen_person_menu() {
 }
 
 /**
- * Page callback for 'node/add/person/%ctools_js'.
+ * Page callback for 'node/add/%/%ctools_js'.
  */
-function gen_person_add_person_modal_page($js = FALSE) {
+function gen_person_add_node_modal_page($type = NULL, $js = FALSE) {
   // If javascript is not enabled...
   if (!$js) {
-    return drupal_goto('node/add/person');
+    return drupal_goto('node/add/' . $type);
   }
 
   $force_page_reload = FALSE;
@@ -54,12 +54,12 @@ function gen_person_add_person_modal_page($js = FALSE) {
   $node = (object) array(
     'uid' => $user->uid,
     'name' => (isset($user->name) ? $user->name : ''),
-    'type' => 'person',
+    'type' => $type,
     'language' => LANGUAGE_NONE
   );
-
+  $camelcase = ucwords($type);
   $form_state = array(
-    'title' => t('Add a Person'),
+    'title' => t('Add a %node', array('%node' => $type)),
     'ajax'  => TRUE,
     'build_info' => array(
       'args'  => array($node),
@@ -87,13 +87,13 @@ function gen_person_add_person_modal_page($js = FALSE) {
   }
 
   // add CSS class to Modal-Frame
-  $commands[] = ajax_command_invoke('#modalContent', 'addClass', array('gen-person-node add-a-person'));
+  $commands[] = ajax_command_invoke('#modalContent', 'addClass', array('gen-' . $type . '-node add-a-' . $type));
 
   print ajax_render($commands);
   drupal_exit();
 }
 
-function gen_person_edit_person_modal_page($node, $js = FALSE) {
+function gen_person_edit_node_modal_page($node, $js = FALSE) {
   // If javascript is not enabled...
   if (!$js) {
     return drupal_goto('node/' . $node->nid . '/edit');
@@ -371,14 +371,14 @@ function gen_person_preprocess_node(&$variables) {
     ctools_modal_add_js();
     // return a ctools modal text button.
     $variables['modal_button'] =  ctools_modal_text_button(
-      t('Edit a Person'),
+      t('Edit'),
       url('node/' . $variables['node']->nid . '/edit/nojs'),
       t("Show the 'Edit a Person' form"),
       'btn btn-default modal-buttons'
     );
     $destination = drupal_get_destination();
     $variables['nonmodal_button'] = '<div>' . l(
-      t('Edit a Person'),
+      t('Edit'),
       'node/' . $variables['node']->nid . '/edit',
       array('attributes' => array(
               'class' => array(

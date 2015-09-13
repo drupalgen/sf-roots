@@ -1,0 +1,22 @@
+<?php
+/**
+ * Module file for Gen Notes
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function gen_notes_menu() {
+  $items = array();
+
+  $items['node/add/notes/%ctools_js'] = array(
+    'title' => t('Add Notes'),
+    'page arguments' => array(3),
+    'page callback' => 'gen_notes_add_notes_modal_page',
+    'access arguments' => array('create person content'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  return $items;
+}
+

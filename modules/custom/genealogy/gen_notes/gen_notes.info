@@ -1,0 +1,8 @@
+name = Gen Notes
+description = "Supplemental functionality for genealogy notes"
+package = Genealogy
+core = "7.x"
+
+version = 7.x-1.0
+
+dependencies[] = genealogy_bios_documents_notes_and_photos
