@@ -436,7 +436,7 @@ function gen_person_content_type_field_default_field_instances() {
         'weight' => 7,
       ),
       'full' => array(
-        'label' => 'hidden',
+        'label' => 'inline',
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_plain',

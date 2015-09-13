@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * Default theme implementation to display a node.
@@ -79,53 +78,35 @@
  *
  * @ingroup themeable
  */
-dsm($variables);
-$edit_person_button = t('<a class="edit-person-link" href="@url"><div class="link-button-wrapper"><div class="edit-person-button">Edit Person</div></div></a>', array('@url' => url('node/' . $node->nid . '/edit')));
-//end edit user button
-//person references button
-$destination = drupal_get_destination();
-//$url = url("person/ref_cite/" . $node->nid . "/" . $node->nid . "/view", array('query' => $destination));
-//$person_references_button = t('<a class="person-references-link"
-//   href="@url"><div class="link-button-wrapper"><div class="person-references-button">References</div></div></a>', array('@url' => $url));
-
 ?>
-<div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
-
-  <?php print $user_picture; ?>
-
-  <?php print render($title_prefix); ?>
-  <?php if (!$page): ?>
+<article id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
+  <?php if ((!$page && !empty($title)) || !empty($title_prefix) || !empty($title_suffix) || $display_submitted): ?>
+  <header>
+    <?php print render($title_prefix); ?>
+    <?php if (!$page && !empty($title)): ?>
     <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
-  <?php endif; ?>
-  <?php print render($title_suffix); ?>
-
-  <?php if ($display_submitted): ?>
-    <div class="submitted">
+    <?php endif; ?>
+    <?php print render($title_suffix); ?>
+    <?php if ($display_submitted): ?>
+    <span class="submitted">
+      <?php print $user_picture; ?>
       <?php print $submitted; ?>
-    </div>
+    </span>
+    <?php endif; ?>
+  </header>
   <?php endif; ?>
-
-  <div class="content"<?php print $content_attributes; ?>>
-    <?php
-      // We hide the comments and links now so that we can render them later.
-      hide($content['comments']);
-      hide($content['links']);
-      print $name['#markup'];
-      print render($content);
-    ?>
-        <div class="person-buttons">
-    <?php
-      if (user_access('Person: Edit any content') || user_access('Person: Edit own content')) {
-        print $edit_person_button;
-      }
-      //print $person_references_button;
-    ?>
-    </div>
-
-  </div>
-
-  <?php print render($content['links']); ?>
-
+  <?php
+    // Hide comments, tags, and links now so that we can render them later.
+    hide($content['comments']);
+    hide($content['links']);
+    hide($content['field_tags']);
+    print render($content);
+  ?>
+  <?php if (!empty($content['field_tags']) || !empty($content['links'])): ?>
+  <footer>
+    <?php print render($content['field_tags']); ?>
+    <?php print render($content['links']); ?>
+  </footer>
+  <?php endif; ?>
   <?php print render($content['comments']); ?>
-
-</div>
+</article>
