@@ -17,3 +17,7 @@ i.fa-mars {
 i.fa-circle-thin {
   color: black;
 }
+
+.modal-dialog {
+  width: 95% !important;
+}
