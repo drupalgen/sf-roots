@@ -81,6 +81,25 @@
       }
     },
     {
+      "type":"package",
+      "package": {
+        "name": "components/modernizr",
+        "version": "2.8.3",
+        "type": "drupal-library",
+        "require": {
+          "composer/installers": "1.*"
+        },
+        "source":{
+          "type":"git",
+          "url":"https:\/\/github.com\/components\/modernizr.git",
+          "reference":"4115686a0f488b370b169e5a702d5028e7650bd3"
+        },
+        "extra": {
+          "installer-name": "modernizr"
+        }
+      }
+    },
+    {
       "type": "package",
       "package": {
         "name": "sf-roots/patches",
@@ -113,6 +132,7 @@
     "composer/installers": "1.*",
     "davidbarratt/custom-installer": "dev-master",
     "netresearch/composer-patches-plugin": "1.*",
+    "components/modernizr": "2.8.3",
     "drupal/addressfield": "7.*",
     "drupal/auto_entitylabel": "7.*",
     "drupal/drupal": "7.*",
@@ -138,6 +158,7 @@
     "drupal/job_scheduler": "7.*",
     "drupal/link": "7.*",
     "drupal/field_hidden": "7.*",
+    "drupal/modernizr": "7.*",
     "drupal/module_filter": "7.*",
     "drupal/node_save_redirect": "7.*",
     "drupal/office_hours": "7.*",

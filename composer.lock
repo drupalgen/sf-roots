@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "28064e30329488f0ee3d2af1e6e32412",
+    "hash": "d634b627f1db902fdd64ad8d14858eef",
     "packages": [
         {
             "name": "ckeditor/ckeditor",
@@ -46,6 +46,22 @@
                 "wysiwyg"
             ],
             "time": "2015-08-19 12:34:41"
+        },
+        {
+            "name": "components/modernizr",
+            "version": "2.8.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/components/modernizr.git",
+                "reference": "4115686a0f488b370b169e5a702d5028e7650bd3"
+            },
+            "require": {
+                "composer/installers": "1.*"
+            },
+            "type": "drupal-library",
+            "extra": {
+                "installer-name": "modernizr"
+            }
         },
         {
             "name": "composer/composer",
@@ -1254,6 +1270,32 @@
             },
             "notification-url": "http://packagist.drupal-composer.org/downloads/",
             "description": "Defines simple link field types."
+        },
+        {
+            "name": "drupal/modernizr",
+            "version": "7.3.4",
+            "source": {
+                "type": "git",
+                "url": "http://git.drupal.org/project/modernizr",
+                "reference": "5a2759e55b15d9ba73a54c511e25b71d7d3b56a1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://ftp.drupal.org/files/projects/modernizr-7.x-3.4.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "drupal/drupal": "7.*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-7.x-3.x": "7.3.x-dev"
+                }
+            },
+            "notification-url": "http://packagist.drupal-composer.org/downloads/",
+            "description": "Modernizr integration for Drupal. Extends the library by providing two APIs: (1) for test management (2) for exposing Modernizr.load() to Drupal"
         },
         {
             "name": "drupal/module_filter",
