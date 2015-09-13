@@ -16,7 +16,7 @@ function gen_person_menu() {
   $items = array();
 
   $items['node/add/%/%ctools_js'] = array(
-    'title' => t('Add a Person'),
+    'title' => t('Add'),
     'page arguments' => array(2, 3),
     'page callback' => 'gen_person_add_node_modal_page',
     'access arguments' => array('create person content'),
@@ -32,115 +32,6 @@ function gen_person_menu() {
   );
 
   return $items;
-}
-
-/**
- * Page callback for 'node/add/%/%ctools_js'.
- */
-function gen_person_add_node_modal_page($type = NULL, $js = FALSE) {
-  // If javascript is not enabled...
-  if (!$js) {
-    return drupal_goto('node/add/' . $type);
-  }
-
-  $force_page_reload = FALSE;
-  // Include node.pages.inc so node edit form is available.
-  ctools_include('node.pages', 'node', '');
-  ctools_include('modal');
-  ctools_include('ajax');
-
-  // Get node form defaults.
-  global $user;
-  $node = (object) array(
-    'uid' => $user->uid,
-    'name' => (isset($user->name) ? $user->name : ''),
-    'type' => $type,
-    'language' => LANGUAGE_NONE
-  );
-  $camelcase = ucwords($type);
-  $form_state = array(
-    'title' => t('Add a %node', array('%node' => $type)),
-    'ajax'  => TRUE,
-    'build_info' => array(
-      'args'  => array($node),
-    ),
-  );
-  $force_page_reload = FALSE;
-  $commands = ctools_modal_form_wrapper('person_node_form', $form_state);
-
-  if (!empty($form_state['executed']) && empty($form_state['rebuild'])) {
-    // overwrite commands.
-    $commands = array();
-    ctools_add_js('ajax-responder');
-    $title = t('Congratulations!');
-    $path = drupal_get_path_alias('node/' . $form_state['nid']);
-    $body = theme('status_messages');
-    $commands[] = ctools_modal_command_display($title, $body);
-    $commands[] = ctools_ajax_command_redirect($path, 1500);
-    if ($force_page_reload) {
-      $commands[] = ctools_ajax_command_reload();
-    }
-  }
-
-  if (isset($_GET['destination'])) {
-    unset($_GET['destination']);
-  }
-
-  // add CSS class to Modal-Frame
-  $commands[] = ajax_command_invoke('#modalContent', 'addClass', array('gen-' . $type . '-node add-a-' . $type));
-
-  print ajax_render($commands);
-  drupal_exit();
-}
-
-function gen_person_edit_node_modal_page($node, $js = FALSE) {
-  // If javascript is not enabled...
-  if (!$js) {
-    return drupal_goto('node/' . $node->nid . '/edit');
-  }
-
-  $force_page_reload = FALSE;
-  // Include node.pages.inc so node edit form is available.
-  ctools_include('node.pages', 'node', '');
-  ctools_include('modal');
-  ctools_include('ajax');
-
-  // Get node form defaults.
-  global $user;
-  $form_state = array(
-    'title' => t('Edit a Person'),
-    'ajax'  => TRUE,
-    'build_info' => array(
-      'args'  => array($node),
-    ),
-  );
-  $force_page_reload = FALSE;
-  $commands = ctools_modal_form_wrapper('person_node_form', $form_state);
-
-  if (!empty($form_state['executed']) && empty($form_state['rebuild'])) {
-    // overwrite commands.
-    $commands = array();
-    ctools_add_js('ajax-responder');
-    $title = t('Congratulations!');
-    $path = drupal_get_path_alias('node/' . $form_state['nid']);
-    $body = theme('status_messages');
-    $commands[] = ctools_modal_command_display($title, $body);
-    $commands[] = ctools_ajax_command_redirect($path, 1500);
-    if ($force_page_reload) {
-      $commands[] = ctools_ajax_command_reload();
-    }
-  }
-
-  if (isset($_GET['destination'])) {
-    unset($_GET['destination']);
-  }
-
-  // add CSS class to Modal-Frame
-  $commands[] = ajax_command_invoke('#modalContent', 'addClass', array('gen-person-node edit-a-person'));
-
-  print ajax_render($commands);
-  drupal_exit();
-
 }
 
 /**
@@ -299,70 +190,20 @@ function gen_person_preprocess_node(&$variables) {
 
   global $user;
   if ($variables['type'] == 'person') {
-    $nameprefixes = field_get_items('node', $variables['node'], 'field_person_name_prefix');
-    $givenname = field_get_items('node', $variables['node'], 'field_person_given_name');
-    $surname = field_get_items('node', $variables['node'], 'field_person_surname');
-    $namesuffixes = field_get_items('node', $variables['node'], 'field_person_name_suffix');
 
-    $nameoutput = null;
+    $variables['name'] = _gen_person_preprocess_person_name($variables);
 
-    $born = field_get_items('node', $variables['node'], 'field_person_born');
-    $birthplace = field_get_items('node', $variables['node'], 'field_person_birthplace');
-    $died = field_get_items('node', $variables['node'], 'field_person_died');
-    $deathplace = field_get_items('node', $variables['node'], 'field_person_deathplace');
-    $nameoutput = null;
-    $surnameoutput = field_view_value('node', $variables['node'], 'field_person_surname', $surname[0]);
-    if ($surnameoutput) {
-      $nameoutput .= $surnameoutput['#markup'];
-    }
-    $namesuffixoutput = NULL;
-    if($namesuffixes) {
-      foreach($namesuffixes as $key => $namesuffix) {
-        $ns = field_view_value('node', $variables['node'], 'field_person_name_suffix', $namesuffixes[$key]);
-        if (drupal_strlen(trim($namesuffixoutput)) == 0)  {
-          $namesuffixoutput .= trim($ns['#title']);
-        }
-        else {
-          $namesuffixoutput .= ", " . trim($ns['#title']);
-        }
-      }
-    }
-    if (drupal_strlen($namesuffixoutput) == 0) {
-      $nameoutput .= ", ";
-    }
-    else {
-      $nameoutput .= " " . $namesuffixoutput . ", ";
-    }
+    unset($variables['field_person_surname']);
+    unset($variables['field_person_given_name']);
+    unset($variables['field_person_name_prefix']);
+    unset($variables['field_person_name_suffix']);
 
-    $nameprefixoutput = null;
-    if($nameprefixes) {
-      foreach($nameprefixes as $key => $nameprefix) {
-        $ns = field_view_value('node', $variables['node'], 'field_person_name_prefix', $nameprefixes[$key]);
-        if(drupal_strlen(trim($nameprefixoutput)) == 0) {
-          $nameprefixoutput .= trim($ns['#title']);
-        } else {
-          $nameprefixoutput .= " " . trim($ns['#title']);
-        }
-      }
-      if (drupal_strlen($nameprefixoutput) > 0) {
-        $nameoutput .= $nameprefixoutput . " ";
-      }
-    }
+    unset($variables['content']['field_person_surname']);
+    unset($variables['content']['field_person_given_name']);
+    unset($variables['content']['field_person_name_prefix']);
+    unset($variables['content']['field_person_name_suffix']);
 
-    $givennameoutput = field_view_value('node', $variables['node'], 'field_person_given_name', $givenname[0]);
-
-    if ($givennameoutput) {
-      $nameoutput .= $givennameoutput['#markup'];
-    }
-
-    $variables['name'] = array(
-      '#markup' => '<div class="field field-name-field-person-name field-type-text field-label-inline clearfix">' .
-      '<div class="field-label">' .
-      t('Name') . ":&nbsp;" .
-      '</div><div class="field-items"><div class="field-item even">' .
-        $nameoutput .
-        '</div></div></div>',
-    );
+    $notes_link = _gen_person_check_for_notes($variables);
 
     ctools_include('ajax');
     ctools_include('modal');
@@ -376,10 +217,17 @@ function gen_person_preprocess_node(&$variables) {
       t("Show the 'Edit a Person' form"),
       'btn btn-default modal-buttons'
     );
-    $destination = drupal_get_destination();
-    $variables['nonmodal_button'] = '<div>' . l(
+
+    $variables['notes_modal_button'] =  ctools_modal_text_button(
       t('Edit'),
-      'node/' . $variables['node']->nid . '/edit',
+      url($notes_link . '/nojs'),
+      t("Show the 'Edit a Note' form"),
+      'btn btn-default modal-buttons'
+    );
+    $destination = drupal_get_destination();
+    $variables['notes_nonmodal_button'] = '<div>' . l(
+      t('Edit'),
+      $notes_link,
       array('attributes' => array(
               'class' => array(
                 'btn',
@@ -390,22 +238,7 @@ function gen_person_preprocess_node(&$variables) {
             'query' => $destination,
             )
     ) . '</div>';
-
-    unset($variables['field_person_surname']);
-    unset($variables['field_person_given_name']);
-    unset($variables['field_person_name_prefix']);
-    unset($variables['field_person_name_suffix']);
-
-    unset($variables['content']['field_person_surname']);
-    unset($variables['content']['field_person_given_name']);
-    unset($variables['content']['field_person_name_prefix']);
-    unset($variables['content']['field_person_name_suffix']);
   }
-}
-
-function gen_person_preprocess(&$variables, $hook) {
-  //dsm($variables);
-  //dsm($hook);
 }
 
 /**
@@ -526,4 +359,93 @@ function _gen_person_add_person_link() {
     'node/add/person',
     array('attributes' => array('class' => array('btn', 'btn-default', 'nonmodal-buttons')))
   ) . '</div>';
+}
+
+/**
+ * Get name for output from fields stored in $variables.
+ */
+function _gen_person_preprocess_person_name($variables) {
+  $nameprefixes = field_get_items('node', $variables['node'], 'field_person_name_prefix');
+  $givenname = field_get_items('node', $variables['node'], 'field_person_given_name');
+  $surname = field_get_items('node', $variables['node'], 'field_person_surname');
+  $namesuffixes = field_get_items('node', $variables['node'], 'field_person_name_suffix');
+
+  $nameoutput = null;
+  $surnameoutput = field_view_value('node', $variables['node'], 'field_person_surname', $surname[0]);
+  if ($surnameoutput) {
+    $nameoutput .= $surnameoutput['#markup'];
+  }
+  $namesuffixoutput = NULL;
+  if($namesuffixes) {
+    foreach($namesuffixes as $key => $namesuffix) {
+      $ns = field_view_value('node', $variables['node'], 'field_person_name_suffix', $namesuffixes[$key]);
+      if (drupal_strlen(trim($namesuffixoutput)) == 0)  {
+        $namesuffixoutput .= trim($ns['#title']);
+      }
+      else {
+        $namesuffixoutput .= ", " . trim($ns['#title']);
+      }
+    }
+  }
+  if (drupal_strlen($namesuffixoutput) == 0) {
+    $nameoutput .= ", ";
+  }
+  else {
+    $nameoutput .= " " . $namesuffixoutput . ", ";
+  }
+
+  $nameprefixoutput = null;
+  if($nameprefixes) {
+    foreach($nameprefixes as $key => $nameprefix) {
+      $ns = field_view_value('node', $variables['node'], 'field_person_name_prefix', $nameprefixes[$key]);
+      if(drupal_strlen(trim($nameprefixoutput)) == 0) {
+        $nameprefixoutput .= trim($ns['#title']);
+      } else {
+        $nameprefixoutput .= " " . trim($ns['#title']);
+      }
+    }
+    if (drupal_strlen($nameprefixoutput) > 0) {
+      $nameoutput .= $nameprefixoutput . " ";
+    }
+  }
+
+  $givennameoutput = field_view_value('node', $variables['node'], 'field_person_given_name', $givenname[0]);
+
+  if ($givennameoutput) {
+    $nameoutput .= $givennameoutput['#markup'];
+  }
+
+  return array(
+    '#markup' => '<div class="field field-name-field-person-name field-type-text field-label-inline clearfix">' .
+    '<div class="field-label">' .
+    t('Name') . ":&nbsp;" .
+    '</div><div class="field-items"><div class="field-item even">' .
+      $nameoutput .
+      '</div></div></div>',
+  );
+}
+
+/**
+ * Checks for notes attached to the person.
+ *   Returns a link to an existing note, or a link to add a note.
+ */
+function _gen_person_check_for_notes($variables) {
+
+  $note_link = NULL;
+  $query = new EntityFieldQuery();
+
+  $results = $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'notes')
+    ->propertyCondition('status', NODE_PUBLISHED)
+    ->fieldCondition('field_assoc_entity_id', 'target_id', $variables['node']->nid, '=')
+    ->propertyOrderBy('changed', 'DESC')
+    ->range(0, 1)
+    ->execute();
+  if (isset($results['node'])) {
+    $notes_nids = array_keys($results['node']);
+    $note_link = 'node/' . $notes_nids[0] . '/edit';
+  } else {
+    $note_link = 'node/add/notes';
+  }
+  return $note_link;
 }

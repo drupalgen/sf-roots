@@ -115,6 +115,9 @@
   <?php print render($content); ?>
   <?php print render($modal_button); ?>
   <?php print render($nonmodal_button); ?>
+  <?php print render($notes_modal_button); ?>
+  <?php print render($notes_nonmodal_button); ?>
+
   <?php if (!empty($content['field_tags']) || !empty($content['links'])): ?>
   <footer>
     <?php print render($content['field_tags']); ?>

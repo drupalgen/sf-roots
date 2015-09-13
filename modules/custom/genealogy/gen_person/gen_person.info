@@ -1,11 +1,14 @@
 name = Gen Person
-description = Customizations to the "Person" content type 
+description = Customizations to the "Person" content type
 package = Genealogy
 core = 7.x
 php = 5.x
 
 stylesheets[all][] = css/gen_person.css
+
+dependencies[] = genealogy
 dependencies[] = gen_person_content_type
 dependencies[] = genealogy_family_content_type
+dependencies[] = genealogy_bios_documents_notes_and_photos
 
 version = 7.x-1.0
