@@ -10,4 +10,4 @@ drupal:
                     driver: mysql
                     host: localhost
     include:
-        require_once: [%DRUPAL_ROOT . '/sites/default/vendor/autoload.php']
+        require_once: [%DRUPAL_ROOT . '/../vendor/autoload.php']

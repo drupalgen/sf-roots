@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Genealogy Events feature.
+ */
+
+include_once 'genealogy_events.features.inc';

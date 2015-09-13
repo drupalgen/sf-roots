@@ -62,39 +62,96 @@
       }
     },
     {
-      "type": "composer",
-      "url": "http://packagist.drupal-composer.org"
+      "type":"package",
+      "package": {
+        "name": "fortawesome/font-awesome",
+        "version": "4.4.0",
+        "type": "drupal-library",
+        "require": {
+          "composer/installers": "1.*"
+        },
+        "source":{
+          "type":"git",
+          "url":"https:\/\/github.com\/FortAwesome\/Font-Awesome.git",
+          "reference":"e554555d73a44e0a7d11b0361ad7a5325a5f551c"
+        },
+        "extra": {
+          "installer-name": "fontawesome"
+        }
+      }
     },
     {
-      "type": "vcs",
-      "url": "git@github.com:promet/installers"
+      "type": "package",
+      "package": {
+        "name": "sf-roots/patches",
+        "version": "1.0.0",
+        "type": "metapackage",
+        "require": {
+          "netresearch/composer-patches-plugin": "1.*"
+        },
+        "extra": {
+          "patches": {
+            "drupal/entityreference_autocreate": {
+              "dev-7.x-1.x#e1cab9d": {
+                "title":"Allows autocreated entities with titles with commas in them",
+                "url":"patches/entityreference_autocreate_allow_titles_with_commas.patch"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "composer",
+      "url": "http://packagist.drupal-composer.org"
     }
   ],
   "require": {
     "ckeditor/ckeditor": "dev-full/stable",
+    "fortawesome/font-awesome": "4.4.0",
     "composer/composer": "~1.0@alpha",
     "composer/installers": "1.*",
     "davidbarratt/custom-installer": "dev-master",
     "netresearch/composer-patches-plugin": "1.*",
+    "drupal/addressfield": "7.*",
+    "drupal/auto_entitylabel": "7.*",
     "drupal/drupal": "7.*",
     "drupal/admin_menu": "7.*",
+    "drupal/biblio": "7.*",
     "drupal/ckeditor": "7.*",
     "drupal/context": "7.*",
     "drupal/ctools": "7.*",
     "drupal/date": "7.*",
     "drupal/diff": "7.*",
+    "drupal/email": "7.*",
+    "drupal/enforce_revlog": "7.*",
     "drupal/entity": "7.*",
-    "drupal/features": "7.2.*",
+    "drupal/entityinfo": "7.*",
+    "drupal/entityreference_hidden": "7.*",
+    "drupal/entityreference_autocreate": "dev-7.x-1.x#e1cab9d",
+    "drupal/features": "7.2.3",
+    "drupal/features_roles_permissions": "7.*",
+    "drupal/fontawesome": "7.*",
+    "drupal/file_entity": "7.*",
+    "drupal/inline_entity_form": "7.*",
+    "drupal/jquery_update": "7.*",
     "drupal/job_scheduler": "7.*",
+    "drupal/link": "7.*",
+    "drupal/field_hidden": "7.*",
     "drupal/module_filter": "7.*",
-    "drupal/panels": "7.*",
+    "drupal/node_save_redirect": "7.*",
+    "drupal/office_hours": "7.*",
+    "drupal/phone": "7.*",
+    "drupal/pathauto": "7.*",
     "drupal/registry_rebuild": "7.*",
+    "drupal/restful": "7.*",
     "drupal/rules": "7.*",
     "drupal/strongarm": "7.*",
+    "drupal/token": "7.*",
     "drupal/views": "7.*",
     "drupal/bootstrap": "7.*",
-    "drupal/sfr": "7.*",
     "drush/drush": "6.*",
+    "sf-roots/patches": "~1.0",
     "promet/settings_compile": "~2.1.2"
   },
   "require-dev": {
@@ -102,12 +159,13 @@
     "behat/mink": "*",
     "behat/mink-selenium2-driver": "*",
     "drupal/backup_migrate": "7.3.*",
+    "drupal/entityinfo": "7.*",
     "drupal/devel": "7.*",
     "drupal/devel_themer": "7.1.x-dev",
     "drupal/diff": "~7.3.2",
-    "drupal/drupal-extension": "1.*",
+    "drupal/drupal-extension": "*",
     "drupal/stage_file_proxy": "7.1.6",
-    "phpunit/phpunit": "4.3.5",
+    "phpunit/phpunit": "*",
     "drupal/coder": "7.2.4"
   },
   "extra": {

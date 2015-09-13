@@ -1,0 +1,204 @@
+<?php
+/**
+ * @file
+ * Genealogy install file
+ */
+
+/**
+ * Implements hook_install().
+ */
+function genealogy_install() {
+  _genealogy_gender_terms();
+  _genealogy_name_prefix_terms();
+  _genealogy_name_suffix_terms();
+  _genealogy_person_event_terms();
+  _genealogy_family_event_terms();
+  _genealogy_source_type_terms();
+  _genealogy_repository_type_terms();
+  _genealogy_source_quality_terms();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function genealogy_uninstall() {
+  // @TODO:  add later
+}
+
+/**
+ * Add Source type, Repository type and Source Quality vocabularies.
+ */
+function genealogy_update_7004() {
+  _genealogy_source_type_terms();
+  _genealogy_repository_type_terms();
+  _genealogy_source_quality_terms();
+}
+
+/**
+ * Add family event vocabulary.
+ */
+function genealogy_update_7003() {
+  _genealogy_family_event_terms();
+}
+
+/**
+ * Add life event vocabulary.
+ */
+function genealogy_update_7002() {
+  _genealogy_person_event_terms();
+}
+
+/**
+ * Add terms to vocabularies
+ */
+function genealogy_update_7001() {
+  _genealogy_gender_terms();
+  _genealogy_name_prefix_terms();
+  _genealogy_name_suffix_terms();
+}
+
+/**
+ * Private helper function to install gender vocabulary terms
+ */
+function _genealogy_gender_terms() {
+  $terms = array(
+    'Male',
+    'Female',
+    'Unknown',
+  );
+  $vocabulary = (object) array(
+    'name' => t('Gender'),
+    'machine_name' => 'gender',
+    'description' => t('Gender of a person'),
+  );
+  _genealogy_add_terms_to_vocabulary($terms, $vocabulary);
+}
+
+/**
+ * Private helper function to install name_prefix vocabulary terms
+ */
+function _genealogy_name_prefix_terms() {
+  $vocabulary = (object) array(
+    'name' => t('Name Prefix'),
+    'machine_name' => 'name_prefix',
+    'description' => t('Name Prefixes'),
+  );
+  $terms = array(
+    'Mr',
+    'Ms',
+    'Dr',
+    'Rev',
+  );
+  _genealogy_add_terms_to_vocabulary($terms, $vocabulary);
+}
+
+/**
+ * Private helper function to install name_suffix vocabulary terms
+ */
+function _genealogy_name_suffix_terms() {
+  $vocabulary = (object) array(
+    'name' => t('Name Suffix'),
+    'machine_name' => 'name_suffix',
+    'description' => t('Name Suffixes and/or Titles'),
+  );
+  $terms = array(
+    'PhD',
+    'MD',
+    'Jr',
+    'Sr',
+    'II',
+    'III',
+  );
+  _genealogy_add_terms_to_vocabulary($terms, $vocabulary);
+}
+
+/**
+ * Private Helper functon to install life event vocabulary terms
+ */
+function _genealogy_person_event_terms() {
+  $vocabulary = (object) array(
+    'name' => t('Life Events'),
+    'machine_name' => 'life_events',
+    'description' => t('Life Event Categories'),
+  );
+  $terms = array(
+    'Address',
+    'Adoption',
+    'Baptism',
+    'Burial',
+    'Christening',
+    'Census',
+    'Job',
+    'Military Service',
+  );
+  _genealogy_add_terms_to_vocabulary($terms, $vocabulary);
+}
+
+/**
+ * Private Helper function to install family event vocabulary terms
+ */
+function _genealogy_family_event_terms() {
+  $vocabulary = (object) array(
+    'name' => t('Family Events'),
+    'machine_name' => 'family_events',
+    'description' => t('Family Event Categories'),
+  );
+  $terms = array(
+    'Address',
+    'Annulment',
+    'Marriage',
+    'Divorce',
+  );
+  _genealogy_add_terms_to_vocabulary($terms, $vocabulary);
+}
+
+/**
+ * Private Helper function to install repository type vocabulary terms
+ */
+function _genealogy_repository_type_terms() {
+  $vocabulary = (object) array(
+    'name' => t('Repository Type'),
+    'machine_name' => 'repository_type',
+    'description' => t('Repository Type'),
+  );
+  $terms = array(
+    'Library',
+    'Private Collection',
+    'Federal Records',
+    'Church Records',
+  );
+  _genealogy_add_terms_to_vocabulary($terms, $vocabulary);
+}
+
+/**
+ * Private Helper function to install source type vocabulary terms
+ */
+function _genealogy_source_type_terms() {
+  $vocabulary = (object) array(
+    'name' => t('Source Type'),
+    'machine_name' => 'source_type',
+    'description' => t('Source Type'),
+  );
+  $terms = array(
+    'Book',
+    'Article',
+    'Periodical',
+  );
+  _genealogy_add_terms_to_vocabulary($terms, $vocabulary);
+}
+
+/**
+ * Private Helper function to install source quality vocabulary terms
+ */
+function _genealogy_source_quality_terms() {
+  $vocabulary = (object) array(
+    'name' => t('Source Quality'),
+    'machine_name' => 'source_quality',
+    'description' => t('Source Quality'),
+  );
+  $terms = array(
+    'questionable',
+    'excellent',
+  );
+  _genealogy_add_terms_to_vocabulary($terms, $vocabulary);
+}

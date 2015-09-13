@@ -1,0 +1,422 @@
+<?php
+/**
+ * Module file for Gen Person
+ */
+// @TODO:  Remove when debugging is done
+function gen_person_form_alter(&$form, &$form_state, $form_id) {
+  //dsm($form);
+  //dsm($form_state);
+  //dsm($form_id);
+}
+
+/**
+ * Implements hook_menu().
+ */
+function gen_person_menu() {
+  $items = array();
+  $items['node/add/person/%ctools_js'] = array(
+    'title' => t('Add a Person'),
+    'page arguments' => array(2),
+    'page callback' => 'gen_person_add_person_modal_page',
+    'access arguments' => array('create person content'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+  return $items;
+}
+
+/**
+ * Page callback for 'node/add/person/%ctools_js'.
+ */
+function gen_person_add_person_modal_page($js = FALSE) {
+  // If javascript is not enabled...
+  if (!$js) {
+    return drupal_goto('node/add/person');
+  }
+
+  $force_page_reload = FALSE;
+  // Include node.pages.inc so node edit form is available.
+  ctools_include('node.pages', 'node', '');
+  ctools_include('modal');
+  ctools_include('ajax');
+
+  // Get node form defaults.
+  global $user;
+  $node = (object) array(
+    'uid' => $user->uid,
+    'name' => (isset($user->name) ? $user->name : ''),
+    'type' => 'person',
+    'language' => LANGUAGE_NONE
+  );
+
+  $form_state = array(
+    'title' => t('Add a Person'),
+    'ajax'  => TRUE,
+    'build_info' => array(
+      'args'  => array($node),
+    ),
+  );
+  $force_page_reload = FALSE;
+  $commands = ctools_modal_form_wrapper('person_node_form', $form_state);
+
+  if (!empty($form_state['executed']) && empty($form_state['rebuild'])) {
+    // overwrite commands.
+    $commands = array();
+    ctools_add_js('ajax-responder');
+    $title = t('Congratulations!');
+    $path = drupal_get_path_alias('node/' . $form_state['nid']);
+    $body = theme('status_messages');
+    $commands[] = ctools_modal_command_display($title, $body);
+    $commands[] = ctools_ajax_command_redirect($path, 1500);
+    if ($force_page_reload) {
+      $commands[] = ctools_ajax_command_reload();
+    }
+  }
+
+  if (isset($_GET['destination'])) {
+    unset($_GET['destination']);
+  }
+
+  // add CSS class to Modal-Frame
+  $commands[] = ajax_command_invoke('#modalContent', 'addClass', array('gen-person-node', 'add-a-person'));
+
+  print ajax_render($commands);
+  drupal_exit();
+}
+
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function gen_person_form_person_node_form_alter(&$form, &$form_state, $form_id) {
+  // Add custom validation function to the form to take care of name indexing
+  array_unshift($form['#validate'], 'gen_person_form_person_node_form_validate');
+  // Remove revision information from vertical tabs.
+  unset($form['revision_information']['#group']);
+  // If you are adding a person, remove some fields from the form.
+
+  if (is_null($form['nid']['#value'])) {
+    unset($form['field_person_nicknames_aliases']);
+    unset($form['field_notes']);
+    unset($form['field_source_citations']);
+    unset($form['field_biography']);
+  }
+}
+
+/**
+ * Form validate callback added to person_node_form.
+ */
+function gen_person_form_person_node_form_validate(&$form, &$form_state) {
+  global $user;
+
+  //If not new, check to see if name has changed.
+  $name_changed = FALSE;
+  if(!is_null($form_state['values']['nid'])) {
+    $old_node = entity_load_unchanged('node', $form_state['values']['nid']);
+    $on_wrapper = entity_metadata_wrapper('node', $old_node);
+    if ($form_state['values']['field_person_surname'][LANGUAGE_NONE][0]['value'] != $on_wrapper->field_person_surname->value() ||
+        $form_state['values']['field_person_given_name'][LANGUAGE_NONE][0]['value'] != $on_wrapper->field_person_given_name->value() ) {
+      $name_changed = TRUE;
+    }
+  }
+
+  if (is_null($form_state['values']['nid']) || $name_changed) { //node is new, or name has changed
+    $result = db_select('gen_person_idx', 'i')
+      ->fields('i', array('surname', 'given', 'idx', 'id', 'created'))
+      ->condition('surname', $form_state['values']['field_person_surname'][LANGUAGE_NONE][0]['value'], '=')
+      ->condition('given', $form_state['values']['field_person_given_name'][LANGUAGE_NONE][0]['value'], '=')
+      ->orderBy('created', 'DESC')
+      ->range(0,1)
+      ->execute()
+      ->fetchAll();
+    if (empty($result)) {
+      $newIdx = new stdClass;
+      $newIdx->surname = $form_state['values']['field_person_surname'][LANGUAGE_NONE][0]['value'];
+      $newIdx->given = $form_state['values']['field_person_given_name'][LANGUAGE_NONE][0]['value'];
+      $newIdx->idx = 1;
+      $id = db_insert('gen_person_idx')
+          ->fields(array(
+          'surname' => $newIdx->surname,
+          'given' => $newIdx->given,
+          'idx' => $newIdx->idx,
+          'created' => REQUEST_TIME,
+      ))
+      ->execute();
+      $form_state['values']['field_gen_person_idx'][LANGUAGE_NONE][0]['value'] = $id;
+      $form_state['values']['field_gen_person_idx2'][LANGUAGE_NONE][0]['value'] = $newIdx->idx;
+    }
+    else {
+      $newIdx = $result[0];
+      $newIdx->idx++;
+      unset($newIdx->id);
+      $id = db_insert('gen_person_idx')
+        ->fields(array(
+        'surname' => $newIdx->surname,
+        'given' => $newIdx->given,
+        'idx' => $newIdx->idx,
+        'created' => REQUEST_TIME,
+      ))
+      ->execute();
+      $form_state['values']['field_gen_person_idx'][LANGUAGE_NONE][0]['value'] = $id;
+      $form_state['values']['field_gen_person_idx2'][LANGUAGE_NONE][0]['value'] = $newIdx->idx;
+    }
+  }
+  else { // node exists
+    $idno = (int) $form_state['values']['field_gen_person_idx'][LANGUAGE_NONE][0]['value'];
+    $result = db_select('gen_person_idx', 'i')
+      ->fields('i', array('surname', 'given', 'idx', 'id', 'created'))
+      ->condition('id', $idno, "=")
+      ->execute()
+      ->fetchAll();
+    $idx = clone $result[0];
+    if (!((trim($form_state['values']['field_person_surname'][LANGUAGE_NONE][0]['value']) == trim($idx->surname)) &&
+       (trim($form_state['values']['field_person_given_name'][LANGUAGE_NONE][0]['value']) == trim($idx->given)) &&
+       ((int) $form_state['values']['field_gen_person_idx2'][LANGUAGE_NONE][0]['value'] == $idx->idx))) {
+      $result = db_select('gen_person_idx', 'i')
+          ->fields('i', array('surname', 'given', 'idx', 'id', 'created'))
+          ->condition('surname', $form_state['values']['field_person_surname'][LANGUAGE_NONE][0]['value'], '=')
+          ->condition('given', $form_state['values']['field_person_given_name'][LANGUAGE_NONE][0]['value'], '=')
+          ->orderBy('created', 'DESC')
+          ->range(0,1)
+          ->execute()
+          ->fetchAll();
+      if(empty($result)) {
+        $idx->surname = $form_state['values']['field_person_surname'][LANGUAGE_NONE][0]['value'];
+        $idx->given = $form_state['values']['field_person_given_name'][LANGUAGE_NONE][0]['value'];
+        $idx->idx = 1;
+        unset($idx->id);
+        $id = db_insert('gen_person_idx')
+          ->fields(array(
+          'surname' => $idx->surname,
+          'given' => $idx->given,
+          'idx' => $idx->idx,
+          'created' => REQUEST_TIME,
+        ))
+        ->execute();
+        $form_state['values']['field_gen_person_idx2'][LANGUAGE_NONE][0]['value'] = $idx->idx;
+        $form_state['values']['field_gen_person_idx'][LANGUAGE_NONE][0]['value'] = $id;
+      }
+      else {
+        $newIdx = clone $result[0];
+        $newIdx->idx++;
+        $idx->surname = $newIdx->surname;
+        $idx->given = $newIdx->given;
+        $idx->created = REQUEST_TIME;
+        $idx->idx = $newIdx->idx;
+        unset($idx->id);
+        $id = db_insert('gen_person_idx')
+          ->fields(array(
+            'surname' => $newIdx->surname,
+            'given' => $newIdx->given,
+            'idx' => $newIdx->idx,
+            'created' => REQUEST_TIME,
+          )
+        )
+        ->execute();
+        $form_state['values']['field_gen_person_idx2'][LANGUAGE_NONE][0]['value'] = $newIdx->idx;
+        $form_state['values']['field_gen_person_idx'][LANGUAGE_NONE][0]['value'] = $id;
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+/**
+function gen_person_theme($existing, $type, $theme, $path) {
+  return array(
+    'node__person' => array(
+      'render element' => 'content',
+      'template' => 'node--person',
+      'base hook' => 'node',
+      'path' => drupal_get_path('module', 'gen_person') . '/templates',
+    )
+  );
+}
+**/
+/**
+ * Implements hook_preprocess_node().
+ */
+/**
+function gen_person_preprocess_node(&$variables) {
+
+  global $user;
+  if ($variables['type'] == 'person') {
+    $nameoutput = null;
+    $surname = field_get_items('node', $variables['node'], 'field_person_surname');
+    $namesuffixes = field_get_items('node', $variables['node'], 'field_person_name_suffix');
+    $nameprefixes = field_get_items('node', $variables['node'], 'field_person_name_prefix');
+    $givenname = field_get_items('node', $variables['node'], 'field_person_given_name');
+    $born = field_get_items('node', $variables['node'], 'field_person_born');
+    $birthplace = field_get_items('node', $variables['node'], 'field_person_birthplace');
+    $died = field_get_items('node', $variables['node'], 'field_person_died');
+    $deathplace = field_get_items('node', $variables['node'], 'field_person_deathplace');
+    $nameoutput = null;
+    $surnameoutput = field_view_value('node', $variables['node'], 'field_person_surname', $surname[0]);
+    if ($surnameoutput) {
+      $nameoutput .= $surnameoutput['#markup'];
+    }
+    $namesuffixoutput = NULL;
+    if($namesuffixes) {
+      foreach($namesuffixes as $key => $namesuffix) {
+        $ns = field_view_value('node', $variables['node'], 'field_person_name_suffix', $namesuffixes[$key]);
+        if (drupal_strlen(trim($namesuffixoutput)) == 0)  {
+          $namesuffixoutput .= trim($ns['#title']);
+        }
+        else {
+          $namesuffixoutput .= ", " . trim($ns['#title']);
+        }
+      }
+    }
+    if (drupal_strlen($namesuffixoutput) == 0) {
+      $nameoutput .= ", ";
+    }
+    else {
+      $nameoutput .= " " . $namesuffixoutput . ", ";
+    }
+
+    $nameprefixoutput = null;
+    if($nameprefixes) {
+      foreach($nameprefixes as $key => $nameprefix) {
+        $ns = field_view_value('node', $variables['node'], 'field_person_name_prefix', $nameprefixes[$key]);
+        if(drupal_strlen(trim($nameprefixoutput)) == 0) {
+          $nameprefixoutput .= trim($ns['#title']);
+        } else {
+          $nameprefixoutput .= " " . trim($ns['#title']);
+        }
+      }
+      if (drupal_strlen($nameprefixoutput) > 0) {
+        $nameoutput .= $nameprefixoutput . " ";
+      }
+    }
+
+    $givennameoutput = field_view_value('node', $variables['node'], 'field_person_given_name', $givenname[0]);
+
+    if ($givennameoutput) {
+      $nameoutput .= $givennameoutput['#markup'];
+    }
+
+    $genderoutput = null;
+    $genderinfo = field_get_items('node', $variables['node'], 'field_person_gender');
+    $genderoutputraw = field_view_value('node', $variables['node'], 'field_person_gender', $genderinfo[0]);
+
+    if ($genderoutputraw['#title'] == 'Female') {
+      $genderoutput = '<i class="fa fa-venus" title="' . t("Female") . '"></i>';
+    }
+    elseif ($genderoutputraw['#title'] == 'Male') {
+      $genderoutput = '<i class="fa fa-mars" title="' . t("Male") . '"></i>';
+    }
+    else {
+      $genderoutput = '<i class="fa fa-circle-thin" title="' . t("Unknown Gender") . '"></i>';
+    }
+
+    $variables['name'] = array(
+      '#markup' => '<div class="field field-name-field-person-name field-type-text field-label-inline clearfix">' .
+      '<div class="field-label">' .
+      t('Name') . ":&nbsp;" .
+      '</div><div class="field-items"><div class="field-item even">' .
+        $nameoutput .
+        '</div></div> ' .
+        $genderoutput . '</div>',
+      '#raw' => $nameoutput,
+    );
+
+    unset($variables['field_person_surname']);
+    unset($variables['field_person_given_name']);
+    unset($variables['field_person_name_prefix']);
+    unset($variables['field_person_name_suffix']);
+    unset($variables['field_person_gender']);
+
+    unset($variables['content']['field_person_surname']);
+    unset($variables['content']['field_person_given_name']);
+    unset($variables['content']['field_person_name_prefix']);
+    unset($variables['content']['field_person_name_suffix']);
+    unset($variables['content']['field_person_gender']);
+  }
+}
+**/
+/**
+ * Implements hook_node_insert().
+ */
+function gen_person_node_insert($node) {
+  global $user;
+  // This is a new person record.
+  if($node->type == 'person') {
+    $values = array(
+      'type' => 'family',
+      'status' => 1,
+      'promoted' => 0,
+      'uid' => $user->uid,
+    );
+    // Add as a spouse to an existing family record.
+    //   @TODO:  Add logic to add as a spouse to an existing family record
+    //   Note:  An existing family record id will be passed in as a query parameter
+
+    // Add as a new person with no existing family, no existing family record
+    //    was passed in a query parameter.
+    $family = entity_create('node', $values);
+    $family_wrapper = entity_metadata_wrapper('node', $family);
+
+    $person_wrapper = entity_metadata_wrapper('node', $node);
+    $gender = $person_wrapper->field_person_gender->value();
+    // If a female, set to the "wife" on the new family record...
+    if($gender->name == t('Female')) {
+      $family_wrapper->field_wife->set(intval($person_wrapper->nid->value()));
+    }
+    // Else set to the "husband" on the new family record.
+    else {
+      $family_wrapper->field_husband->set(intval($person_wrapper->nid->value()));
+    }
+    $family_wrapper->save();
+  }
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function gen_person_block_info() {
+  return array(
+    'add_person_link' => array(
+      'info' => t('Add a Person'),
+      'status' => FALSE,
+      'weight' => 0,
+      'visibility' => 1,
+    ),
+  );
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function gen_person_block_view($delta = NULL) {
+  $return = array();
+  switch ($delta) {
+    case 'add_person_link':
+      $return = array(
+        'subject' => NULL,
+        'content' => _gen_person_add_person_modal_link(),
+      );
+      break;
+    default:
+  }
+  return $return;
+}
+
+/**
+ * Block view callback for add_person_link.
+ */
+function _gen_person_add_person_modal_link() {
+  // Include the CTools tools ajax and modal tools.
+  ctools_include('ajax');
+  ctools_include('modal');
+  ctools_add_js('ajax-responder');
+  // Add CTools' javascript to the page with the block.
+  ctools_modal_add_js();
+  // return a ctools modal text button.
+  return ctools_modal_text_button(
+    t('Add a Person'),
+    url('node/add/person/nojs'),
+    t("Show the 'Add a Person' form"),
+    'btn btn-default'
+  );
+}

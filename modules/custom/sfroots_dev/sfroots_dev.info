@@ -1,0 +1,10 @@
+name = "SFR Default D7 Project module for Dev Environments"
+description = "Top dev module for sf-roots.dev d7 project"
+package = "SFR"
+core = "7.x"
+
+dependencies[] = backup_migrate
+dependencies[] = devel
+dependencies[] = diff
+dependencies[] = views_ui
+dependencies[] = field_ui

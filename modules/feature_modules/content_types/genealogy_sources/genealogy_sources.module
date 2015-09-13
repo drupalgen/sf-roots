@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Genealogy Sources feature.
+ */
+
+include_once 'genealogy_sources.features.inc';

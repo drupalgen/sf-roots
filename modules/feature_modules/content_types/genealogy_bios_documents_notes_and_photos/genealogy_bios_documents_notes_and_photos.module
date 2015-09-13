@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Genealogy Bios, Documents, Notes and Photos feature.
+ */
+
+include_once 'genealogy_bios_documents_notes_and_photos.features.inc';

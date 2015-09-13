@@ -1,0 +1,14 @@
+name = Genealogy
+description = General Genealogy module containing functionality shared among modules.
+package = Genealogy
+core = 7.x
+php = 5.x
+
+version = 7.x-1.0
+
+dependencies[] = genealogy_bios_documents_notes_and_photos
+dependencies[] = gen_person_content_type
+dependencies[] = gen_location_content_type
+dependencies[] = genealogy_events
+dependencies[] = genealogy_sources
+dependencies[] = taxonomy

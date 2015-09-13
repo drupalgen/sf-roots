@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the SFR Theme Configuration feature.
+ */
+
+include_once 'sfr_theme_configuration.features.inc';

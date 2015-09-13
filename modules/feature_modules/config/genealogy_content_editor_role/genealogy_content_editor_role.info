@@ -1,0 +1,14 @@
+name = Genealogy Content Editor role
+core = 7.x
+package = Genealogy
+version = 7.x-1.0-alpha2
+project = genealogy_content_editor_role
+dependencies[] = features
+dependencies[] = features_roles_permissions
+dependencies[] = gen_location_content_type
+dependencies[] = gen_person_content_type
+dependencies[] = genealogy
+dependencies[] = taxonomy
+features[features_api][] = api:2
+features[roles_permissions][] = content editor
+project path = ../modules/feature_modules/config
