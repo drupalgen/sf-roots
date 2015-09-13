@@ -392,10 +392,18 @@ function gen_person_block_view($delta = NULL) {
   $return = array();
   switch ($delta) {
     case 'add_person_link':
-      $return = array(
-        'subject' => NULL,
-        'content' => _gen_person_add_person_modal_link(),
-      );
+      if (user_access('create person content')) {
+        $return = array(
+          'subject' => NULL,
+          'content' => _gen_person_add_person_modal_link(),
+        );
+      }
+      else {
+        $return = array(
+          'subject' => NULL,
+          'content' => NULL,
+        );        
+      }
       break;
     default:
   }
