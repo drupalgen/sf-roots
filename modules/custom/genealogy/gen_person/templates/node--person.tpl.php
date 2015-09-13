@@ -100,6 +100,8 @@
     hide($content['comments']);
     hide($content['links']);
     hide($content['field_tags']);
+    hide($content['nonmodal_button']);
+    hide($content['modal_button']);
     print render($name);
   ?>
   <div class="gender-nickname">
@@ -111,6 +113,8 @@
     </div>
   </div>
   <?php print render($content); ?>
+  <?php print render($modal_button); ?>
+  <?php print render($nonmodal_button); ?>
   <?php if (!empty($content['field_tags']) || !empty($content['links'])): ?>
   <footer>
     <?php print render($content['field_tags']); ?>
