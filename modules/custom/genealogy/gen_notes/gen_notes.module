@@ -12,6 +12,7 @@ function gen_notes_form_notes_node_form_alter(&$form, &$form_state, $form_id) {
     //Get url parameters
     $args = arg();
     dsm($args);
+    dsm(drupal_get_query_parameters());
     // If using modal...
     if (count($args) == 5 && $args[3] == 'ajax') {
       $entity_id = (int) $args[4];
