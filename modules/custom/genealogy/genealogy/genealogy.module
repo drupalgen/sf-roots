@@ -81,7 +81,7 @@ function genealogy_menu() {
     'title' => t('View'),
     'page arguments' => array(1, 2),
     'page callback' => 'genealogy_node_view_modal',
-    'access arguments' => array('view published content'),
+    'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
   );
 
