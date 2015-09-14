@@ -15,22 +15,6 @@ function gen_person_form_alter(&$form, &$form_state, $form_id) {
 function gen_person_menu() {
   $items = array();
 
-  $items['node/add/%/%ctools_js'] = array(
-    'title' => t('Add'),
-    'page arguments' => array(2, 3),
-    'page callback' => 'gen_person_add_node_modal_page',
-    'access arguments' => array('create person content'),
-    'type' => MENU_NORMAL_ITEM,
-  );
-
-  $items['node/%node/edit/%ctools_js'] = array(
-    'title' => t('Edit'),
-    'page arguments' => array(1, 3),
-    'page callback' => 'gen_person_edit_node_modal_page',
-    'access arguments' => array('create person content'),
-    'type' => MENU_NORMAL_ITEM,
-  );
-
   return $items;
 }
 
@@ -219,14 +203,18 @@ function gen_person_preprocess_node(&$variables) {
     );
 
     $variables['notes_modal_button'] =  ctools_modal_text_button(
-      t('Edit'),
+      t('Notes'),
       url($notes_link . '/nojs'),
       t("Show the 'Edit a Note' form"),
       'btn btn-default modal-buttons'
     );
     $destination = drupal_get_destination();
+    $querystring = array(
+      'field_entity_assoc_id' => $variables['node']->nid,
+      $destination,
+    );
     $variables['notes_nonmodal_button'] = '<div>' . l(
-      t('Edit'),
+      t('Notes'),
       $notes_link,
       array('attributes' => array(
               'class' => array(
@@ -235,7 +223,7 @@ function gen_person_preprocess_node(&$variables) {
                 'nonmodal-buttons'
               )
             ),
-            'query' => $destination,
+            'query' => $querystring,
             )
     ) . '</div>';
   }
@@ -256,6 +244,7 @@ function gen_person_preprocess_field(&$variables, $hook) {
 /**
  * Implements hook_node_insert().
  */
+/**
 function gen_person_node_insert($node) {
   global $user;
   // This is a new person record.
@@ -288,7 +277,7 @@ function gen_person_node_insert($node) {
     $family_wrapper->save();
   }
 }
-
+**/
 /**
  * Implements hook_block_info().
  */

@@ -128,7 +128,7 @@ function genealogy_edit_node_modal_page($node, $js = FALSE) {
   if (!$js) {
     return drupal_goto('node/' . $node->nid . '/edit');
   }
-
+  dsm($node);
   $force_page_reload = FALSE;
   // Include node.pages.inc so node edit form is available.
   ctools_include('node.pages', 'node', '');
