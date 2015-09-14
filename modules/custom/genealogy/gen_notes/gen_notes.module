@@ -31,3 +31,56 @@ function gen_notes_form_notes_node_form_alter(&$form, &$form_state, $form_id) {
     }
   }
 }
+
+/**
+ * Implements hook_theme().
+ */
+function gen_notes_theme($existing, $type, $theme, $path) {
+  return array(
+    'node__notes' => array(
+      'render element' => 'content',
+      'template' => 'node--notes',
+      'base hook' => 'node',
+      'path' => drupal_get_path('module', 'gen_notes') . '/templates',
+    )
+  );
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function gen_notes_preprocess_node(&$variables) {
+  if ($variables['type'] == 'notes') {
+    $destination = drupal_get_destination();
+    $querystring = array(
+      'field_entity_assoc_id' => $variables['node']->nid,
+      $destination,
+    );
+    ctools_include('ajax');
+    ctools_include('modal');
+    ctools_add_js('ajax-responder');
+    // Add CTools' javascript to the page with the block.
+    ctools_modal_add_js();
+    // return a ctools modal text button.
+    $variables['modal_button'] =  ctools_modal_text_button(
+      t('Edit'),
+      url('node/' . $variables['node']->nid . '/edit/nojs/' . $variables['field_assoc_entity_id'][0]['target_id']),
+      t("Show the 'Edit Notes' form"),
+      'btn btn-default modal-buttons'
+    );
+
+    $variables['nonmodal_button'] = '<div>' . l(
+      t('Edit'),
+      'node/' . $variables['node']->nid . '/edit',
+      array('attributes' => array(
+              'class' => array(
+                'btn',
+                'btn-default',
+                'nonmodal-buttons'
+              )
+            ),
+            'query' => $querystring,
+            )
+    ) . '</div>';
+  }
+}

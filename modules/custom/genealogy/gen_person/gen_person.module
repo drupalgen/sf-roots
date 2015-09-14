@@ -223,7 +223,7 @@ function gen_person_preprocess_node(&$variables) {
 
     $variables['notes_modal_button'] =  ctools_modal_text_button(
       t('Notes'),
-      url($notes_link . '/nojs/' . $variables['node']->nid),
+      url($notes_link . '/nojs'),
       t("Show the 'Edit a Note' form"),
       'btn btn-default modal-buttons'
     );
@@ -447,7 +447,7 @@ function _gen_person_check_for_notes($variables) {
     ->execute();
   if (isset($results['node'])) {
     $notes_nids = array_keys($results['node']);
-    $note_link = 'node/' . $notes_nids[0] . '/edit';
+    $note_link = 'node/' . $notes_nids[0];
   } else {
     $note_link = 'node/add/notes';
   }

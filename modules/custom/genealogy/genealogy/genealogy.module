@@ -50,7 +50,7 @@ function genealogy_menu() {
     'page arguments' => array(2, 3),
     'page callback' => 'genealogy_add_node_modal_page',
     'access arguments' => array('create person content'),
-    'type' => MENU_NORMAL_ITEM,
+    'type' => MENU_CALLBACK,
   );
 
   $items['node/add/%/%ctools_js/%'] = array(
@@ -58,7 +58,7 @@ function genealogy_menu() {
     'page arguments' => array(2, 3, 4),
     'page callback' => 'genealogy_add_node_modal_page',
     'access arguments' => array('create person content'),
-    'type' => MENU_NORMAL_ITEM,
+    'type' => MENU_CALLBACK,
   );
 
   $items['node/%node/edit/%ctools_js'] = array(
@@ -66,7 +66,7 @@ function genealogy_menu() {
     'page arguments' => array(1, 3),
     'page callback' => 'genealogy_edit_node_modal_page',
     'access arguments' => array('edit person content'),
-    'type' => MENU_NORMAL_ITEM,
+    'type' => MENU_CALLBACK,
   );
 
   $items['node/%node/edit/%ctools_js/%'] = array(
@@ -74,7 +74,15 @@ function genealogy_menu() {
     'page arguments' => array(1, 3, 4),
     'page callback' => 'genealogy_edit_node_modal_page',
     'access arguments' => array('edit person content'),
-    'type' => MENU_NORMAL_ITEM,
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['node/%node/%ctools_js'] = array(
+    'title' => t('View'),
+    'page arguments' => array(1, 2),
+    'page callback' => 'genealogy_node_view_modal',
+    'access arguments' => array('view published content'),
+    'type' => MENU_CALLBACK,
   );
 
   return $items;
@@ -206,4 +214,27 @@ function genealogy_edit_node_modal_page($node, $js = FALSE, $entity_id = NULL) {
   print ajax_render($commands);
   drupal_exit();
 
+}
+
+function genealogy_node_view_modal($node = NULL, $js = NULL) {
+  if ($node == NULL) {
+    // You can customize the string below, or use a drupal_goto() to
+    // send the user to a custom error page.
+    return;
+  }
+  if ($js) {
+    // Required includes for ctools to work:
+    ctools_include('modal');
+    ctools_include('ajax');
+  }
+  // Drupal 7 requires a render of the node object in order to obtain a string.
+  // Note that I am able to customize the fields by using the "Teaser" display mode
+  // under admin/structure/types.
+  $contents = render(node_view($node, 'full', NULL));
+
+  if (isset($_GET['destination'])) {
+    unset($_GET['destination']);
+  }
+
+  return ctools_modal_render($node->title, $contents) ;
 }
