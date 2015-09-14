@@ -193,54 +193,57 @@ function gen_person_preprocess_node(&$variables) {
       'field_entity_assoc_id' => $variables['node']->nid,
       $destination,
     );
-
     ctools_include('ajax');
     ctools_include('modal');
     ctools_add_js('ajax-responder');
     // Add CTools' javascript to the page with the block.
     ctools_modal_add_js();
-    // return a ctools modal text button.
-    $variables['modal_button'] =  ctools_modal_text_button(
-      t('Edit'),
-      url('node/' . $variables['node']->nid . '/edit/nojs'),
-      t("Show the 'Edit a Person' form"),
-      'btn btn-default modal-buttons'
-    );
 
-    $variables['nonmodal_button'] = '<div>' . l(
-      t('Edit'),
-      'node/' . $variables['node']->nid . '/edit',
-      array('attributes' => array(
-              'class' => array(
-                'btn',
-                'btn-default',
-                'nonmodal-buttons'
+    if (user_access('create person content')) {
+      // return a ctools modal text button.
+      $variables['modal_button'] =  ctools_modal_text_button(
+        t('Edit'),
+        url('node/' . $variables['node']->nid . '/edit/nojs'),
+        t("Show the 'Edit a Person' form"),
+        'btn btn-default modal-buttons'
+      );
+
+      $variables['nonmodal_button'] = '<div>' . l(
+        t('Edit'),
+        'node/' . $variables['node']->nid . '/edit',
+        array('attributes' => array(
+                'class' => array(
+                  'btn',
+                  'btn-default',
+                  'nonmodal-buttons'
+                )
+              ),
+              'query' => $querystring,
               )
-            ),
-            'query' => $querystring,
-            )
-    ) . '</div>';
+      ) . '</div>';
+    }
+    if(user_access('access content')) {
+      $variables['notes_modal_button'] =  ctools_modal_text_button(
+        t('Notes'),
+        url($notes_link . '/nojs'),
+        t("Show Notes"),
+        'btn btn-default modal-buttons'
+      );
 
-    $variables['notes_modal_button'] =  ctools_modal_text_button(
-      t('Notes'),
-      url($notes_link . '/nojs'),
-      t("Show the 'Edit a Note' form"),
-      'btn btn-default modal-buttons'
-    );
-
-    $variables['notes_nonmodal_button'] = '<div>' . l(
-      t('Notes'),
-      $notes_link,
-      array('attributes' => array(
-              'class' => array(
-                'btn',
-                'btn-default',
-                'nonmodal-buttons'
+      $variables['notes_nonmodal_button'] = '<div>' . l(
+        t('Notes'),
+        $notes_link,
+        array('attributes' => array(
+                'class' => array(
+                  'btn',
+                  'btn-default',
+                  'nonmodal-buttons'
+                )
+              ),
+              'query' => $querystring,
               )
-            ),
-            'query' => $querystring,
-            )
-    ) . '</div>';
+      ) . '</div>';
+    }
   }
 }
 

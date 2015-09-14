@@ -56,31 +56,33 @@ function gen_notes_preprocess_node(&$variables) {
       'field_entity_assoc_id' => $variables['node']->nid,
       $destination,
     );
-    ctools_include('ajax');
-    ctools_include('modal');
-    ctools_add_js('ajax-responder');
-    // Add CTools' javascript to the page with the block.
-    ctools_modal_add_js();
-    // return a ctools modal text button.
-    $variables['modal_button'] =  ctools_modal_text_button(
-      t('Edit'),
-      url('node/' . $variables['node']->nid . '/edit/nojs/' . $variables['field_assoc_entity_id'][0]['target_id']),
-      t("Show the 'Edit Notes' form"),
-      'btn btn-default modal-buttons'
-    );
+    if (user_access('create person content')) {
+      ctools_include('ajax');
+      ctools_include('modal');
+      ctools_add_js('ajax-responder');
+      // Add CTools' javascript to the page with the block.
+      ctools_modal_add_js();
+      // return a ctools modal text button.
+      $variables['modal_button'] =  ctools_modal_text_button(
+        t('Edit'),
+        url('node/' . $variables['node']->nid . '/edit/nojs/' . $variables['field_assoc_entity_id'][0]['target_id']),
+        t("Show the 'Edit Notes' form"),
+        'btn btn-default modal-buttons'
+      );
 
-    $variables['nonmodal_button'] = '<div>' . l(
-      t('Edit'),
-      'node/' . $variables['node']->nid . '/edit',
-      array('attributes' => array(
-              'class' => array(
-                'btn',
-                'btn-default',
-                'nonmodal-buttons'
+      $variables['nonmodal_button'] = '<div>' . l(
+        t('Edit'),
+        'node/' . $variables['node']->nid . '/edit',
+        array('attributes' => array(
+                'class' => array(
+                  'btn',
+                  'btn-default',
+                  'nonmodal-buttons'
+                )
+              ),
+              'query' => $querystring,
               )
-            ),
-            'query' => $querystring,
-            )
-    ) . '</div>';
+      ) . '</div>';
+    }
   }
 }
