@@ -3,3 +3,25 @@
  * Module file for Gen Notes
  */
 
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function gen_notes_form_notes_node_form_alter(&$form, &$form_state, $form_id) {
+  //If this is a new note
+  if ($form['type']['#value'] == 'notes' && is_null($form['nid']['#value'])) {
+    //Get url parameters
+    $args = arg();
+    // If using modal...
+    if (count($args) == 5 && $args[3] == 'ajax') {
+      $entity_id = (int) $args[4];
+    }
+    // If not using modal...
+    else if (count($args) == 4) {
+      $entity_id = (int) $args[3];
+    }
+    // Set default value for field_assoc_entity_id.
+    if ($entity_id) {
+      $form['field_assoc_entity_id'][LANGUAGE_NONE][0]['target_id']['#default_value'] = $entity_id;
+    }
+  }
+}

@@ -61,7 +61,7 @@ function gen_person_content_type_default_page_manager_handlers() {
     ),
   );
   $display->cache = array();
-  $display->title = 'person/%node:nid/%node:title';
+  $display->title = '%node:title';
   $display->uuid = '364a50f8-8dce-4661-8c5d-4e3e00955854';
   $display->content = array();
   $display->panels = array();

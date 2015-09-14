@@ -188,6 +188,11 @@ function gen_person_preprocess_node(&$variables) {
     unset($variables['content']['field_person_name_suffix']);
 
     $notes_link = _gen_person_check_for_notes($variables);
+    $destination = drupal_get_destination();
+    $querystring = array(
+      'field_entity_assoc_id' => $variables['node']->nid,
+      $destination,
+    );
 
     ctools_include('ajax');
     ctools_include('modal');
@@ -204,15 +209,11 @@ function gen_person_preprocess_node(&$variables) {
 
     $variables['notes_modal_button'] =  ctools_modal_text_button(
       t('Notes'),
-      url($notes_link . '/nojs'),
+      url($notes_link . '/nojs/' . $variables['node']->nid),
       t("Show the 'Edit a Note' form"),
       'btn btn-default modal-buttons'
     );
-    $destination = drupal_get_destination();
-    $querystring = array(
-      'field_entity_assoc_id' => $variables['node']->nid,
-      $destination,
-    );
+
     $variables['notes_nonmodal_button'] = '<div>' . l(
       t('Notes'),
       $notes_link,

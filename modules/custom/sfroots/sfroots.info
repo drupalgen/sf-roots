@@ -20,6 +20,7 @@ dependencies[] = features_roles_permissions
 dependencies[] = file
 dependencies[] = fontawesome
 dependencies[] = gen_person
+dependencies[] = gen_notes
 dependencies[] = genealogy
 dependencies[] = genealogy_date
 dependencies[] = genealogy_content_editor_role

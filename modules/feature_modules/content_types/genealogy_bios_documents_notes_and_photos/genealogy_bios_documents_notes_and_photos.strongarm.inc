@@ -28,7 +28,7 @@ function genealogy_bios_documents_notes_and_photos_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'additional_settings__active_tab_notes';
-  $strongarm->value = 'edit-menu';
+  $strongarm->value = 'edit-diff';
   $export['additional_settings__active_tab_notes'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -48,6 +48,13 @@ function genealogy_bios_documents_notes_and_photos_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'auto_entitylabel_node_notes';
+  $strongarm->value = '1';
+  $export['auto_entitylabel_node_notes'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'auto_entitylabel_pattern_node_biography';
   $strongarm->value = 'Biography';
   $export['auto_entitylabel_pattern_node_biography'] = $strongarm;
@@ -55,9 +62,23 @@ function genealogy_bios_documents_notes_and_photos_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'auto_entitylabel_pattern_node_notes';
+  $strongarm->value = 'Notes';
+  $export['auto_entitylabel_pattern_node_notes'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'auto_entitylabel_php_node_biography';
   $strongarm->value = 0;
   $export['auto_entitylabel_php_node_biography'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'auto_entitylabel_php_node_notes';
+  $strongarm->value = 0;
+  $export['auto_entitylabel_php_node_notes'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -77,7 +98,7 @@ function genealogy_bios_documents_notes_and_photos_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'diff_enable_revisions_page_node_notes';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['diff_enable_revisions_page_node_notes'] = $strongarm;
 
   $strongarm = new stdClass();
