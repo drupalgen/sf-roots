@@ -11,15 +11,19 @@ function gen_notes_form_notes_node_form_alter(&$form, &$form_state, $form_id) {
   if ($form['type']['#value'] == 'notes' && is_null($form['nid']['#value'])) {
     //Get url parameters
     $args = arg();
-    dsm($args);
-    dsm(drupal_get_query_parameters());
+    $params = drupal_get_query_parameters();
     // If using modal...
     if (count($args) == 5 && $args[3] == 'ajax') {
       $entity_id = (int) $args[4];
     }
     // If not using modal...
+    // If id is passed as url parameter...
     else if (count($args) == 4) {
       $entity_id = (int) $args[3];
+    }
+    // If id is passed in query string...
+    else if (isset($params['field_entity_assoc_id'])) {
+      $entity_id = (int) $params['field_entity_assoc_id'];
     }
     // Set default value for field_assoc_entity_id.
     if ($entity_id) {
