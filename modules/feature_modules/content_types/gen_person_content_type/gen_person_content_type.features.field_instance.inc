@@ -369,11 +369,7 @@ function gen_person_content_type_field_default_field_instances() {
   // Exported field_instance: 'node-person-field_person_given_name'
   $field_instances['node-person-field_person_given_name'] = array(
     'bundle' => 'person',
-    'default_value' => array(
-      0 => array(
-        'value' => 'unk',
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => 'Given name, including any middle name(s)',
     'display' => array(
@@ -401,7 +397,7 @@ function gen_person_content_type_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_person_given_name',
     'label' => 'Given Name',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'text_processing' => 0,
       'user_register_form' => FALSE,
@@ -561,11 +557,7 @@ function gen_person_content_type_field_default_field_instances() {
   // Exported field_instance: 'node-person-field_person_surname'
   $field_instances['node-person-field_person_surname'] = array(
     'bundle' => 'person',
-    'default_value' => array(
-      0 => array(
-        'value' => 'unk',
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => 'Surname, or Last Name',
     'display' => array(

@@ -33,3 +33,8 @@ i.fa-circle-thin {
 .gender-nickname {
   clear: both;
 }
+
+#modalContent .vertical-tabs,
+#modalContent .node-form-revision-information {
+  display: none;
+}
