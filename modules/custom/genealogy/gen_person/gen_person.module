@@ -207,6 +207,20 @@ function gen_person_preprocess_node(&$variables) {
       'btn btn-default modal-buttons'
     );
 
+    $variables['nonmodal_button'] = '<div>' . l(
+      t('Edit'),
+      'node/' . $variables['node']->nid . '/edit',
+      array('attributes' => array(
+              'class' => array(
+                'btn',
+                'btn-default',
+                'nonmodal-buttons'
+              )
+            ),
+            'query' => $querystring,
+            )
+    ) . '</div>';
+
     $variables['notes_modal_button'] =  ctools_modal_text_button(
       t('Notes'),
       url($notes_link . '/nojs/' . $variables['node']->nid),
