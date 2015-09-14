@@ -113,6 +113,54 @@ function home_page_default_page_manager_pages() {
     $display->content['new-a5c48a81-3e11-42af-a1d2-0f498fc0fa83'] = $pane;
     $display->panels['bottom'][0] = 'new-a5c48a81-3e11-42af-a1d2-0f498fc0fa83';
     $pane = new stdClass();
+    $pane->pid = 'new-bed6d403-ce74-45da-86e7-1534f4e90eae';
+    $pane->panel = 'left';
+    $pane->type = 'block';
+    $pane->subtype = 'user-login';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 0,
+      'override_title_text' => '',
+      'override_title_heading' => 'h2',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = 'bed6d403-ce74-45da-86e7-1534f4e90eae';
+    $display->content['new-bed6d403-ce74-45da-86e7-1534f4e90eae'] = $pane;
+    $display->panels['left'][0] = 'new-bed6d403-ce74-45da-86e7-1534f4e90eae';
+    $pane = new stdClass();
+    $pane->pid = 'new-02894666-88b2-4b9c-b718-c76de471e55a';
+    $pane->panel = 'middle';
+    $pane->type = 'custom';
+    $pane->subtype = 'custom';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'admin_title' => '',
+      'title' => '',
+      'body' => 'Welcome to DrupalRoots, a Drupal 7 distribution site designed specifically for running a website that displays genealogical research information about your family tree.',
+      'format' => 'plain_text',
+      'substitute' => TRUE,
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = '02894666-88b2-4b9c-b718-c76de471e55a';
+    $display->content['new-02894666-88b2-4b9c-b718-c76de471e55a'] = $pane;
+    $display->panels['middle'][0] = 'new-02894666-88b2-4b9c-b718-c76de471e55a';
+    $pane = new stdClass();
     $pane->pid = 'new-62038c62-4d54-4ccd-b3cb-8b962c7499f2';
     $pane->panel = 'right';
     $pane->type = 'block';
