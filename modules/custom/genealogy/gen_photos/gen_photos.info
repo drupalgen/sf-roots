@@ -1,0 +1,10 @@
+name = Gen Photos
+description = "Supplemental functionality for genealogy photos"
+package = Genealogy
+core = "7.x"
+version = 7.x-1.0
+
+stylesheets[all][] = css/gen_photos.css
+
+dependencies[] = genealogy_bios_documents_notes_and_photos
+

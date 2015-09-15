@@ -1,0 +1,8 @@
+/**
+ * Stylesheet file for gen_photos
+ */
+
+.page-node-add-photos .node-photos-form .node-form-revision-information,
+.page-node-add-photos .node-photos-form .vertical-tabs {
+  display: none;
+}

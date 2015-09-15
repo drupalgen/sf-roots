@@ -21,6 +21,7 @@ dependencies[] = file
 dependencies[] = fontawesome
 dependencies[] = gen_person
 dependencies[] = gen_notes
+dependencies[] = gen_photos
 dependencies[] = genealogy
 dependencies[] = genealogy_date
 dependencies[] = genealogy_content_editor_role

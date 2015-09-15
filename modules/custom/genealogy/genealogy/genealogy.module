@@ -168,13 +168,7 @@ function genealogy_edit_node_modal_page($node, $js = FALSE, $entity_id = NULL) {
 
   // Get node form defaults.
   global $user;
-  if ($node->type == 'notes') {
-    $title = t('Edit Notes');
-  }
-  else {
-    $node_type = ucwords ($node->type);
-    $title = t('Edit a %node_type', array('%node_type' => $node_type));
-  }
+  $title = t('Edit @node_title', array('@node_title' => $node->title));
   $form_state = array(
     'title' => $title,
     'ajax'  => TRUE,
@@ -209,7 +203,7 @@ function genealogy_edit_node_modal_page($node, $js = FALSE, $entity_id = NULL) {
   }
 
   // add CSS class to Modal-Frame
-  $commands[] = ajax_command_invoke('#modalContent', 'addClass', array('gen-person-node edit-a-person'));
+  $commands[] = ajax_command_invoke('#modalContent', 'addClass', array('gen-' . $node->type . '-node'));
 
   print ajax_render($commands);
   drupal_exit();

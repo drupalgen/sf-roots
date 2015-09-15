@@ -222,10 +222,10 @@ function gen_person_preprocess_node(&$variables) {
               )
       ) . '</div>';
     }
-    if(user_access('access content')) {
+    if(user_access('access content') && !is_null($notes_link)) {
       $variables['notes_modal_button'] =  ctools_modal_text_button(
         t('Notes'),
-        url($notes_link . '/nojs'),
+        url($notes_link . '/nojs/' . $variables['node']->nid),
         t("Show Notes"),
         'btn btn-default modal-buttons'
       );
@@ -451,8 +451,12 @@ function _gen_person_check_for_notes($variables) {
   if (isset($results['node'])) {
     $notes_nids = array_keys($results['node']);
     $note_link = 'node/' . $notes_nids[0];
-  } else {
+  }
+  else if(user_access('create person content')) {
     $note_link = 'node/add/notes';
+  }
+  else {
+    $node_link = NULL;
   }
   return $note_link;
 }

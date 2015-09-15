@@ -1,0 +1,15 @@
+<?php
+/**
+ * Module file for Gen Photos
+ */
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function gen_photos_form_photos_node_form_alter(&$form, &$form_state, $form_id) {
+  if (is_null($form['nid']['#value'])) {
+    unset($form['field_source_citations']);
+    unset($form['field_people']);
+  }
+}
+
