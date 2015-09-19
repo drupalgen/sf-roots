@@ -7,6 +7,7 @@ function gen_person_form_alter(&$form, &$form_state, $form_id) {
   //dsm($form);
   //dsm($form_state);
   //dsm($form_id);
+  unset($form['actions']['preview']);
 }
 
 /**
@@ -26,6 +27,7 @@ function gen_person_form_person_node_form_alter(&$form, &$form_state, $form_id) 
   array_unshift($form['#validate'], 'gen_person_form_person_node_form_validate');
   // Remove revision information from vertical tabs.
   unset($form['revision_information']['#group']);
+  unset($form['actions']['delete']);
   // If you are adding a person, remove some fields from the form.
 
   if (is_null($form['nid']['#value'])) {

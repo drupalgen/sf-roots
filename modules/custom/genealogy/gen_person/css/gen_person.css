@@ -43,6 +43,10 @@ i.fa-circle-thin {
   display: none;
 }
 
+.node-form .btn {
+  float: right;
+}
+
 @media (max-width: 991px) {
   .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4,
   .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8 {
