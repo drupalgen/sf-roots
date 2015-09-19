@@ -30,7 +30,7 @@ function gen_person_content_type_field_group_info() {
       'label' => '',
       'instance_settings' => array(
         'panelize' => '0',
-        'bootstrap_grid_col_xs' => '8',
+        'bootstrap_grid_col_xs' => '12',
         'bootstrap_grid_col_sm' => '8',
         'bootstrap_grid_col_md' => '8',
         'bootstrap_grid_col_lg' => '8',
@@ -61,7 +61,7 @@ function gen_person_content_type_field_group_info() {
       'label' => '',
       'instance_settings' => array(
         'panelize' => '0',
-        'bootstrap_grid_col_xs' => '4',
+        'bootstrap_grid_col_xs' => '12',
         'bootstrap_grid_col_sm' => '4',
         'bootstrap_grid_col_md' => '4',
         'bootstrap_grid_col_lg' => '4',
@@ -92,7 +92,7 @@ function gen_person_content_type_field_group_info() {
       'label' => '',
       'instance_settings' => array(
         'panelize' => '0',
-        'bootstrap_grid_col_xs' => '8',
+        'bootstrap_grid_col_xs' => '12',
         'bootstrap_grid_col_sm' => '8',
         'bootstrap_grid_col_md' => '8',
         'bootstrap_grid_col_lg' => '8',
@@ -160,7 +160,7 @@ function gen_person_content_type_field_group_info() {
       'label' => '',
       'instance_settings' => array(
         'panelize' => '0',
-        'bootstrap_grid_col_xs' => '4',
+        'bootstrap_grid_col_xs' => '12',
         'bootstrap_grid_col_sm' => '4',
         'bootstrap_grid_col_md' => '4',
         'bootstrap_grid_col_lg' => '4',
@@ -191,7 +191,7 @@ function gen_person_content_type_field_group_info() {
       'label' => '',
       'instance_settings' => array(
         'panelize' => '0',
-        'bootstrap_grid_col_xs' => '8',
+        'bootstrap_grid_col_xs' => '12',
         'bootstrap_grid_col_sm' => '8',
         'bootstrap_grid_col_md' => '8',
         'bootstrap_grid_col_lg' => '8',
@@ -259,7 +259,7 @@ function gen_person_content_type_field_group_info() {
       'label' => '',
       'instance_settings' => array(
         'panelize' => '0',
-        'bootstrap_grid_col_xs' => '4',
+        'bootstrap_grid_col_xs' => '6',
         'bootstrap_grid_col_sm' => '4',
         'bootstrap_grid_col_md' => '4',
         'bootstrap_grid_col_lg' => '4',
@@ -290,8 +290,8 @@ function gen_person_content_type_field_group_info() {
       'label' => '',
       'instance_settings' => array(
         'panelize' => '0',
-        'bootstrap_grid_col_xs' => '8',
-        'bootstrap_grid_col_sm' => '4',
+        'bootstrap_grid_col_xs' => '12',
+        'bootstrap_grid_col_sm' => '8',
         'bootstrap_grid_col_md' => '4',
         'bootstrap_grid_col_lg' => '4',
         'required_fields' => 1,
@@ -321,8 +321,8 @@ function gen_person_content_type_field_group_info() {
       'label' => '',
       'instance_settings' => array(
         'panelize' => '0',
-        'bootstrap_grid_col_xs' => '4',
-        'bootstrap_grid_col_sm' => '2',
+        'bootstrap_grid_col_xs' => '6',
+        'bootstrap_grid_col_sm' => '4',
         'bootstrap_grid_col_md' => '2',
         'bootstrap_grid_col_lg' => '2',
         'required_fields' => 1,
@@ -352,8 +352,8 @@ function gen_person_content_type_field_group_info() {
       'label' => '',
       'instance_settings' => array(
         'panelize' => '0',
-        'bootstrap_grid_col_xs' => '4',
-        'bootstrap_grid_col_sm' => '2',
+        'bootstrap_grid_col_xs' => '6',
+        'bootstrap_grid_col_sm' => '4',
         'bootstrap_grid_col_md' => '2',
         'bootstrap_grid_col_lg' => '2',
         'required_fields' => 1,
@@ -383,8 +383,8 @@ function gen_person_content_type_field_group_info() {
       'label' => '',
       'instance_settings' => array(
         'panelize' => '0',
-        'bootstrap_grid_col_xs' => '8',
-        'bootstrap_grid_col_sm' => '4',
+        'bootstrap_grid_col_xs' => '12',
+        'bootstrap_grid_col_sm' => '8',
         'bootstrap_grid_col_md' => '4',
         'bootstrap_grid_col_lg' => '4',
         'required_fields' => 1,
