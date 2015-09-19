@@ -13,3 +13,15 @@ function gen_photos_form_photos_node_form_alter(&$form, &$form_state, $form_id) 
   }
 }
 
+/**
+ * Implement hook_menu().
+ */
+function gen_photos_menu() {
+  $items = array();
+
+  $items['node/add/photos/%ctools_js/%'] = array(
+
+  );
+
+  return $items;
+}

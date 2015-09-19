@@ -138,6 +138,7 @@ function gen_person_content_type_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_person_birthplace',
     'label' => 'Place',
+    'placeholder' => '',
     'required' => 0,
     'settings' => array(
       'behaviors' => array(
@@ -147,6 +148,7 @@ function gen_person_content_type_field_default_field_instances() {
       ),
       'user_register_form' => FALSE,
     ),
+    'use_title_as_placeholder' => 1,
     'widget' => array(
       'active' => 1,
       'module' => 'entityreference',
@@ -162,7 +164,7 @@ function gen_person_content_type_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 21,
+      'weight' => 23,
     ),
   );
 
@@ -197,16 +199,18 @@ function gen_person_content_type_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_person_born',
     'label' => 'Date',
+    'placeholder' => '',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
+    'use_title_as_placeholder' => 1,
     'widget' => array(
       'active' => 0,
       'module' => 'genealogy_date',
       'settings' => array(),
       'type' => 'genealogy_date_text',
-      'weight' => 11,
+      'weight' => 25,
     ),
   );
 
@@ -246,6 +250,7 @@ function gen_person_content_type_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_person_deathplace',
     'label' => 'Place',
+    'placeholder' => '',
     'required' => 0,
     'settings' => array(
       'behaviors' => array(
@@ -255,6 +260,7 @@ function gen_person_content_type_field_default_field_instances() {
       ),
       'user_register_form' => FALSE,
     ),
+    'use_title_as_placeholder' => 1,
     'widget' => array(
       'active' => 1,
       'module' => 'entityreference',
@@ -305,16 +311,18 @@ function gen_person_content_type_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_person_died',
     'label' => 'Date',
+    'placeholder' => '',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
+    'use_title_as_placeholder' => 1,
     'widget' => array(
       'active' => 0,
       'module' => 'genealogy_date',
       'settings' => array(),
       'type' => 'genealogy_date_text',
-      'weight' => 7,
+      'weight' => 23,
     ),
   );
 
@@ -362,7 +370,7 @@ function gen_person_content_type_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 21,
+      'weight' => 10,
     ),
   );
 
@@ -397,11 +405,13 @@ function gen_person_content_type_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_person_given_name',
     'label' => 'Given Name',
+    'placeholder' => '',
     'required' => 1,
     'settings' => array(
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
+    'use_title_as_placeholder' => 1,
     'widget' => array(
       'active' => 1,
       'module' => 'text',
@@ -409,7 +419,7 @@ function gen_person_content_type_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 7,
+      'weight' => 10,
     ),
   );
 
@@ -418,45 +428,60 @@ function gen_person_content_type_field_default_field_instances() {
     'bundle' => 'person',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'A pre-nominal designation indicating a title or other prefix that comes before a person\'s given name.',
+    'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'hidden',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_plain',
-        'weight' => 7,
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 23,
       ),
       'full' => array(
-        'label' => 'inline',
-        'module' => 'taxonomy',
+        'label' => 'above',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_plain',
+        'type' => 'hidden',
         'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'node',
     'field_name' => 'field_person_name_prefix',
     'label' => 'Prefix',
+    'placeholder' => '',
     'required' => 0,
     'settings' => array(
+      'behaviors' => array(
+        'taxonomy-index' => array(
+          'status' => TRUE,
+        ),
+      ),
       'user_register_form' => FALSE,
     ),
+    'use_title_as_placeholder' => 1,
     'widget' => array(
-      'active' => 0,
-      'module' => 'taxonomy',
+      'active' => 1,
+      'module' => 'entityreference',
       'settings' => array(
-        'autocomplete_path' => 'taxonomy/autocomplete',
+        'entityreference_autocreate' => array(
+          'active' => 1,
+          'author' => '',
+          'author_current_user' => 1,
+          'status' => -1,
+        ),
+        'match_operator' => 'CONTAINS',
+        'path' => '',
         'size' => 60,
       ),
-      'type' => 'taxonomy_autocomplete',
-      'weight' => 6,
+      'type' => 'entityreference_autocomplete',
+      'weight' => 11,
     ),
   );
 
@@ -465,45 +490,60 @@ function gen_person_content_type_field_default_field_instances() {
     'bundle' => 'person',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Post-nominal letters (for positions, degrees, offices, etc) or Generational ordering (Jr, Sr, III, etc)',
+    'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'hidden',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_plain',
-        'weight' => 6,
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 24,
       ),
       'full' => array(
-        'label' => 'hidden',
-        'module' => 'taxonomy',
+        'label' => 'above',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_plain',
-        'weight' => 3,
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'node',
     'field_name' => 'field_person_name_suffix',
     'label' => 'Suffix',
+    'placeholder' => '',
     'required' => 0,
     'settings' => array(
+      'behaviors' => array(
+        'taxonomy-index' => array(
+          'status' => TRUE,
+        ),
+      ),
       'user_register_form' => FALSE,
     ),
+    'use_title_as_placeholder' => 1,
     'widget' => array(
-      'active' => 0,
-      'module' => 'taxonomy',
+      'active' => 1,
+      'module' => 'entityreference',
       'settings' => array(
-        'autocomplete_path' => 'taxonomy/autocomplete',
+        'entityreference_autocreate' => array(
+          'active' => 1,
+          'author' => '',
+          'author_current_user' => 1,
+          'status' => -1,
+        ),
+        'match_operator' => 'CONTAINS',
+        'path' => '',
         'size' => 60,
       ),
-      'type' => 'taxonomy_autocomplete',
-      'weight' => 9,
+      'type' => 'entityreference_autocomplete',
+      'weight' => 10,
     ),
   );
 
@@ -538,11 +578,13 @@ function gen_person_content_type_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_person_nicknames_aliases',
     'label' => 'Nicknames / Aliases',
+    'placeholder' => '',
     'required' => 0,
     'settings' => array(
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
+    'use_title_as_placeholder' => 1,
     'widget' => array(
       'active' => 1,
       'module' => 'text',
@@ -585,11 +627,13 @@ function gen_person_content_type_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_person_surname',
     'label' => 'Surname',
+    'placeholder' => '',
     'required' => 1,
     'settings' => array(
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
+    'use_title_as_placeholder' => 1,
     'widget' => array(
       'active' => 1,
       'module' => 'text',
@@ -603,7 +647,6 @@ function gen_person_content_type_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('A pre-nominal designation indicating a title or other prefix that comes before a person\'s given name.');
   t('Birthdate');
   t('Date');
   t('Date of Death');
@@ -614,7 +657,6 @@ function gen_person_content_type_field_default_field_instances() {
   t('Nicknames / Aliases');
   t('Nicknames, aliases, or other names by which this person may be known');
   t('Place');
-  t('Post-nominal letters (for positions, degrees, offices, etc) or Generational ordering (Jr, Sr, III, etc)');
   t('Prefix');
   t('Suffix');
   t('Surname');

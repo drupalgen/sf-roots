@@ -21,7 +21,7 @@ function gen_person_content_type_field_group_info() {
   $field_group->parent_name = 'group_person_nicknames';
   $field_group->data = array(
     'label' => '',
-    'weight' => '21',
+    'weight' => '16',
     'children' => array(
       0 => 'field_person_nicknames_aliases',
     ),
@@ -52,7 +52,7 @@ function gen_person_content_type_field_group_info() {
   $field_group->parent_name = 'group_person_birth';
   $field_group->data = array(
     'label' => '',
-    'weight' => '21',
+    'weight' => '25',
     'children' => array(
       0 => 'field_person_born',
     ),
@@ -83,7 +83,7 @@ function gen_person_content_type_field_group_info() {
   $field_group->parent_name = 'group_person_birth';
   $field_group->data = array(
     'label' => '',
-    'weight' => '22',
+    'weight' => '26',
     'children' => array(
       0 => 'field_person_birthplace',
     ),
@@ -250,7 +250,7 @@ function gen_person_content_type_field_group_info() {
   $field_group->parent_name = 'group_person_nicknames';
   $field_group->data = array(
     'label' => '',
-    'weight' => '20',
+    'weight' => '15',
     'children' => array(
       0 => 'field_person_gender',
     ),
@@ -407,9 +407,9 @@ function gen_person_content_type_field_group_info() {
     'label' => 'Name',
     'weight' => '0',
     'children' => array(
-      0 => 'group_person_name_prefix',
-      1 => 'group_person_name_suffix',
-      2 => 'group_person_name_given',
+      0 => 'group_person_name_given',
+      1 => 'group_person_name_prefix',
+      2 => 'group_person_name_suffix',
       3 => 'group_person_name_surname',
     ),
     'format_type' => 'bootstrap_grid_row',
@@ -443,19 +443,19 @@ function gen_person_content_type_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => '',
+    'label' => 'Gender',
     'weight' => '1',
     'children' => array(
-      0 => 'group_person_gender_col',
-      1 => 'group_person_alias_col',
+      0 => 'group_person_alias_col',
+      1 => 'group_person_gender_col',
     ),
     'format_type' => 'bootstrap_grid_row',
     'format_settings' => array(
-      'label' => '',
+      'label' => 'Gender',
       'instance_settings' => array(
-        'show_heading' => '0',
+        'show_heading' => '1',
         'heading_position' => '0',
-        'label_element' => 'h3',
+        'label_element' => 'h4',
         'description_element' => 'p',
         'panelize' => '0',
         'bootstrap_grid_col_xs' => '12',
@@ -466,7 +466,6 @@ function gen_person_content_type_field_group_info() {
         'classes' => '',
         'description' => '',
       ),
-      'formatter' => '',
     ),
   );
   $export['group_person_nicknames|node|person|form'] = $field_group;

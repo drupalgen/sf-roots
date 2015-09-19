@@ -2,3 +2,14 @@
  * This file should get overwritten if Method 1 is used. If Method 2 is chosen,
  * remove this comment and start adding your styles to this file.
  */
+
+/* Increasing the height of form elements */
+.form-control {
+  height: 45px;
+}
+
+.btn {
+  padding-top: 9px;
+  padding-bottom: 9px;
+  font-size: 18px;
+}

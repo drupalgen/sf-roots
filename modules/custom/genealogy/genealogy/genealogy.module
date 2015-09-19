@@ -232,3 +232,14 @@ function genealogy_node_view_modal($node = NULL, $js = NULL) {
 
   return ctools_modal_render($node->title, $contents) ;
 }
+
+/**
+ * Implements hook_field_placeholder_info().
+ */
+function genealogy_field_placeholder_info() {
+  return array (
+    'genealogy_date_text' => 'orig_text',
+    'entityreference_autocomplete' => 'target_id',
+    'entityreference_autocomplete_tags' =>  'value',
+  );
+}

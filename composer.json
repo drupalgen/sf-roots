@@ -151,6 +151,7 @@
     "drupal/entityreference_autocreate": "dev-7.x-1.x#e1cab9d",
     "drupal/features": "7.2.3",
     "drupal/features_roles_permissions": "7.*",
+    "drupal/field_placeholder": "7.*",
     "drupal/fontawesome": "7.*",
     "drupal/file_entity": "7.*",
     "drupal/inline_entity_form": "7.*",

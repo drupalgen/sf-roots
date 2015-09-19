@@ -34,6 +34,10 @@ i.fa-circle-thin {
   clear: both;
 }
 
+.field-name-field-person-gender .control-label {
+  display: none;
+}
+
 #modalContent .vertical-tabs,
 #modalContent .node-form-revision-information {
   display: none;

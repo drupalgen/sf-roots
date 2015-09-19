@@ -387,10 +387,10 @@ function _gen_person_preprocess_person_name($variables) {
     foreach($namesuffixes as $key => $namesuffix) {
       $ns = field_view_value('node', $variables['node'], 'field_person_name_suffix', $namesuffixes[$key]);
       if (drupal_strlen(trim($namesuffixoutput)) == 0)  {
-        $namesuffixoutput .= trim($ns['#title']);
+        $namesuffixoutput .= trim($ns['#markup']);
       }
       else {
-        $namesuffixoutput .= ", " . trim($ns['#title']);
+        $namesuffixoutput .= ", " . trim($ns['#markup']);
       }
     }
   }
@@ -406,9 +406,9 @@ function _gen_person_preprocess_person_name($variables) {
     foreach($nameprefixes as $key => $nameprefix) {
       $ns = field_view_value('node', $variables['node'], 'field_person_name_prefix', $nameprefixes[$key]);
       if(drupal_strlen(trim($nameprefixoutput)) == 0) {
-        $nameprefixoutput .= trim($ns['#title']);
+        $nameprefixoutput .= trim($ns['#markup']);
       } else {
-        $nameprefixoutput .= " " . trim($ns['#title']);
+        $nameprefixoutput .= " " . trim($ns['#markup']);
       }
     }
     if (drupal_strlen($nameprefixoutput) > 0) {
