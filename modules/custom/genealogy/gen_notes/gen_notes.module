@@ -63,9 +63,14 @@ function gen_notes_preprocess_node(&$variables) {
       // Add CTools' javascript to the page with the block.
       ctools_modal_add_js();
       // return a ctools modal text button.
+      if(isset($variables['field_assoc_entity_id'][LANGUAGE_NONE])) {
+        $url = 'node/' . $variables['node']->nid . '/edit/nojs/' . $variables['field_assoc_entity_id'][LANGUAGE_NONE][0]['target_id'];
+      } else {
+        $url = 'node/' . $variables['node']->nid . '/edit/nojs/' . $variables['field_assoc_entity_id'][0]['target_id'];
+      }
       $variables['modal_button'] =  ctools_modal_text_button(
         t('Edit'),
-        url('node/' . $variables['node']->nid . '/edit/nojs/' . $variables['field_assoc_entity_id'][0]['target_id']),
+        url($url),
         t("Show the 'Edit Notes' form"),
         'btn btn-default modal-buttons'
       );
