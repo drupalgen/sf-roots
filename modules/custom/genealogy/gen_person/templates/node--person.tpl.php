@@ -95,29 +95,32 @@
     <?php endif; ?>
   </header>
   <?php endif; ?>
-  <?php
-    // Hide comments, tags, and links now so that we can render them later.
-    hide($content['comments']);
-    hide($content['links']);
-    hide($content['field_tags']);
-    hide($content['nonmodal_button']);
-    hide($content['modal_button']);
-    print render($name);
-  ?>
-  <div class="gender-nickname">
-    <div class="person-gender">
-      <?php print render($content['field_person_gender']); ?>
+  <div class="person-view">
+    <?php
+      // Hide comments, tags, and links now so that we can render them later.
+      hide($content['comments']);
+      hide($content['links']);
+      hide($content['field_tags']);
+      hide($content['nonmodal_button']);
+      hide($content['modal_button']);
+      print render($name);
+    ?>
+    <div class="gender-nickname">
+      <div class="person-gender">
+        <?php print render($content['field_person_gender']); ?>
+      </div>
+      <div class="person-nickname">
+        <?php print render($content['field_person_nicknames_aliases']); ?>
+      </div>
     </div>
-    <div class="person-nickname">
-      <?php print render($content['field_person_nicknames_aliases']); ?>
-    </div>
+    <?php print render($content); ?>
   </div>
-  <?php print render($content); ?>
-  <?php print render($modal_button); ?>
-  <?php print render($nonmodal_button); ?>
-  <?php print render($notes_modal_button); ?>
-  <?php print render($notes_nonmodal_button); ?>
-
+  <div class="person-view-buttons">
+    <?php print render($modal_button); ?>
+    <?php print render($nonmodal_button); ?>
+    <?php print render($notes_modal_button); ?>
+    <?php print render($notes_nonmodal_button); ?>
+  </div>
   <?php if (!empty($content['field_tags']) || !empty($content['links'])): ?>
   <footer>
     <?php print render($content['field_tags']); ?>
