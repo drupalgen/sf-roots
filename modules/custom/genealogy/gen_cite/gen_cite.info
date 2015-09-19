@@ -1,0 +1,11 @@
+name = Genealogy Citations
+description = Genealogy module for tracking source citations on research
+package = Genealogy
+core = 7.x
+php = 5.x
+
+version = 7.x-1.0
+
+stylesheets[all][] = css/gen_cite.css
+
+dependencies[] = genealogy_sources

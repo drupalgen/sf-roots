@@ -1,0 +1,27 @@
+/**
+ * @file
+ * Genealogy Stylesheet
+ */
+
+/* References icon for citation links */
+a.source-citations-icon {
+  /* 20px icon */
+  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABj0lEQVQ4T83UvUuWYRQG8J9lQyARbvUPBA0KNbXWEDU06FSUGYRgRKM49LEETYKELjpEX5Kg0qT/gESEgltDX0sI6lIEYmUlR84rj4/vq6+8S2d7zn091zn3dZ9zNakevVjEAlbRjgt4jF9oxj28wif8RAt6m6rwncMzHK9RbNd0mbALA7iNcZzCDN7hMg5iDGdwEW9xDM8RjSgSPsAtdGIWZzGJl1mgFdM4mmSfcSLPT1faDsKoGtpE1Uv4iquZu48hnMQUPqIjdYyCL7LDLRmCcALncRNf8nr/8BQjeINl/MhOv2cuHutwWdAgXMMhHMjDyAXher5m+bsiVWB2RAVcPCjn6sFsu3K50n9DGBL113OdejBLuBEzWw94L8wcruBDzOde4FovWvkvhr4n9/0R7jRCeBcPcQRPcuDXq5nDfjyhLY0k3ChiuBHCWMFRxI7/Rh8GGyH8m+ayguvpSptuE+xhmEXDKA57Wec/iQ/MPK7hffHn/RJGZ+FQr9GNb7vtbbUxqTUJYSZBvi02AMs/b9tkWEFPAAAAAElFTkSuQmCC') no-repeat center;
+  opacity: 0.6;
+  color: rgba(0, 0, 0, 0);
+  padding-top: 0px;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 1px;
+
+}
+
+a.source-citations-icon:hover,
+a.source-citations-icon:focus {
+  opacity: 1.0;
+  color: rgba(0, 0, 0, 0) !important;
+}
+
+.source-citation {
+  padding-left: 0.3em;
+}

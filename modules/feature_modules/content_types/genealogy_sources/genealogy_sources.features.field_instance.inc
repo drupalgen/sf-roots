@@ -761,9 +761,48 @@ function genealogy_sources_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-source_citation-field_ref'
+  $field_instances['node-source_citation-field_ref'] = array(
+    'bundle' => 'source_citation',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'field_hidden',
+        'settings' => array(),
+        'type' => 'field_hidden_text_plain',
+        'weight' => 6,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_ref',
+    'label' => 'Reference Field',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'field_hidden',
+      'settings' => array(),
+      'type' => 'field_hidden',
+      'weight' => 10,
+    ),
+  );
+
   // Exported field_instance: 'node-source_citation-field_source'
   $field_instances['node-source_citation-field_source'] = array(
     'bundle' => 'source_citation',
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -792,9 +831,13 @@ function genealogy_sources_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'inline_entity_form',
+      'module' => 'entityreference',
       'settings' => array(
+        'entityreference_autocreate' => 0,
         'fields' => array(),
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
         'type_settings' => array(
           'allow_existing' => FALSE,
           'allow_new' => 1,
@@ -805,7 +848,7 @@ function genealogy_sources_field_default_field_instances() {
           'override_labels' => 1,
         ),
       ),
-      'type' => 'inline_entity_form_single',
+      'type' => 'entityreference_autocomplete',
       'weight' => 1,
     ),
   );
@@ -864,6 +907,7 @@ function genealogy_sources_field_default_field_instances() {
   t('Place Issued');
   t('Publisher');
   t('Quality');
+  t('Reference Field');
   t('Repository');
   t('Repository type');
   t('Source');

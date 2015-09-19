@@ -90,6 +90,44 @@ function gen_person_content_type_default_page_manager_handlers() {
     $pane->uuid = 'ead8c73d-e18a-43f3-9e0a-e2f69f8cdeb4';
     $display->content['new-ead8c73d-e18a-43f3-9e0a-e2f69f8cdeb4'] = $pane;
     $display->panels['center'][0] = 'new-ead8c73d-e18a-43f3-9e0a-e2f69f8cdeb4';
+    $pane = new stdClass();
+    $pane->pid = 'new-b74171bd-db0c-48d8-ac1a-87ff244f9310';
+    $pane->panel = 'references';
+    $pane->type = 'views';
+    $pane->subtype = 'source_citations_view';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_pager_settings' => 0,
+      'use_pager' => 0,
+      'nodes_per_page' => '0',
+      'pager_id' => '0',
+      'offset' => '0',
+      'more_link' => 0,
+      'feed_icons' => 0,
+      'panel_args' => 0,
+      'link_to_view' => 0,
+      'args' => '',
+      'url' => '',
+      'display' => 'block',
+      'override_title' => 0,
+      'override_title_text' => '',
+      'override_title_heading' => 'h2',
+      'context' => array(
+        0 => 'argument_entity_id:node_1.nid',
+      ),
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = 'b74171bd-db0c-48d8-ac1a-87ff244f9310';
+    $display->content['new-b74171bd-db0c-48d8-ac1a-87ff244f9310'] = $pane;
+    $display->panels['references'][0] = 'new-b74171bd-db0c-48d8-ac1a-87ff244f9310';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

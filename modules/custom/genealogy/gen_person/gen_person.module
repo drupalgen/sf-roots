@@ -429,13 +429,25 @@ function _gen_person_preprocess_person_name($variables) {
     $nameoutput .= $givennameoutput['#markup'];
   }
 
+  $citations = _gen_person_check_for_name_references($variables);
+
+  if (function_exists('gen_cite_cite_name_button')) {
+    $args = array(
+      'field_entity_assoc_id' => $variables['node']->nid,
+      'ref' => 'name',
+    );
+    $cite = gen_cite_cite_name_button($args);
+  } else {
+    $cite = NULL;
+  }
   return array(
     '#markup' => '<div class="field field-name-field-person-name field-type-text field-label-inline clearfix">' .
     '<div class="field-label">' .
     t('Name') . ":&nbsp;" .
     '</div><div class="field-items"><div class="field-item even">' .
-      $nameoutput .
-      '</div></div></div>',
+      $nameoutput . $citations . $cite .
+      '</div></div>' .
+      '</div>',
   );
 }
 
@@ -466,4 +478,52 @@ function _gen_person_check_for_notes($variables) {
     $node_link = NULL;
   }
   return $note_link;
+}
+
+function _gen_person_check_for_name_references($variables) {
+  $nonmodal_ref_links = '';
+  $modal_ref_links = '';
+
+  $query = new EntityFieldQuery();
+
+  $results = $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'source_citation')
+    ->propertyCondition('status', NODE_PUBLISHED)
+    ->fieldCondition('field_assoc_entity_id', 'target_id', $variables['node']->nid, '=')
+    ->fieldOrderBy('field_ref', 'value', 'ASC')
+    ->propertyOrderBy('created', 'ASC')
+    ->execute();
+  if (isset($results['node'])) {
+    $ref_nids = array_keys($results['node']);
+    $references = entity_load('node', $ref_nids);
+    $ref_count = 0;
+    foreach($references as $key => $entity) {
+      $ref_count ++;
+      $wrapper = entity_metadata_wrapper('node', $entity);
+      if($wrapper->field_ref->value() == 'a_name') {
+        $link = l(t('!ref_count', array('!ref_count' => $ref_count)), 'node/' . $key);
+        $modal_link = l(t('!ref_count', array('!ref_count' => $ref_count)), 'node/' . $key . '/nojs/' . $variables['node']->nid, array('attributes' => array('class' => ' ctools-use-modal')));
+        if(strlen($nonmodal_ref_links) == 0) {
+          $nonmodal_ref_links = $link;
+        } else {
+          $nonmodal_ref_links = t('!ref_link, !new_link', array('!ref_link' => $nonmodal_ref_links, '!new_link' => $link));
+        }
+        if(strlen($modal_ref_links) == 0) {
+          $modal_ref_links = $modal_link;
+        } else {
+          $modal_ref_links = t('!ref_link, !new_link', array('!ref_link' => $modal_ref_links, '!new_link' => $modal_link));
+        }
+
+      }
+    }
+  }
+
+  if(strlen($nonmodal_ref_links) > 0) {
+    $nonmodal_ref_links = '<span class="reference-link nonmodal-links">' . t('(!ref_links)', array('!ref_links' => $nonmodal_ref_links)) . '</span>';
+  }
+  if(strlen($modal_ref_links) > 0) {
+    $modal_ref_links = '<span class="reference-link modal-links">' . t('(!ref_links)', array('!ref_links' => $modal_ref_links)) . '</span>';
+  }
+
+  return '<span class="reference-links">' . $nonmodal_ref_links . $modal_ref_links . '</span>';
 }

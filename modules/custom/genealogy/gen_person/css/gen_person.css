@@ -22,11 +22,13 @@ i.fa-circle-thin {
   background:  rgb(0,0,0) !important;
 }
 
-.no-touch .nonmodal-buttons {
+.no-touch .nonmodal-buttons,
+.no-touch .nonmodal-links {
   display: none;
 }
 
-.touch .modal-buttons {
+.touch .modal-buttons,
+.touch .modal-links {
   display: none;
 }
 
@@ -65,6 +67,10 @@ article.node-person {
 }
 .person-view-buttons .btn {
   width: 100%;
+}
+
+.reference-links {
+  padding-left: 0.5em;
 }
 
 @media (max-width: 991px) {

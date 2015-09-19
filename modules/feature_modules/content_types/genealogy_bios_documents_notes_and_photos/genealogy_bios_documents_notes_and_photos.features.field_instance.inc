@@ -447,46 +447,6 @@ function genealogy_bios_documents_notes_and_photos_field_default_field_instances
     ),
   );
 
-  // Exported field_instance: 'node-photos-field_caption'
-  $field_instances['node-photos-field_caption'] = array(
-    'bundle' => 'photos',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 1,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_caption',
-    'label' => 'Caption',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 32,
-    ),
-  );
-
   // Exported field_instance: 'node-photos-field_description'
   $field_instances['node-photos-field_description'] = array(
     'bundle' => 'photos',
@@ -523,12 +483,12 @@ function genealogy_bios_documents_notes_and_photos_field_default_field_instances
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 34,
+      'weight' => 2,
     ),
   );
 
-  // Exported field_instance: 'node-photos-field_family'
-  $field_instances['node-photos-field_family'] = array(
+  // Exported field_instance: 'node-photos-field_entity_id'
+  $field_instances['node-photos-field_entity_id'] = array(
     'bundle' => 'photos',
     'default_value' => NULL,
     'deleted' => 0,
@@ -541,7 +501,7 @@ function genealogy_bios_documents_notes_and_photos_field_default_field_instances
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 5,
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -551,15 +511,15 @@ function genealogy_bios_documents_notes_and_photos_field_default_field_instances
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_family',
-    'label' => 'Family',
+    'field_name' => 'field_entity_id',
+    'label' => 'entity id',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'entityreference',
+      'module' => 'hidden_field',
       'settings' => array(
         'entityreference_autocreate' => array(
           'active' => 0,
@@ -571,8 +531,8 @@ function genealogy_bios_documents_notes_and_photos_field_default_field_instances
         'path' => '',
         'size' => 60,
       ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 37,
+      'type' => 'hidden_hidden',
+      'weight' => 7,
     ),
   );
 
@@ -621,7 +581,7 @@ function genealogy_bios_documents_notes_and_photos_field_default_field_instances
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 36,
+      'weight' => 5,
     ),
   );
 
@@ -671,7 +631,7 @@ function genealogy_bios_documents_notes_and_photos_field_default_field_instances
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 31,
+      'weight' => 0,
     ),
   );
 
@@ -720,14 +680,13 @@ function genealogy_bios_documents_notes_and_photos_field_default_field_instances
         ),
       ),
       'type' => 'inline_entity_form',
-      'weight' => 35,
+      'weight' => 4,
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
   t('Body');
-  t('Caption');
   t('Description');
   t('Document');
   t('Entity ID');
@@ -736,6 +695,7 @@ function genealogy_bios_documents_notes_and_photos_field_default_field_instances
   t('Photo / Image');
   t('Source citations');
   t('Summary');
+  t('entity id');
 
   return $field_instances;
 }

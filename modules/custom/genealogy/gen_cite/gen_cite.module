@@ -1,0 +1,135 @@
+<?php
+/**
+ * Module file for Gen Cite
+ */
+
+function gen_cite_cite_name_button($args) {
+  if (user_access('create person content')) {
+    $text = '#';
+    $destination = drupal_get_destination();
+    $nonmodal_link = 'node/add/source-citation';
+    $nonmodal_link = l($text, $nonmodal_link, array(
+      'attributes' => array(
+        'class' => array('btn', 'btn-default', 'source-citations-icon', 'nonmodal-buttons'),
+      ),
+      'query' => array(
+        'field_entity_assoc_id' => $args['field_entity_assoc_id'],
+        'ref' => $args['ref'],
+        $destination,
+      ),
+    ));
+    $modal_link = 'node/add/source-citation/nojs/' . $args['field_entity_assoc_id'] . '/' . $args['ref'];
+    $modal_link = l($text, $modal_link, array(
+      'attributes' => array(
+        'class' => array('btn', 'btn-default', 'source-citations-icon', 'modal-buttons', 'ctools-use-modal'),
+      ),
+    ));
+    return '<span class="source-citation">' . $nonmodal_link . $modal_link . '</span>';
+  } else {
+    return NULL;
+  }
+}
+
+function gen_cite_form_alter(&$form, &$form_state, $form_id) {
+  //dsm($form);
+  //dsm($form_state);
+  //dsm($form_id);
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function gen_cite_form_source_citation_node_form_alter(&$form, &$form_state, $form_id) {
+  //If this is a new source citation
+  if ($form['type']['#value'] == 'source_citation' && is_null($form['nid']['#value'])) {
+    //Get url parameters
+    $args = arg();
+    $params = drupal_get_query_parameters();
+    // If using modal...
+    if (count($args) == 6 && $args[3] == 'ajax') {
+      $entity_id = (int) $args[4];
+      $ref = $args[5];
+    }
+    // If not using modal...
+    // If id is passed as url parameter...
+    else if (count($args) == 4) {
+      $entity_id = (int) $args[3];
+      $ref = $args[4];
+    }
+    // If id is passed in query string...
+    else if (isset($params['field_entity_assoc_id']) && isset($params['ref'])) {
+      $entity_id = (int) $params['field_entity_assoc_id'];
+      $ref = $params['ref'];
+    }
+    // Set default value for field_assoc_entity_id.
+    if ($entity_id) {
+      $form['field_assoc_entity_id'][LANGUAGE_NONE][0]['target_id']['#default_value'] = $entity_id;
+    }
+    // Set value for field_ref
+    if ($ref) {
+      if($ref == 'name') {
+        $form['field_ref'][LANGUAGE_NONE][0]['value']['#default_value'] = 'a_name';
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function gen_cite_theme($existing, $type, $theme, $path) {
+  return array(
+    'node__source_citation' => array(
+      'render element' => 'content',
+      'template' => 'node--source_citation',
+      'base hook' => 'node',
+      'path' => drupal_get_path('module', 'gen_cite') . '/templates',
+    )
+  );
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function gen_cite_preprocess_node(&$variables) {
+  if ($variables['type'] == 'source_citation') {
+    $destination = drupal_get_destination();
+    $querystring = array(
+      'field_entity_assoc_id' => $variables['node']->nid,
+      $destination,
+    );
+    if (user_access('create person content')) {
+      ctools_include('ajax');
+      ctools_include('modal');
+      ctools_add_js('ajax-responder');
+      // Add CTools' javascript to the page with the block.
+      ctools_modal_add_js();
+      // return a ctools modal text button.
+      if(isset($variables['field_assoc_entity_id'][LANGUAGE_NONE])) {
+        $url = 'node/' . $variables['node']->nid . '/edit/nojs/' . $variables['field_assoc_entity_id'][LANGUAGE_NONE][0]['target_id'];
+      } else {
+        $url = 'node/' . $variables['node']->nid . '/edit/nojs/' . $variables['field_assoc_entity_id'][0]['target_id'];
+      }
+      $variables['modal_button'] =  ctools_modal_text_button(
+        t('Edit'),
+        url($url),
+        t("Show the 'Edit Source Citations' form"),
+        'btn btn-default modal-buttons'
+      );
+
+      $variables['nonmodal_button'] = '<div>' . l(
+        t('Edit'),
+        'node/' . $variables['node']->nid . '/edit',
+        array('attributes' => array(
+                'class' => array(
+                  'btn',
+                  'btn-default',
+                  'nonmodal-buttons'
+                )
+              ),
+              'query' => $querystring,
+              )
+      ) . '</div>';
+    }
+  }
+}

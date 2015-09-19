@@ -61,6 +61,15 @@ function genealogy_menu() {
     'type' => MENU_CALLBACK,
   );
 
+  $items['node/add/%/%ctools_js/%/%'] = array(
+    'title' => t('Add'),
+    'page arguments' => array(2, 3, 4, 5),
+    'page callback' => 'genealogy_add_node_modal_page',
+    'access arguments' => array('create person content'),
+    'type' => MENU_CALLBACK,
+  );
+
+
   $items['node/%node/edit/%ctools_js'] = array(
     'title' => t('Edit'),
     'page arguments' => array(1, 3),
@@ -107,10 +116,10 @@ function genealogy_add_node_modal_page($type = NULL, $js = FALSE, $entity_id = N
   $node = (object) array(
     'uid' => $user->uid,
     'name' => (isset($user->name) ? $user->name : ''),
-    'type' => $type,
+    'type' => str_replace("-", "_", $type),
     'language' => LANGUAGE_NONE
   );
-  $camelcase = ucwords($type);
+  $camelcase = ucwords(str_replace("-", " ", $type));
   $form_state = array(
     'title' => t('Add a @node', array('@node' => $camelcase)),
     'ajax'  => TRUE,
@@ -119,7 +128,7 @@ function genealogy_add_node_modal_page($type = NULL, $js = FALSE, $entity_id = N
     ),
   );
   $force_page_reload = FALSE;
-  $commands = ctools_modal_form_wrapper($type . '_node_form', $form_state);
+  $commands = ctools_modal_form_wrapper(str_replace("-", "_", $type) . '_node_form', $form_state);
 
   if (!empty($form_state['executed']) && empty($form_state['rebuild'])) {
     // overwrite commands.

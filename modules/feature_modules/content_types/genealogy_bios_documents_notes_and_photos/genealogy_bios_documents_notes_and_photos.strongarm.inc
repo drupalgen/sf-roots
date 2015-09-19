@@ -277,10 +277,10 @@ function genealogy_bios_documents_notes_and_photos_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'title' => array(
-          'weight' => '-5',
+          'weight' => '1',
         ),
         'path' => array(
-          'weight' => '30',
+          'weight' => '8',
         ),
       ),
       'display' => array(),
@@ -499,6 +499,34 @@ function genealogy_bios_documents_notes_and_photos_strongarm() {
   $strongarm->name = 'node_submitted_photos';
   $strongarm->value = 0;
   $export['node_submitted_photos'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_biography_pattern';
+  $strongarm->value = '';
+  $export['pathauto_node_biography_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_documents_files_pattern';
+  $strongarm->value = '';
+  $export['pathauto_node_documents_files_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_notes_pattern';
+  $strongarm->value = '';
+  $export['pathauto_node_notes_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_photos_pattern';
+  $strongarm->value = '';
+  $export['pathauto_node_photos_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

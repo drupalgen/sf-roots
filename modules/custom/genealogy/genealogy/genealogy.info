@@ -6,6 +6,8 @@ php = 5.x
 
 version = 7.x-1.0
 
+stylesheets[all][] = css/genealogy.css
+
 dependencies[] = genealogy_bios_documents_notes_and_photos
 dependencies[] = gen_person_content_type
 dependencies[] = gen_location_content_type
