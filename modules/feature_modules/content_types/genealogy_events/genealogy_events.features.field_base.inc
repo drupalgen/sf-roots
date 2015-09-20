@@ -84,7 +84,14 @@ function genealogy_events_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_event_type',
-    'foreign keys' => array(),
+    'foreign keys' => array(
+      'taxonomy_term_data' => array(
+        'columns' => array(
+          'target_id' => 'tid',
+        ),
+        'table' => 'taxonomy_term_data',
+      ),
+    ),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
@@ -105,9 +112,11 @@ function genealogy_events_field_default_field_bases() {
           'property' => 'name',
           'type' => 'property',
         ),
-        'target_bundles' => array(),
+        'target_bundles' => array(
+          'life_events' => 'life_events',
+        ),
       ),
-      'target_type' => 'taxonomy_vocabulary',
+      'target_type' => 'taxonomy_term',
     ),
     'translatable' => 0,
     'type' => 'entityreference',
@@ -194,7 +203,14 @@ function genealogy_events_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_location',
-    'foreign keys' => array(),
+    'foreign keys' => array(
+      'node' => array(
+        'columns' => array(
+          'target_id' => 'nid',
+        ),
+        'table' => 'node',
+      ),
+    ),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',

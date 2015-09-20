@@ -28,7 +28,7 @@ function genealogy_events_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'auto_entitylabel_node_event';
-  $strongarm->value = '1';
+  $strongarm->value = '0';
   $export['auto_entitylabel_node_event'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -110,10 +110,10 @@ function genealogy_events_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'title' => array(
-          'weight' => '3',
+          'weight' => '5',
         ),
         'path' => array(
-          'weight' => '0',
+          'weight' => '7',
         ),
       ),
       'display' => array(),
@@ -246,6 +246,20 @@ function genealogy_events_strongarm() {
   $strongarm->name = 'node_submitted_family_event';
   $strongarm->value = 1;
   $export['node_submitted_family_event'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_event_pattern';
+  $strongarm->value = 'event/[node:nid]';
+  $export['pathauto_node_event_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_taxonomy_term_life_events_pattern';
+  $strongarm->value = '';
+  $export['pathauto_taxonomy_term_life_events_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

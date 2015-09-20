@@ -1,0 +1,105 @@
+<?php
+/**
+ * Module file for Gen Event
+ */
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function gen_event_form_event_node_form_alter(&$form, &$form_state, $form_id) {
+  //If this is a new note
+  if ($form['type']['#value'] == 'event' && is_null($form['nid']['#value'])) {
+    //Get url parameters
+    $args = arg();
+    $params = drupal_get_query_parameters();
+    // If using modal...
+    if (count($args) == 5 && $args[3] == 'ajax') {
+      $entity_id = (int) $args[4];
+    }
+    // If not using modal...
+    // If id is passed as url parameter...
+    else if (count($args) == 4) {
+      $entity_id = (int) $args[3];
+    }
+    // If id is passed in query string...
+    else if (isset($params['field_person_id'])) {
+      $entity_id = (int) $params['field_person_id'];
+    }
+    // Set default value for field_person_id.
+    if ($entity_id) {
+      $form['field_person_id'][LANGUAGE_NONE][0]['target_id']['#default_value'] = $entity_id;
+    }
+  }
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function gen_event_block_info() {
+  return array(
+    'add_event_link' => array(
+      'info' => t('Add a Life Event'),
+      'status' => FALSE,
+      'weight' => 0,
+      'visibility' => 1,
+    ),
+  );
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function gen_event_block_view($delta = NULL) {
+  $return = array();
+  switch ($delta) {
+    case 'add_event_link':
+      if (user_access('create person content')) {
+        $buttons = _gen_event_event_person_button();
+        $return = array(
+          'subject' => NULL,
+          'content' => $buttons,
+        );
+      }
+      else {
+        $return = array(
+          'subject' => NULL,
+          'content' => NULL,
+        );
+      }
+      break;
+    default:
+  }
+  return $return;
+}
+
+
+/**
+ * Helper function that generates buttons for the person view to add source citations
+ */
+function _gen_event_event_person_button() {
+  $path = current_path();
+  $args = explode("/", $path);
+  if (user_access('create person content')) {
+    $text = t('Add a Life Event');
+    $destination = drupal_get_destination();
+    $nonmodal_link = 'node/add/event';
+    $nonmodal_link = l($text, $nonmodal_link, array(
+      'attributes' => array(
+        'class' => array('btn', 'btn-default', 'life-events-item', 'nonmodal-buttons'),
+      ),
+      'query' => array(
+        'field_person_id' => $args[1],
+        $destination,
+      ),
+    ));
+    $modal_link = 'node/add/event/nojs/' . $args[1];
+    $modal_link = l($text, $modal_link, array(
+      'attributes' => array(
+        'class' => array('btn', 'btn-default', 'life-events-item', 'modal-buttons', 'ctools-use-modal'),
+      ),
+    ));
+    return '<span class="life-events">' . $nonmodal_link . $modal_link . '</span>';
+  } else {
+    return NULL;
+  }
+}

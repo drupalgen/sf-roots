@@ -34,16 +34,18 @@ function genealogy_events_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_beginning_date',
     'label' => 'Beginning Date',
+    'placeholder' => '',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
+    'use_title_as_placeholder' => 1,
     'widget' => array(
       'active' => 0,
       'module' => 'genealogy_date',
       'settings' => array(),
       'type' => 'genealogy_date_text',
-      'weight' => 4,
+      'weight' => 2,
     ),
   );
 
@@ -83,7 +85,7 @@ function genealogy_events_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 7,
+      'weight' => 6,
     ),
   );
 
@@ -111,16 +113,18 @@ function genealogy_events_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_end_date',
     'label' => 'End Date',
+    'placeholder' => '',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
+    'use_title_as_placeholder' => 1,
     'widget' => array(
       'active' => 0,
       'module' => 'genealogy_date',
       'settings' => array(),
       'type' => 'genealogy_date_text',
-      'weight' => 5,
+      'weight' => 3,
     ),
   );
 
@@ -152,6 +156,11 @@ function genealogy_events_field_default_field_instances() {
     'label' => 'Event Type',
     'required' => 1,
     'settings' => array(
+      'behaviors' => array(
+        'taxonomy-index' => array(
+          'status' => TRUE,
+        ),
+      ),
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -189,10 +198,12 @@ function genealogy_events_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_location',
     'label' => 'Location',
+    'placeholder' => '',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
+    'use_title_as_placeholder' => 1,
     'widget' => array(
       'active' => 1,
       'module' => 'entityreference',
@@ -208,7 +219,7 @@ function genealogy_events_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 6,
+      'weight' => 4,
     ),
   );
 
@@ -246,56 +257,7 @@ function genealogy_events_field_default_field_instances() {
       'module' => 'hidden_field',
       'settings' => array(),
       'type' => 'hidden_hidden',
-      'weight' => 1,
-    ),
-  );
-
-  // Exported field_instance: 'node-event-field_source_citations'
-  $field_instances['node-event-field_source_citations'] = array(
-    'bundle' => 'event',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 7,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_source_citations',
-    'label' => 'Source citations',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'inline_entity_form',
-      'settings' => array(
-        'fields' => array(),
-        'type_settings' => array(
-          'allow_existing' => 0,
-          'allow_new' => 1,
-          'delete_references' => 1,
-          'label_plural' => 'nodes',
-          'label_singular' => 'node',
-          'match_operator' => 'CONTAINS',
-          'override_labels' => 0,
-        ),
-      ),
-      'type' => 'inline_entity_form',
-      'weight' => 11,
+      'weight' => 8,
     ),
   );
 

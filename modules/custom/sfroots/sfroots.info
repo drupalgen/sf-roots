@@ -21,6 +21,7 @@ dependencies[] = field_placeholder
 dependencies[] = file
 dependencies[] = fontawesome
 dependencies[] = gen_cite
+dependencies[] = gen_event
 dependencies[] = gen_person
 dependencies[] = gen_notes
 dependencies[] = gen_photos

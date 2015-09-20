@@ -375,7 +375,7 @@ function genealogy_sources_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_repository_pattern';
-  $strongarm->value = '';
+  $strongarm->value = 'repository/[node:title]';
   $export['pathauto_node_repository_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -389,7 +389,7 @@ function genealogy_sources_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_source_pattern';
-  $strongarm->value = '';
+  $strongarm->value = 'source/[node:title]';
   $export['pathauto_node_source_pattern'] = $strongarm;
 
   $strongarm = new stdClass();

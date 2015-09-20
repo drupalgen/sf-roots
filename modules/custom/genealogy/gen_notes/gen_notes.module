@@ -13,7 +13,7 @@ function gen_notes_form_notes_node_form_alter(&$form, &$form_state, $form_id) {
     $args = arg();
     $params = drupal_get_query_parameters();
     // If using modal...
-    if (count($args) == 5 && $args[3] == 'ajax') {
+    if (count($args) >= 5 && $args[3] == 'ajax') {
       $entity_id = (int) $args[4];
     }
     // If not using modal...
@@ -51,7 +51,17 @@ function gen_notes_theme($existing, $type, $theme, $path) {
  */
 function gen_notes_preprocess_node(&$variables) {
   if ($variables['type'] == 'notes') {
-    $destination = drupal_get_destination();
+    $args = arg();
+    $extra = FALSE;
+    if (count($args) == 5) {
+      $extra = $args[4];
+    }
+    if($extra) {
+      $destination['destination'] = drupal_get_path_alias('node/' . $extra);
+    }
+    else {
+      $destination = drupal_get_destination();
+    }
     $querystring = array(
       'field_entity_assoc_id' => $variables['node']->nid,
       $destination,
@@ -67,6 +77,9 @@ function gen_notes_preprocess_node(&$variables) {
         $url = 'node/' . $variables['node']->nid . '/edit/nojs/' . $variables['field_assoc_entity_id'][LANGUAGE_NONE][0]['target_id'];
       } else {
         $url = 'node/' . $variables['node']->nid . '/edit/nojs/' . $variables['field_assoc_entity_id'][0]['target_id'];
+      }
+      if ($extra) {
+        $url .= '/' . $extra;
       }
       $variables['modal_button'] =  ctools_modal_text_button(
         t('Edit'),

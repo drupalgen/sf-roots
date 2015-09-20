@@ -3,6 +3,9 @@
  * Module file for Gen Cite
  */
 
+/**
+ * Helper function that generates buttons for the person view to add source citations
+ */
 function gen_cite_cite_name_button($args) {
   if (user_access('create person content')) {
     $text = '#';

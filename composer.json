@@ -172,6 +172,7 @@
     "drupal/strongarm": "7.*",
     "drupal/token": "7.*",
     "drupal/views": "7.*",
+    "drupal/views_php": "7.*",
     "drupal/bootstrap": "7.*",
     "drupal/bootstrap_fieldgroup": "7.*",
     "drush/drush": "6.*",

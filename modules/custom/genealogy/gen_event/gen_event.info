@@ -1,0 +1,11 @@
+name = Gen Event
+description = "Supplemental functionality for genealogy life events"
+package = Genealogy
+core = "7.x"
+
+version = 7.x-1.0
+
+stylesheets[all][] = css/gen_event.css
+
+dependencies[] = genealogy_events
+dependencies[] = views_php

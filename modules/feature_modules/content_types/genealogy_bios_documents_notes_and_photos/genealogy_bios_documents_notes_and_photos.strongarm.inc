@@ -518,7 +518,7 @@ function genealogy_bios_documents_notes_and_photos_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_notes_pattern';
-  $strongarm->value = '';
+  $strongarm->value = 'note/[node:nid]';
   $export['pathauto_node_notes_pattern'] = $strongarm;
 
   $strongarm = new stdClass();

@@ -1,0 +1,17 @@
+/**
+ * @file
+ * Gen Event Stylesheet
+ */
+
+.field-name-field-event-type .control-label {
+  display: none;
+}
+
+.region-life-events {
+  border: 3px solid #ddd;
+  padding: 0.25em !important;
+  border-radius: 10px 10px 10px 10px;
+  -moz-border-radius: 10px 10px 10px 10px;
+  -webkit-border-radius: 10px 10px 10px 10px;
+  font-size: 80%;
+}
